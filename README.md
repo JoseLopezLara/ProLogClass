@@ -26,4 +26,5 @@ _______________________________________________________
 1. [Activity 01: Maze Exercise](01_Maze/README.md)
 2. [Activity 02: Islands Exercise](02_Island/README.md)
 3. [Activity 03: Preorden and Posorden](03_preorden_postorden_expresions/README.md)
-3. [Activity 04: Preorden and Posorden using binary trees](04_tree_binary_evaluation/README.md)
+4. [Activity 04: Preorden and Posorden using binary trees](04_tree_binary_evaluation/README.md)
+5. [Activity 05: Get the function from sequence](05_sequences/README.md)
