@@ -25,9 +25,11 @@ _______________________________________________________
 
 ### Actividades realizadas:
 
-1. [Activity 01: Maze Exercise](01_Maze/README.md)
-2. [Activity 02: Islands Exercise](02_Island/README.md)
-3. [Activity 03: Preorden and Posorden](03_preorden_postorden_expresions/README.md)
-4. [Activity 04: Preorden and Posorden using binary trees](04_tree_binary_evaluation/README.md)
-5. [Activity 05: Get the function from sequence](05_sequences/README.md)
-6. [Activity 06: Practica 2 Tipos de datos y Disciplina de tipos](06_Practica_2_Tipos_y_Disciplina_Datos/README.md)
+01. [Activity 01: Maze Exercise](01_Maze/README.md)
+02. [Activity 02: Islands Exercise](02_Island/README.md)
+03. [Activity 03: Preorden and Posorden](03_preorden_postorden_expresions/README.md)
+04. [Activity 04: Preorden and Posorden using binary trees](04_tree_binary_evaluation/README.md)
+05. [Activity 05: Get the function from sequence](05_sequences/README.md)
+06. [Activity 06: Practica 2 Tipos de datos y Disciplina de tipos](06_Practica_2_Tipos_y_Disciplina_Datos/README.md)
+07. [Activity 07: 20 Functions in CLISP](07_20FuncionesCLSIP/README.md)
+08. [Activity 08: 20 Areas and Volumens Functions](08_AreasYVolumenes/README.md)
