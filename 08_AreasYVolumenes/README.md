@@ -392,4 +392,4 @@ ________________________________________________________
 
 * **Test:**
 
-![image](test20TroncoDECono.png)
+![image](test20TroncoCono.png)
