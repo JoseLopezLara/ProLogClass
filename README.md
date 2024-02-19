@@ -33,3 +33,4 @@ _______________________________________________________
 06. [Activity 06: Practica 2 Tipos de datos y Disciplina de tipos](06_Practica_2_Tipos_y_Disciplina_Datos/README.md)
 07. [Activity 07: 20 Functions in CLISP](07_20FuncionesCLSIP/README.md)
 08. [Activity 08: 20 Areas and Volumens Functions](08_AreasYVolumenes/README.md)
+09. [Activity 09: CAR and CDR Functions](09_CarAndCdrFunctions/README.md)
