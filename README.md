@@ -35,3 +35,4 @@ _______________________________________________________
 08. [Activity 08: 20 Areas and Volumens Functions](08_AreasYVolumenes/README.md)
 09. [Activity 09: CAR and CDR Functions](09_CarAndCdrFunctions/README.md)
 10. [Activity 10: Menu with Cond and Case Functions](10_MenuAreasYVolumenes/README.md)
+11. [Activity 11: If Case when Unless and Cond exercises](11_IfCaseWhenUnlessCond/README.md)
