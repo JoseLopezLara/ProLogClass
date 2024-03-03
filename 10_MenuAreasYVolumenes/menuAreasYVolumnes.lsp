@@ -1,5 +1,66 @@
+;Menu Selection
+;----------------------------------------------
 (defun menu()
-    ()
+    (format t "---------------Volumens and Areas Menu--------------- ~%")
+
+    (format t "Options ~%
+
+        [1] Area Cuadrado ~% 
+        [2] Area Rectangulo ~%
+        [3] Area Triangulo ~%
+        [4] Area Circulo ~%
+        [5] Area Trapecio ~%
+        [6] Area Pentagono ~%
+        [7] Area Hexagono ~%
+        [8] Area Rombo ~%
+        [9] Area Romboide ~%
+        [10] Area Decagono ~%
+        [11] Volumen Cubo ~%
+        [12] Volumen Paralelepipedo ~%
+        [13] Volumen Esfera ~%
+        [14] Volumen Cilindro ~%
+        [15] Volumen Cono ~%
+        [16] Volumen Piramide ~%
+        [17] Volumen Tetraedro ~%
+        [18] Volumen Dodecaedro ~%
+        [19] Volumen Icosaedro ~%
+        [20] Volumen Tronco de Cono ~% 
+        
+        Press de option number: 
+    ")
+    (setq option (read))
+    
+    (format t "~%")
+
+    ;Select menu using COND
+    (cond   
+        ((= option 1) (areaCuadrado))
+        ((= option 2) (areaRectangulo))
+        ((= option 3) (areaTriangulo))
+        ((= option 4) (areaCirculo))
+        ((= option 5) (areaTrapecio))
+        ((= option 6) (areaPentagono))
+        ((= option 7) (areaHexagono))
+        ((= option 8) (areaRombo))
+        ((= option 9) (areaRomboide))
+        ((= option 10) (areaDecagono))
+    )
+
+    (case option
+        ((11) (volumenCubo))
+        ((12) (volumenParalelepipedo))       
+        ((13) (volumenEsfera))       
+        ((14) (volumenCilindro))       
+        ((15) (volumenCono))       
+        ((16) (volumenPiramide))       
+        ((17) (volumenTetraedro))       
+        ((18) (volumenDodecaedro))       
+        ((19) (volumenIcosaedro))       
+        ((20) (volumenTroncoCono))       
+    )
+
+    (format t "~% ~%")
+    
 )
 
 
