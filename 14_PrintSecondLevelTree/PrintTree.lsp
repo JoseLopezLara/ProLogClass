@@ -1,10 +1,10 @@
 
 (defun printLevel(list)
-  (format t "¿La casa a la que pertenece tu personaje es ~a? ~%" (car list))
-  (printLevel (mapcar #' car  (assoc (car list) *nodes*)))
+  (format t "¿Estas pensando en ~a? ~%" (car list))
   (if list
     (printLevel (cdr list))
-  )   
+  )
+   
 )
 
 (defparameter *nodes*
@@ -20,7 +20,7 @@
 						 (Ravenclaw(
 							(Mago (Es mago))
               (Muggle (Es muggle))))
-            (NoEsEstudiante(
+             (NoEsEstudiante(
 							(Mago (Es mago))
               (Muggle (Es muggle))))
 						 )
