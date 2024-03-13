@@ -37,3 +37,6 @@ _______________________________________________________
 10. [Activity 10: Menu with Cond and Case Functions](10_MenuAreasYVolumenes/README.md)
 11. [Activity 11: If Case when Unless and Cond exercises](11_IfCaseWhenUnlessCond/README.md)
 12. [Activity 12: Print the first level of a tree](12_PrintFirstTree/README.md)
+13. [**--->** **EXAM NUMBER ONE** (Activity 13)](13_Exam1/README.md)
+14. [Activity 14:Print the second level of a tree](14_PrintSecondLevelTree/README.md)
+15. [Activity 15: Print Femenine Person Exercise](15_PrintFemeninePersonsExercise/README.md)
