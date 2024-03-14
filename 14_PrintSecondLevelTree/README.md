@@ -30,33 +30,58 @@ ________________________________________________________
 * The tree is about the Harry Potter
 
 ```lisp
-(defun printLevel(list)
-  (format t "¿La casa a la que pertenece tu personaje es ~a? ~%" (car list))
-  (if list
-    (printLevel (cdr list))
-  )
+
+(defun printLevels(list)
+    ;Print the first level
+    (if list
+      (format t "¿Estas pensando en ~a? ~%" (car list))
+    )
+    
+    ;Print the second level
+    (if list
+      (printLevel (mapcar #' car (cadr (assoc (car list) *nodes*))))
+    )
+    
+    (if list
+      (printLevel (cdr list))
+    )
 )
 
+(defparameter *nodesTest*
+            '((Gryffindor (
+							(MagoG (Es mago))
+              (MuggleG (Es muggle))))
+						 (Slytherin(
+							(MagoS (Es mago))
+              (MuggleS (Es muggle))))
+						 
+						 )
+  )
+
 (defparameter *nodes*
-            '((Gryffindor 
-                ((Mago (Es mago))
-                (Muggle (Es muggle))))
-            (Slytherin(
-                (Mago (Es mago))
-                (Muggle (Es muggle))))
-            (Hafflepuff(
-                (Mago (Es mago))
-                (Muggle (Es muggle))))
-            (Ravenclaw(
-                (Mago (Es mago))
-                (Muggle (Es muggle))))
-            (NoEsEstudiante(
-                (Mago (Es mago))
-                (Muggle (Es muggle))))
-            )
+            '((Gryffindor (
+							(Mago (Es mago))
+              (Muggle (Es muggle))))
+						 (Slytherin(
+							(Mago (Es mago))
+              (Muggle (Es muggle))))
+						 (Hafflepuff(
+							(Mago (Es mago))
+              (Muggle (Es muggle))))
+						 (Ravenclaw(
+							(Mago (Es mago))
+              (Muggle (Es muggle))))
+             (NoEsEstudiante(
+							(Mago (Es mago))
+              (Muggle (Es muggle))))
+						 )
   )
 ```
 
-**Test:**
+### **Test: Print the first and second level**
 
-![image](test.png)
+![image](test1.png)
+
+### **Test: Print the first and second level, but using trace and chek that printed the correct branch**
+
+![image](test2.png)

@@ -1,11 +1,30 @@
 
-(defun printLevel(list)
-  (format t "¿Estas pensando en ~a? ~%" (car list))
-  (if list
-    (printLevel (cdr list))
-  )
-   
+(defun printLevels(list)
+    ;Print the first level
+    (if list
+      (format t "¿Estas pensando en ~a? ~%" (car list))
+    )
+    
+    ;Print the second level
+    (if list
+      (printLevels (mapcar #' car (cadr (assoc (car list) *nodes*))))
+    )
+    
+    (if list
+      (printLevels (cdr list))
+    )
 )
+
+(defparameter *nodesTest*
+            '((Gryffindor (
+							(MagoG (Es mago))
+              (MuggleG (Es muggle))))
+						 (Slytherin(
+							(MagoS (Es mago))
+              (MuggleS (Es muggle))))
+						 
+						 )
+  )
 
 (defparameter *nodes*
             '((Gryffindor (
