@@ -30,6 +30,86 @@ ________________________________________________________
 * Diagram:
 
 ```
-
+(un personaje)
+    (un personaje masculino)
+        (un personaje que es estudiante)
+            (un estudiante que pertenece a Gryffindor)
+                (un Weasley)
+                    (un gemelo)
+                        "Gemelos Weasley"
+                    "Ron Weasley"
+                    (un personaje con lentes)
+                        "Harry Potter"
+                    "Neville Longbottom"
+            (un estudiante que pertenece a Slytherin)
+                "Draco Malfoy"
+            (un estudiante que pertenece a Hufflepuff)
+                "Cedric Diggory"
+        (un personaje con cabello largo)
+            (un personaje con barga grande)
+                (un personaje con cabello blanco )
+                    "Albus Dumbledore"
+                "Rubeus Hagrid"
+            "Sirius Black"
+        (un personaje que ha matado)
+            "Voldemort"
+            (un personaje que tiene cabello)
+                (Profesor)
+                    "Severus Snape"
+                "Lucius Malfoy"
+        "Cornelius Fudge"
+    (un personaje femenino)
+        (un personaje que es estudiante)
+            (un estudiante que pertenece a Ravenclaw)
+                (un personaje que tiene el cabello blanco)
+                    "Luna Lovegood"
+                "Cho Chang"
+            (un estudiante que pertenece a Gryffindor)
+                (un Weasley)
+                    "Ginny Weasley"
+                "Hermione Granger"
+        (un maestro de Hogwarts)
+            "Minerva McGonagall"
+        (una mortífaga en tu mente)
+            "Bellatrix Lestrange"
+        "Molly Weasley"
+(un lugar)
+    (una intitucion)
+        (una intitucion que manje dinero)
+            "Gringotts"
+        (una intitucion magica)
+            "Hogwarts"
+        "Ministerio de Magia"
+    (un lugar con mounstros)
+        "Bosque Prohibido"
+    (una lugar donde se practica Quidditch)
+        "Campo de Quidditch de Hogwarts"
+    "Callejón Diagon"
+(un objeto)
+    (un objeto usado en el Quidditch)
+        (un objeto pequeño)
+            "La Snitch Dorada"
+        "La Escoba Nimbus 2000"
+    (una reliquia de la muerte)
+        (un objeto que le pertenecio a Harry Potter)
+            "La Capa de Invisibilidad"
+        (un objeto pequeño)
+            "La Piedra de la Resurrección"
+        "La Varita de Saúco"
+    (un objeto que sirve para buscar lugares)
+        "El Mapa del Merodeador"
+    (un objeto que hace daño)
+        "La Espada de Gryffindor"
+    "El Espejo de Oesed"
+(una criatura)
+    (una criatura que se mueve por el suelo) 
+        (una serpiente) 
+            (un Horrocrux )
+                "Nagini"
+            "El Basilisco"
+        (una Aracnido) 
+            "Aragog"
+        "Dobby"
+    "Los Dementores"
 
 ```

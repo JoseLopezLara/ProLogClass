@@ -1,36 +1,7 @@
-
-Niveles:
-----------------------------------------------------------------
-Personaje
-	Femenino
-        Estudiante
-            Hufflepuff
-
-            Gryffindor
-
-            Slytherin
-
-            Ravenclaw
-
-        Profesor
-		
-	Masculino
-
-        Estudiante
-
-        Profesor
-
-Lugar
-
-Objeto
-
-Criatura
-
-
-Personajes por categoria:
-
+----------------------------------------------------------------------------------------------
+---------------------------------Personajes por categoria V1:---------------------------------
+----------------------------------------------------------------------------------------------
 LISTO!!
-
     Gemelos Weasley
         Categoria: [Personaje, Masculino, Estudiante, Gryffindor, Weasley, Tiene un gemelo] (6 PREGUNTAS)
     Ron Weasley
@@ -81,9 +52,8 @@ LISTO!!
 
 
 LISTO!!
-	
 	Gringotts
-	    Categ   oria: [Lugar, Intitucion, Hay dinero]
+	    Categoria: [Lugar, Intitucion, Hay dinero]
 	Hogwarts
 	    Categoria: [Lugar, Intitucion, Donde enseñan]
 	Ministerio de Magia
@@ -96,10 +66,9 @@ LISTO!!
 	    Categoria: [Lugar, Deporte]
 	
 	Callejón Diagon
-	    Categoria: [Lugar ]
-	
+	    Categoria: [Lugar]
+    
 LISTO!!
-
 	La Snitch Dorada
 	    Categoria: [Objeto, Quidditch, Pequeño ]
 	La Escoba Nimbus 2000
@@ -118,9 +87,8 @@ LISTO!!
 	    Categoria: [Objeto, hace daño]
 	El Espejo de Oesed
 	    Categoria: [Objeto ]
-	
-LISTO!!
 
+LISTO!!
 	Nagini
 	    Categoria: [Criatura, Terrestre, Serpiente, Horrocrux]
 	El Basilisco
@@ -132,3 +100,178 @@ LISTO!!
 	
 	Los Dementores
         Categoria: [Criatura]
+
+----------------------------------------------------------------------------------------------
+---------------------------------Personajes por categoria V2:---------------------------------
+----------------------------------------------------------------------------------------------
+[Personaje, Masculino, Estudiante, Gryffindor, Weasley, Tiene un gemelo] = Gemelos Weasley
+
+[Personaje, Masculino, Estudiante, Gryffindor, Weasley] = Ron Weasley
+
+[Personaje, Masculino, Estudiante, Gryffindor, Es atractivo] = Harry Potter
+
+[Personaje, Masculino, Estudiante, Gryffindor] = Neville Longbottom
+
+[Personaje, Masculino, Estudiante, Slytherin] = Draco Malfoy
+
+[Personaje, Masculino, Estudiante, Hufflepuff] = Cedric Diggory
+
+[Personaje, Masculino, Cabello largo, Barga grande, Cabello Blanco ] = Albus Dumbledore
+
+[Personaje, Masculino, Cabello largo, Barga grande] = Rubeus Hagrid
+
+[Personaje, Masculino, Cabello largo ] = Sirius Black
+
+[Personaje, Masculino, Ha matado, Tine cabello, Profesor] = Severus Snape
+
+[Personaje, Masculino, Ha matado, Tine cabello ] = Lucius Malfoy
+
+[Personaje, Masculino, Ha matado ] = Voldemort
+
+[Personaje, Masculino] = Cornelius Fudge
+
+[Personaje, Femenino, Estudiante, Ravenclaw, cabello blanco] = Luna Lovegood
+
+[Personaje, Femenino, Estudiante, Ravenclaw, ] = Cho Chang
+
+[Personaje, Femenino, Estudiante, Gryffindor, Weasley] = Ginny Weasley
+
+[Personaje, Femenino, Estudiante, Gryffindor, ] = Hermione Granger
+
+[Personaje, Femenino, Profesor] = Minerva McGonagall
+
+[Personaje, Femenino, Mortífaga, ] = Bellatrix Lestrange
+
+[Personaje, Femenino ] = Molly Weasley
+
+
+
+[Lugar, Intitucion, Hay dinero] = Gringotts
+
+[Lugar, Intitucion, Donde enseñan] = Hogwarts
+
+[Lugar, Intitucion] = Ministerio de Magia
+
+[Lugar, Mounstros] = Bosque Prohibido
+
+[Lugar, Deporte] = Campo de Quidditch de Hogwarts
+
+[Lugar] = Callejón Diagon
+
+
+    
+[Objeto, Quidditch, Pequeño ] = La Snitch Dorada
+
+[Objeto, Quidditch ] = La Escoba Nimbus 2000
+
+[Objeto, Reliquia de la muerte, Le pertenece a harry] = La Capa de Invisibilidad
+
+[Objeto, Reliquia de la muerte, es pequeño ] = La Piedra de la Resurrección
+
+[Objeto, Reliquia de la muerte ] = La Varita de Saúco
+
+[Objeto, permite buscar] = El Mapa del Merodeador
+
+[Objeto, hace daño] = La Espada de Gryffindor
+
+[Objeto ] = El Espejo de Oesed
+
+
+
+[Criatura, Terrestre, Serpiente, Horrocrux] = Nagini
+
+[Criatura, Terrestre, Serpiente] = El Basilisco
+
+[Criatura, Terrestre, Aracnido ] = Aragog
+
+[Criatura, Terrestre ] = Dobby
+
+[Criatura] = Los Dementores
+
+----------------------------------------------------------------------------------------------
+--------------------------------- Diagrama de Personajes V1: ---------------------------------
+----------------------------------------------------------------------------------------------
+La pregunta será ¿Hay "" en tu mente?
+
+(un personaje)
+    (un personaje masculino)
+        (un personaje que es estudiante)
+            (un estudiante que pertenece a Gryffindor)
+                (un Weasley)
+                    (un gemelo)
+                        "Gemelos Weasley"
+                    "Ron Weasley"
+                    (un personaje con lentes)
+                        "Harry Potter"
+                    "Neville Longbottom"
+            (un estudiante que pertenece a Slytherin)
+                "Draco Malfoy"
+            (un estudiante que pertenece a Hufflepuff)
+                "Cedric Diggory"
+        (un personaje con cabello largo)
+            (un personaje con barga grande)
+                (un personaje con cabello blanco )
+                    "Albus Dumbledore"
+                "Rubeus Hagrid"
+            "Sirius Black"
+        (un personaje que ha matado)
+            "Voldemort"
+            (un personaje que tiene cabello)
+                (Profesor)
+                    "Severus Snape"
+                "Lucius Malfoy"
+        "Cornelius Fudge"
+    (un personaje femenino)
+        (un personaje que es estudiante)
+            (un estudiante que pertenece a Ravenclaw)
+                (un personaje que tiene el cabello blanco)
+                    "Luna Lovegood"
+                "Cho Chang"
+            (un estudiante que pertenece a Gryffindor)
+                (un Weasley)
+                    "Ginny Weasley"
+                "Hermione Granger"
+        (un maestro de Hogwarts)
+            "Minerva McGonagall"
+        (una mortífaga en tu mente)
+            "Bellatrix Lestrange"
+        "Molly Weasley"
+(un lugar)
+    (una intitucion)
+        (una intitucion que manje dinero)
+            "Gringotts"
+        (una intitucion magica)
+            "Hogwarts"
+        "Ministerio de Magia"
+    (un lugar con mounstros)
+        "Bosque Prohibido"
+    (una lugar donde se practica Quidditch)
+        "Campo de Quidditch de Hogwarts"
+    "Callejón Diagon"
+(un objeto)
+    (un objeto usado en el Quidditch)
+        (un objeto pequeño)
+            "La Snitch Dorada"
+        "La Escoba Nimbus 2000"
+    (una reliquia de la muerte)
+        (un objeto que le pertenecio a Harry Potter)
+            "La Capa de Invisibilidad"
+        (un objeto pequeño)
+            "La Piedra de la Resurrección"
+        "La Varita de Saúco"
+    (un objeto que sirve para buscar lugares)
+        "El Mapa del Merodeador"
+    (un objeto que hace daño)
+        "La Espada de Gryffindor"
+    "El Espejo de Oesed"
+(una criatura)
+    (una criatura que se mueve por el suelo) 
+        (una serpiente) 
+            (un Horrocrux )
+                "Nagini"
+            "El Basilisco"
+        (una Aracnido) 
+            "Aragog"
+        "Dobby"
+    "Los Dementores"
+
