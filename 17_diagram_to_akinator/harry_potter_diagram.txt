@@ -1,10 +1,134 @@
+
+Niveles:
+----------------------------------------------------------------
 Personaje
 	Femenino
+        Estudiante
+            Hufflepuff
+
+            Gryffindor
+
+            Slytherin
+
+            Ravenclaw
+
+        Profesor
 		
 	Masculino
+
+        Estudiante
+
+        Profesor
 
 Lugar
 
 Objeto
 
 Criatura
+
+
+Personajes por categoria:
+
+LISTO!!
+
+    Gemelos Weasley
+        Categoria: [Personaje, Masculino, Estudiante, Gryffindor, Weasley, Tiene un gemelo] (6 PREGUNTAS)
+    Ron Weasley
+        Categoria: [Personaje, Masculino, Estudiante, Gryffindor, Weasley]
+    Harry Potter
+        Categoria: [Personaje, Masculino, Estudiante, Gryffindor, Es atractivo]
+    Neville Longbottom
+        Categoria: [Personaje, Masculino, Estudiante, Gryffindor]
+    Draco Malfoy
+        Categoria: [Personaje, Masculino, Estudiante, Slytherin]
+    Cedric Diggory
+        Categoria: [Personaje, Masculino, Estudiante, Hufflepuff]
+
+    Albus Dumbledore
+        Categoria: [Personaje, Masculino, Cabello largo, Barga grande, Cabello Blanco ]
+    Rubeus Hagrid
+        Categoria: [Personaje, Masculino, Cabello largo, Barga grande,]
+    Sirius Black
+        Categoria: [Personaje, Masculino, Cabello largo ]
+    Severus Snape
+
+        Categoria: [Personaje, Masculino, Ha matado, Tine cabello,  Profesor]
+    Lucius Malfoy
+        Categoria: [Personaje, Masculino, Ha matado, Tine cabello ]
+    Voldemort
+        Categoria: [Personaje, Masculino, Ha matado ]
+
+    Cornelius Fudge
+        Categoria: [Personaje, Masculino] 
+
+    Luna Lovegood
+        Categoria: [Personaje, Femenino, Estudiante, Ravenclaw, cabello blanco]
+    Cho Chang
+        Categoria: [Personaje, Femenino, Estudiante, Ravenclaw, ]
+    Ginny Weasley
+        Categoria: [Personaje, Femenino, Estudiante, Gryffindor,  Weasley]
+    Hermione Granger
+        Categoria: [Personaje, Femenino, Estudiante, Gryffindor, ]
+
+    Minerva McGonagall
+        Categoria: [Personaje, Femenino, Profesor]
+
+    Bellatrix Lestrange
+        Categoria: [Personaje, Femenino, Mortífaga, ]
+
+    Molly Weasley
+        Categoria: [Personaje, Femenino ]
+
+
+LISTO!!
+	
+	Gringotts
+	    Categ   oria: [Lugar, Intitucion, Hay dinero]
+	Hogwarts
+	    Categoria: [Lugar, Intitucion, Donde enseñan]
+	Ministerio de Magia
+	    Categoria: [Lugar, Intitucion, ]
+	
+	Bosque Prohibido
+	    Categoria: [Lugar, Mounstros]
+	
+	Campo de Quidditch de Hogwarts
+	    Categoria: [Lugar, Deporte]
+	
+	Callejón Diagon
+	    Categoria: [Lugar ]
+	
+LISTO!!
+
+	La Snitch Dorada
+	    Categoria: [Objeto, Quidditch, Pequeño ]
+	La Escoba Nimbus 2000
+	    Categoria: [Objeto, Quidditch ]
+	La Capa de Invisibilidad
+	
+	    Categoria: [Objeto, Reliquia de la muerte,  Le pertenece a harry]
+	La Piedra de la Resurrección
+	    Categoria: [Objeto, Reliquia de la muerte, es pequeño ]
+	La Varita de Saúco
+	    Categoria: [Objeto, Reliquia de la muerte  ]
+	
+	El Mapa del Merodeador
+	    Categoria: [Objeto, permite buscar]
+	La Espada de Gryffindor
+	    Categoria: [Objeto, hace daño]
+	El Espejo de Oesed
+	    Categoria: [Objeto ]
+	
+LISTO!!
+
+	Nagini
+	    Categoria: [Criatura, Terrestre, Serpiente, Horrocrux]
+	El Basilisco
+	    Categ   oria: [Criatura, Terrestre, Serpiente]
+	Aragog
+	    Categoria: [Criatura, Terrestre, Aracnido ]
+	Dobby
+	    Categoria: [Criatura, Terrestre ]
+	
+	Los Dementores
+        Categoria: [Criatura]

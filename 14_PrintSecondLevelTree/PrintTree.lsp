@@ -15,7 +15,8 @@
 (defparameter *nodesTest*
             '((Gryffindor (
 							(MagoG (Es mago))
-              (MuggleG (Es muggle))))
+              (MuggleG (Es muggle))
+              (Maestro)))
 						 (Slytherin(
 							(MagoS (Es mago))
               (MuggleS (Es muggle))))
