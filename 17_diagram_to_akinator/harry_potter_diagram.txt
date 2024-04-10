@@ -1,0 +1,10 @@
+Personaje
+	Femenino
+		
+	Masculino
+
+Lugar
+
+Objeto
+
+Criatura

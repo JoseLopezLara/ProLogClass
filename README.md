@@ -21,7 +21,7 @@ _______________________________________________________
 _______________________________________________________
 _______________________________________________________
 
-<img src="https://jcubic.pl/img/lisp-alien.png" alt="Descripción de la imagen" style="border-radius: 40px;">
+<img src="https://jcubic.pl/img/lisp-alien.png" alt="Descripción de la imagen" style="border-radius: 40px;"/>
 
 ### Actividades realizadas:
 
