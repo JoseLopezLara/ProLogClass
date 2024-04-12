@@ -464,4 +464,3 @@ madrede(martha_abuela)
         abuelade(martha_abuela, aira)
         abuelode(jose_abuelo, anaury)
         abuelade(martha_abuela, anaury)
-

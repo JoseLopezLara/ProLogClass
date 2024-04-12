@@ -42,3 +42,4 @@ _______________________________________________________
 15. [Activity 15: Print Femenine Person Exercise](15_PrintFemeninePersonsExercise/README.md)
 16. [Activity 16: Genalogical Family Tree Exercise](16_geniusTree/README.md)
 17. [Activity 17: Harry Potter World Diagram](17_diagram_to_akinator/README.md)
+18. [Activity 18: Infrence Rules to Genalogical Family Tree Exercise](18_genealogicalTreeWithRules/README.md)
