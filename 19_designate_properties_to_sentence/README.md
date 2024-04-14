@@ -1,14 +1,14 @@
 <p style="text-align: right;"><em>DATE: JANUARY - JUNE 2024</em></p>
 
-## **Activity, Make a Diagram to make in a future the akinator about Harry Potter**
+## **Activity, Exercise about logic relations**
 
-### Made In: Only TEXT
+### Made In: Only MarkDowin
 
-#### Activity number: 17
+#### Activity number: 19
 
 #### **DESCRIPTION:**
 
-#### Develop a diagram to make in a future the akinator about Harry Potter, this akinator has the theme "Harry Potter World" and contain the main persons, objects, location and criatures of Harry Potter Movie Saga.
+#### In this exercise I need indetify into sentences the diferences Predicates, variable and constances, properties, quantifiers and actions that accours in given senetences
 
 ________________________________________________________
 ________________________________________________________
@@ -17,99 +17,99 @@ ________________________________________________________
 
 #### Control Number: 19120194
 
-* [x] Student Email: <l19120194@morelia.tecnm.mx>
-* [x] Personal Email: <jose.lopez.lara.cto@gmail.com>
-* [x] GitHub Profile: [JoseLopezLara](https://github.com/JoseLopezLara)
-* [x] Linkedin Profile: [in/jose-lopez-lara/](https://www.linkedin.com/in/jose-lopez-lara/)
+* **[x] Student Email: <l19120194@morelia.tecnm.mx>
+* **[x] Personal Email: <jose.lopez.lara.cto@gmail.com>
+* **[x] GitHub Profile: [JoseLopezLara](https://github.com/JoseLopezLara)
+* **[x] Linkedin Profile: [in/jose-lopez-lara/](https://www.linkedin.com/in/jose-lopez-lara/)
 
 ________________________________________________________
 ________________________________________________________
 
-### **Diagram**
+### **Sentences**
 
-* Diagram:
+1. **La tierra es un planeta:**
+    * **Predicate**: Monary
+    * **individual variable/constants**: constant: tierra
+    * **properties**: planeta
+    * **quantifier**: -
 
-```
-(un personaje)
-    (un personaje masculino)
-        (un personaje que es estudiante)
-            (un estudiante que pertenece a Gryffindor)
-                (un Weasley)
-                    (un gemelo)
-                        "Gemelos Weasley"
-                    "Ron Weasley"
-                    (un personaje con lentes)
-                        "Harry Potter"
-                    "Neville Longbottom"
-            (un estudiante que pertenece a Slytherin)
-                "Draco Malfoy"
-            (un estudiante que pertenece a Hufflepuff)
-                "Cedric Diggory"
-        (un personaje con cabello largo)
-            (un personaje con barga grande)
-                (un personaje con cabello blanco )
-                    "Albus Dumbledore"
-                "Rubeus Hagrid"
-            "Sirius Black"
-        (un personaje que ha matado)
-            "Voldemort"
-            (un personaje que tiene cabello)
-                (Profesor)
-                    "Severus Snape"
-                "Lucius Malfoy"
-        "Cornelius Fudge"
-    (un personaje femenino)
-        (un personaje que es estudiante)
-            (un estudiante que pertenece a Ravenclaw)
-                (un personaje que tiene el cabello blanco)
-                    "Luna Lovegood"
-                "Cho Chang"
-            (un estudiante que pertenece a Gryffindor)
-                (un Weasley)
-                    "Ginny Weasley"
-                "Hermione Granger"
-        (un maestro de Hogwarts)
-            "Minerva McGonagall"
-        (una mortífaga en tu mente)
-            "Bellatrix Lestrange"
-        "Molly Weasley"
-(un lugar)
-    (una intitucion)
-        (una intitucion que manje dinero)
-            "Gringotts"
-        (una intitucion magica)
-            "Hogwarts"
-        "Ministerio de Magia"
-    (un lugar con mounstros)
-        "Bosque Prohibido"
-    (una lugar donde se practica Quidditch)
-        "Campo de Quidditch de Hogwarts"
-    "Callejón Diagon"
-(un objeto)
-    (un objeto usado en el Quidditch)
-        (un objeto pequeño)
-            "La Snitch Dorada"
-        "La Escoba Nimbus 2000"
-    (una reliquia de la muerte)
-        (un objeto que le pertenecio a Harry Potter)
-            "La Capa de Invisibilidad"
-        (un objeto pequeño)
-            "La Piedra de la Resurrección"
-        "La Varita de Saúco"
-    (un objeto que sirve para buscar lugares)
-        "El Mapa del Merodeador"
-    (un objeto que hace daño)
-        "La Espada de Gryffindor"
-    "El Espejo de Oesed"
-(una criatura)
-    (una criatura que se mueve por el suelo) 
-        (una serpiente) 
-            (un Horrocrux )
-                "Nagini"
-            "El Basilisco"
-        (una Aracnido) 
-            "Aragog"
-        "Dobby"
-    "Los Dementores"
-
-```
+2. **La luna no es un planeta**
+    * **Predicate**: Monary
+    * **individual variable/constants**: constant: luna
+    * **properties**: planeta
+    * **quantifier**: -
+3. **La luna es un satelite**
+    * **Predicate**: Monary
+    * **individual variable/constants**: constant: luna
+    * **properties**: satelite
+    * **quantifier**: -
+4. **La tierra gira alrededor del Sol**
+    * **Predicate**: Binary
+    * **individual variable/constants**: constant: tierra, constant: sol
+    * **properties**: -
+    * **quantifier**: -
+5. **Todo planeta es un satelite**
+    * **Predicate**: Monary
+    * **individual variable/constants**: Variable: planeta
+    * **properties**: satelite, planeta
+    * **quantifier**: Universal
+6. **Todo planeta gira alrededor del sol**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variable: Planeta, Constant: Sol
+    * **properties**: planeta
+    * **quantifier**: Universal
+    * **action**: Gira
+7. **Algún planeta gira alrrededor de la Luna**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variable: planeta, Constante: Luna
+    * **properties** : planeta
+    * **quantifier**: Existential
+    * **action**: Gira
+8. **Hay por lo menos un satelite**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variable: Satelite
+    * **properties**: satelite
+    * **quantifier**: Existential
+    * **action**: -
+9. **Todos los perros del vecindario muerden a algún cartero**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variable: Perro, Cartero
+    * **properties**: perro, cartero
+    * **quantifier**: Universal
+    * **action**: muerden
+10. **Hay un cartero al que lo muerden todos los perros**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variable: Cartero, perro
+    * **properties**: Perro, cartero
+    * **quantifier**: Existential y Universal
+    * **action**: Muerden
+11. **Todos los carteros son mordidos por algún perro**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variable: Carteros, Perro
+    * **properties**: Cartero y perro
+    * **quantifier**: Universal y Existential
+    * **action**: Mordidos
+12. **Hay un perro que muerde a todos los carteros [DUDA]**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variables: Perro, Carteros
+    * **properties**:perro, carteros
+    * **quantifier**: Universal
+    * **action**: Muerde
+13. **Todos los perros que asustan a algún cartero lo muerden**
+    * **Predicate**: Ternary
+    * **individual variable/constants**: Variable: Perro, cartero
+    * **properties**: Perro, Cartero
+    * **quantifier**: Universal, Existencial
+    * **action**: Asustar, morder
+14. **Hay un perro que muerde a todos los perros que muerden a algún cartero**
+    * **Predicate**: Ternary
+    * **individual variable/constants**: Variable: Perro, cartero, Constante: Todos los perros
+    * **properties**: Perro
+    * **quantifier**:Existential, Universal, Existential
+    * **action**: Muerde
+15. **Hay un solo perro que se muerde así mismo**
+    * **Predicate**: Binary
+    * **individual variable/constants**: Variable: Perror
+    * **properties**: Perro
+    * **quantifier**: Existencial
+    * **action**: Muerde

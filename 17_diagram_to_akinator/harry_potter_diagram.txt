@@ -208,18 +208,18 @@ La pregunta será ¿Hay "" en tu mente?
                 "Draco Malfoy"
             (un estudiante que pertenece a Hufflepuff)
                 "Cedric Diggory"
-        (un personaje con cabello largo)
-            (un personaje con barga grande)
-                (un personaje con cabello blanco )
-                    "Albus Dumbledore"
-                "Rubeus Hagrid"
-            "Sirius Black"
         (un personaje que ha matado)
             "Voldemort"
             (un personaje que tiene cabello)
                 (Profesor)
                     "Severus Snape"
                 "Lucius Malfoy"
+        (un personaje con cabello largo)
+            (un personaje con barga grande)
+                (un personaje con cabello blanco )
+                    "Albus Dumbledore"
+                "Rubeus Hagrid"
+            "Sirius Black"
         "Cornelius Fudge"
     (un personaje femenino)
         (un personaje que es estudiante)
