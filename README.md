@@ -43,4 +43,6 @@ _______________________________________________________
 16. [Activity 16: Genalogical Family Tree Exercise](16_geniusTree/README.md)
 17. [Activity 17: Harry Potter World Diagram](17_diagram_to_akinator/README.md)
 18. [Activity 18: Infrence Rules to Genalogical Family Tree Exercise](18_genealogicalTreeWithRules/README.md)
-19. [Activity 18: Exercise about logic relations](19_designate_properties_to_sentence/README.md)
+19. [Activity 19: Designate Properties to sentences](19_designate_properties_to_sentence/README.md)
+20. [Activity 20: Run diseases prolog exercise](20_run_diseases_prolog_exercise/README.md)
+21. [Activity 21: Expert System about system solar](21_solar_system_prolog/README.md)
