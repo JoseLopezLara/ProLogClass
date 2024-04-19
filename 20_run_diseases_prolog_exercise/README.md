@@ -8,7 +8,7 @@
 
 #### **DESCRIPTION:**
 
-#### You neer to run the exaple provider by teacher about an expert system with the Diseases them in SWIPL
+#### You need to run the exaple provider by teacher about an expert system with the Diseases them in SWIPL
 
 ________________________________________________________
 ________________________________________________________
@@ -69,5 +69,6 @@ buscar(X , E , 1) :- sintomade(X, E).
 buscar([X|Xs] , E , P) :- enfermedad(E) , buscar(X, E , S1) , buscar(Xs , E ,S2) , P is S1 + S2.
 ```
 
-**Test: Prueba de funcionamiento**
+**Test: Testing:**
+
 ![image](image1.png)
