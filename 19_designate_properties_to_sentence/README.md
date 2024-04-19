@@ -89,11 +89,11 @@ ________________________________________________________
     * **properties**: Cartero y perro
     * **quantifier**: Universal y Existential
     * **action**: Mordidos
-12. **Hay un perro que muerde a todos los carteros [DUDA]**
+12. **Hay un perro que muerde a todos los carteros**
     * **Predicate**: Binary
     * **individual variable/constants**: Variables: Perro, Carteros
     * **properties**:perro, carteros
-    * **quantifier**: Universal
+    * **quantifier**:Existencial, Universal
     * **action**: Muerde
 13. **Todos los perros que asustan a algún cartero lo muerden**
     * **Predicate**: Ternary
@@ -103,13 +103,13 @@ ________________________________________________________
     * **action**: Asustar, morder
 14. **Hay un perro que muerde a todos los perros que muerden a algún cartero**
     * **Predicate**: Ternary
-    * **individual variable/constants**: Variable: Perro, cartero, Constante: Todos los perros
-    * **properties**: Perro
+    * **individual variable/constants**: Variable: Perro, cartero
+    * **properties**: Perro y cartero
     * **quantifier**:Existential, Universal, Existential
     * **action**: Muerde
 15. **Hay un solo perro que se muerde así mismo**
     * **Predicate**: Binary
-    * **individual variable/constants**: Variable: Perror
+    * **individual variable/constants**: Variable: Perro
     * **properties**: Perro
     * **quantifier**: Existencial
     * **action**: Muerde
