@@ -45,12 +45,13 @@ ________________________________________________________
         * **El vecino que fuma Blends viveal lado del que toma agua.**
         * **El noruego vive al lado de la casa azul.**
 
-        * **En una mesa hay tres sombreros negros y dos blancos.** 
+        * **En una mesa hay tres sombreros negros y dos blancos.**
         * **Tres señores en filaindia se ponen un sombrero al azar cada uno y sin mirar el color.**
         * **Se le pregunta al tercero de la fila, que puede ver el color del sombrero del segundo y el primero, si puede decir el color de su sombrero, a lo queresponde negativamente.**
         * **Se le pregunta al segundo que ve solo el sombrero del primero y tampoco puede responder a la pregunta.**
         * **Por último, el primero de la fila que no ve ningún sombrero responde acertadamente de qué color es el sombrero que tenía puesto.**
         * **¿Cuál es este color y cuál es la lógica que uso para saberlo?**
+
     **INFERENCES**
     * **Predicate**:
     * **individual variable/constants**
