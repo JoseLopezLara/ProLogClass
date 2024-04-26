@@ -28,6 +28,7 @@ ________________________________________________________
 ### **Sentences**
 
 1. **En una calle hay cinco casas, cada una de un color distinto. En cada casa vive una persona de distinta nacionalidad. Cada dueño bebe un único tipo de bebida, fuma una sola marca de cigarrillos y tiene una mascota diferente a sus vecinos.A partir de las 15 pistas presentadas a continuación,la consigna que hay que responder es: "¿Quién es el dueño del pez?"**
+
     * **Ademas:**
         * **El británico vive en la casa roja.**
         **El sueco tiene un perro como mascota.**
@@ -45,16 +46,125 @@ ________________________________________________________
         * **El vecino que fuma Blends viveal lado del que toma agua.**
         * **El noruego vive al lado de la casa azul.**
 
-        * **En una mesa hay tres sombreros negros y dos blancos.**
-        * **Tres señores en filaindia se ponen un sombrero al azar cada uno y sin mirar el color.**
-        * **Se le pregunta al tercero de la fila, que puede ver el color del sombrero del segundo y el primero, si puede decir el color de su sombrero, a lo queresponde negativamente.**
-        * **Se le pregunta al segundo que ve solo el sombrero del primero y tampoco puede responder a la pregunta.**
-        * **Por último, el primero de la fila que no ve ningún sombrero responde acertadamente de qué color es el sombrero que tenía puesto.**
-        * **¿Cuál es este color y cuál es la lógica que uso para saberlo?**
-
     **INFERENCES**
     * **Predicate**:
     * **individual variable/constants**
     * **properties**:
     * **quantifier**:
     * **action**:
+
+    1. **En una calle hay cinco casas, cada una de un color distinto. En cada casa vive una persona de distinta nacionalidad. Cada dueño bebe un único tipo de bebida, fuma una sola marca de cigarrillos y tiene una mascota diferente a sus vecinos.A partir de las 15 pistas presentadas a continuación,la consigna que hay que responder es: "¿Quién es el dueño del pez?"**
+
+        **INFERENCES**
+        * **individual variable/constants:** Variabes: Color, Casa, Bedida, Cigarro, Mascota
+        * **properties**: Color, Nacionalidad, Bebida, Cigarro, mascota 
+        * **quantifier**:
+        * **action**: Vive, bebe, fuma, tiene_mascota
+
+    * **Ademas:**
+        * **El británico vive en la casa roja.**
+            **INFERENCES**
+            * **Predicate:** Binario, vive_en(casa_roja, britanico)
+            * **individual variable/constants:** Constante: britanico y casaroja
+            * **properties:**  
+            * **quantifier:**
+            * **action:** vive_en
+        * **El sueco tiene un perro como mascota.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El danés toma té.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El noruego vive en la primera casa.**
+        **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El alemán fuma Prince.**
+        **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **La casa verde está inmediatamente a la izquierda de la blanca.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El dueño de la casa verde bebe café.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El propietario que fuma Pall Mall cría pájaros.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El dueño de la casa amarilla fuma Dunhill.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El hombre que vive en la casa del centro bebe leche.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El vecino que fuma Blends vive al lado del que tiene un gato.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El hombre que tiene un caballo vive al lado del que fuma Dunhill.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El propietario que fuma Bluemaster toma cerveza.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El vecino que fuma Blends viveal lado del que toma agua.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+        * **El noruego vive al lado de la casa azul.**
+            **INFERENCES**
+            * **Predicate:**
+            * **individual variable/constants:**
+            * **properties:**  
+            * **quantifier:**
+            * **action:**
+
