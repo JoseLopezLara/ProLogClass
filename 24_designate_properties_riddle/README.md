@@ -57,7 +57,7 @@ ________________________________________________________
 
         **INFERENCES**
         * **individual variable/constants:** Variabes: Color, Casa, Bedida, Cigarro, Mascota
-        * **properties**: Color, Nacionalidad, Bebida, Cigarro, mascota 
+        * **properties**: Color, Nacionalidad, Bebida, Cigarro, mascota
         * **quantifier**:
         * **action**: Vive, bebe, fuma, tiene_mascota
 
@@ -65,106 +65,113 @@ ________________________________________________________
         * **El británico vive en la casa roja.**
             **INFERENCES**
             * **Predicate:** Binario, vive_en(casa_roja, britanico)
-            * **individual variable/constants:** Constante: britanico y casaroja
-            * **properties:**  
+            * **individual variable/constants:** Constante: britanico y casa_roja, roja
+            * **properties:**  nacionalidad, color
             * **quantifier:**
             * **action:** vive_en
         * **El sueco tiene un perro como mascota.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** Binario, mascota_del(perro, sueco)
+            * **individual variable/constants:** Constate: Sueco, perro
+            * **properties:**  mascota, nacionalidad
             * **quantifier:**
-            * **action:**
+            * **action:**  tiene (mascota_del)
         * **El danés toma té.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** Binario, bebida_que_toma_el(te, danes)
+            * **individual variable/constants:** Constantes: Danés, té
+            * **properties:**  bebida, nacionalidad
             * **quantifier:**
-            * **action:**
+            * **action:** toma (bebida_que_toma_el)
         * **El noruego vive en la primera casa.**
+        * ***----> DUDA: primera_casa es contante?***
         **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** Binario: vien_en(nuruego, primera_casa)
+            * **individual variable/constants:** Constante: Noruego, primera_casa
+            * **properties:** Nacionalidad  
             * **quantifier:**
-            * **action:**
+            * **action:** vive_en
         * **El alemán fuma Prince.**
         **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** Binario, fuma_el(Prince, Alemán)
+            * **individual variable/constants:** Contantes: Alemán y Prince
+            * **properties:**  Nacionalidad, cigarros
             * **quantifier:**
-            * **action:**
+            * **action:** fuma
         * **La casa verde está inmediatamente a la izquierda de la blanca.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * ***----> DUDA: si color es una propiedad, ¿Verde y blanco son constantes individuales? Esto por la logica de que Prince es una constante y su propiedad es cigarros. Entonces color es una propiedad y su constante es verde***
+            * **Predicate:** Binario, izquierda_de(casa_verde, casa_blanca)
+            * **individual variable/constants:** Constantes: casa_verde,  casa_blanca, blanca y verde
+            * **properties:** color  
             * **quantifier:**
-            * **action:**
+            * **action:** izquierda_de()
         * **El dueño de la casa verde bebe café.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** Binario, dueño_de(X, casa_verde) bebida_que_toma_el(café, X)
+            * **individual variable/constants:** Constantes: casa_verde, bebida_café, verde,  Variable: Dueño
+            * **properties:** bebida, color, dueño
             * **quantifier:**
-            * **action:**
+            * **action:** bebida_que_toma_el()
         * **El propietario que fuma Pall Mall cría pájaros.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * ***----> DUDA: el críar lo puedo manejar como mascota?***
+            * ***----> DUDA: Si debo de tener dueño_de(X, Y) y variable casa***
+            * ***----> DUDA: el propietario lo puedo manejar como Dueño?***
+            * **Predicate:** fuma(X, PallMall) mascota_del(pajaros, X) dueño_de(X, Y)
+            * **individual variable/constants:** Variable: Dueño, Casa Constante:pajaros, pall_mall
+            * **properties:** mascota, dueño
             * **quantifier:**
-            * **action:**
+            * **action:** mascota_del() fuma() dueño_de()
         * **El dueño de la casa amarilla fuma Dunhill.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** fuma(X, PallMall), dueño_de(X, casa_amarilla)
+            * **individual variable/constants:** Variable: Dueño, Constante: Dunhill, casa_amarilla, amarilla
+            * **properties:** dueño, fuma, color
             * **quantifier:**
-            * **action:**
+            * **action:** fuma(), dueño_de()
         * **El hombre que vive en la casa del centro bebe leche.**
+            * ***----> DUDA: el "hombre que vive" lo puedo manejar como Dueño?***
+            * ***----> DUDA: casa_del_centro lo puedo tomar como una constante e ingresarla en "dueño_de(X, casa_del_centro)" como si fuese un color***
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** dueño_de(X, casa_del_centro)  bebida_que_toma_el(leche, X)
+            * **individual variable/constants:** Variable: Dueño Contsante: Leche, casa del centro
+            * **properties:** dueño, toma
             * **quantifier:**
-            * **action:**
+            * **action:** dueño_de() bebida_que_toma_el()
         * **El vecino que fuma Blends vive al lado del que tiene un gato.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * ***----> DUDA: Hay manera de representar la Y como otro hecho? De la forma: izquierda_o_derecha_de(X, mascota_del(gato ,Y))***
+            * **Predicate:** mascota_del(gato ,X) izquierda_o_derecha_de(X, Y)
+            * **individual variable/constants:** Varaibles: Vecino Constante: Blends, gato
+            * **properties:** vecino, fuma, mascota
             * **quantifier:**
-            * **action:**
+            * **action:** mascota_del() fuma()
         * **El hombre que tiene un caballo vive al lado del que fuma Dunhill.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** mascota_del(caballo ,X) izquierda_o_derecha_de(X, Y) fuma(X, dunhill)
+            * **individual variable/constants:** Variable: hombre  Contante: caballo Dunhill
+            * **properties:** mascota, fuma, izquierda_o_derecha_de
             * **quantifier:**
-            * **action:**
+            * **action:** mascota_del() fuma()
         * **El propietario que fuma Bluemaster toma cerveza.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** fuma(X, Bluemaster) dueño_de(X, Y) bebida_que_toma_el(X, cerveza)
+            * **individual variable/constants:** Variable: dueño Contantes: Bluemaster, cerveza
+            * **properties:** dueño, fuma, toma
             * **quantifier:**
-            * **action:**
+            * **action:** dueño_de()
         * **El vecino que fuma Blends viveal lado del que toma agua.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** fuma(X, blends) dueño_de(X, Y) bebida_que_toma_el(X, agua) izquierda_o_derecha_de(X, Y)
+            * **individual variable/constants:** Variable: vecino Contantes: Blendes, agua
+            * **properties:** fuma, toma, dueño, zquierda_o_derecha_de
             * **quantifier:**
-            * **action:**
+            * **action:** izquierda_o_derecha_de(), bebida_que_toma_el(), fuma(), dueño_de()
         * **El noruego vive al lado de la casa azul.**
             **INFERENCES**
-            * **Predicate:**
-            * **individual variable/constants:**
-            * **properties:**  
+            * **Predicate:** izquierda_o_derecha_de(nueruego, casa_azul)
+            * **individual variable/constants:** Contantes: noruego, caza_azul, azul
+            * **properties:** nacionalidad, color
             * **quantifier:**
-            * **action:**
-
+            * **action:** izquierda_o_derecha_de(),
