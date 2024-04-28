@@ -25,13 +25,13 @@ ________________________________________________________
 ________________________________________________________
 ________________________________________________________
 
-### **Sentences**
+### **Riddle**
 
 1. **En una calle hay cinco casas, cada una de un color distinto. En cada casa vive una persona de distinta nacionalidad. Cada dueño bebe un único tipo de bebida, fuma una sola marca de cigarrillos y tiene una mascota diferente a sus vecinos.A partir de las 15 pistas presentadas a continuación,la consigna que hay que responder es: "¿Quién es el dueño del pez?"**
 
     * **Ademas:**
         * **El británico vive en la casa roja.**
-        **El sueco tiene un perro como mascota.**
+        * **El sueco tiene un perro como mascota.**
         * **El danés toma té.**
         * **El noruego vive en la primera casa.**
         * **El alemán fuma Prince.**
@@ -46,20 +46,15 @@ ________________________________________________________
         * **El vecino que fuma Blends viveal lado del que toma agua.**
         * **El noruego vive al lado de la casa azul.**
 
+### **Analize properties**
+
+1. **En una calle hay cinco casas, cada una de un color distinto. En cada casa vive una persona de distinta nacionalidad. Cada dueño bebe un único tipo de bebida, fuma una sola marca de cigarrillos y tiene una mascota diferente a sus vecinos.A partir de las 15 pistas presentadas a continuación,la consigna que hay que responder es: "¿Quién es el dueño del pez?"**
+
     **INFERENCES**
-    * **Predicate**:
-    * **individual variable/constants**
-    * **properties**:
+    * **individual variable/constants:** Variabes: Color, Casa, Bedida, Cigarro, Mascota
+    * **properties**: Color, Nacionalidad, Bebida, Cigarro, mascota
     * **quantifier**:
-    * **action**:
-
-    1. **En una calle hay cinco casas, cada una de un color distinto. En cada casa vive una persona de distinta nacionalidad. Cada dueño bebe un único tipo de bebida, fuma una sola marca de cigarrillos y tiene una mascota diferente a sus vecinos.A partir de las 15 pistas presentadas a continuación,la consigna que hay que responder es: "¿Quién es el dueño del pez?"**
-
-        **INFERENCES**
-        * **individual variable/constants:** Variabes: Color, Casa, Bedida, Cigarro, Mascota
-        * **properties**: Color, Nacionalidad, Bebida, Cigarro, mascota
-        * **quantifier**:
-        * **action**: Vive, bebe, fuma, tiene_mascota
+    * **action**: Vive, bebe, fuma, tiene_mascota
 
     * **Ademas:**
         * **El británico vive en la casa roja.**
@@ -174,4 +169,207 @@ ________________________________________________________
             * **individual variable/constants:** Contantes: noruego, caza_azul, azul
             * **properties:** nacionalidad, color
             * **quantifier:**
-            * **action:** izquierda_o_derecha_de(),
+            * **action:** izquierda_o_derecha_de()
+
+### **Relation between sentences and key points**
+
+1. **En una calle hay cinco casas, cada una de un color distinto. En cada casa vive una persona de distinta nacionalidad. Cada dueño bebe un único tipo de bebida, fuma una sola marca de cigarrillos y tiene una mascota diferente a sus vecinos.A partir de las 15 pistas presentadas a continuación,la consigna que hay que responder es: "¿Quién es el dueño del pez?"**
+    * **Key points**
+        * Colores de Casa: Roja, verde, blanca, amarilla, azul
+        * Nacionalidades: Britanico, Sueco, Danés, Nuruego, Aleman
+        * Bebidas: Té, café, leche, cerveza, agua 
+        * Cigarrillos: Prince, Pall Mall, Dunhill, Blends, Bluemaster
+        * Mascotas: Perro, pájaros, gato, caballo, pez 
+
+    * **Ademas:**
+        * **El británico vive en la casa roja.**
+            Britanico
+            Color de casa: Roja
+            Bebida:
+            Cigarrillos:
+            Mascota:
+            Posición de casa:
+        * **El sueco tiene un perro como mascota.**
+            Sueco
+            Color de casa:
+            Bebida:
+            Cigarrillos:
+            Mascota: Perro
+            Posición de casa:
+        * **El danés toma té.**
+            Danés
+            Color de casa:
+            Bebida: Té
+            Cigarrillos:
+            Mascota:
+            Posición de casa:
+        * **El noruego vive en la primera casa.** R3
+            Nuruego
+            Color de casa:
+            Bebida:
+            Cigarrillos:
+            Mascota:
+            Posición de casa: 1
+        * **El alemán fuma Prince.**
+            Aleman
+            Color de casa:
+            Bebida:
+            Cigarrillos: Prince
+            Mascota:
+            Posición de casa:
+        * **La casa verde está inmediatamente a la izquierda de la blanca.** R4
+            ?
+            Color de casa: verde
+            Bebida: café
+            Cigarrillos:
+            Mascota:
+            Posición de casa: verde - blanca
+        * **El dueño de la casa verde bebe café.**  R4
+            ?
+            Color de casa: verde
+            Bebida: café
+            Cigarrillos:
+            Mascota:
+            Posición de casa:
+        * **El propietario que fuma Pall Mall cría pájaros.**
+            ?
+            Color de casa:
+            Bebida:
+            Cigarrillos: Pall Mall
+            Mascota: pájaros
+            Posición de casa:
+        * **El dueño de la casa amarilla fuma Dunhill.** R1
+            ?
+            Color de casa: amarilla
+            Bebida:
+            Cigarrillos: Dunhill
+            Mascota:
+            Posición de casa:
+        * **El hombre que vive en la casa del centro bebe leche.**
+            ?
+            Color de casa:
+            Bebida: leche
+            Cigarrillos:
+            Mascota:
+            Posición de casa: ? ? centro ? ?
+        * **El vecino que fuma Blends vive al lado del que tiene un gato.** R2
+            ?
+            Color de casa:
+            Bebida:
+            Cigarrillos: Blends
+            Mascota:
+            Posición de casa: del_que_tiene_gato ? del_que_tiene_gato
+        * **El hombre que tiene un caballo vive al lado del que fuma Dunhill.** R1
+            ?
+            Color de casa:
+            Bebida:
+            Cigarrillos:
+            Mascota: caballo
+            Posición de casa: del_la_casa_amarilla ? del_la_casa_amarilla
+        * **El propietario que fuma Bluemaster toma cerveza.**
+            ?
+            Color de casa:
+            Bebida: cerveza
+            Cigarrillos: Bluemaster
+            Mascota:
+            Posición de casa:
+        * **El vecino que fuma Blends vive al lado del que toma agua.** R2
+            ?
+            Color de casa:
+            Bebida:
+            Cigarrillos: Blends
+            Mascota:
+            Posición de casa: del_que_tiene_gato ? toma_agua || toma_agua ?  del_que_tiene_gato  
+        * **El noruego vive al lado de la casa azul.** R3
+            nuruego
+            Color de casa:
+            Bebida:
+            Cigarrillos:
+            Mascota:
+            Posición de casa: casa_azul ? casa_azul
+
+    **Unification**
+        Britanico
+            Color de casa: Roja
+            Bebida:
+            Cigarrillos:
+            Mascota:
+            Posición de casa:
+        Sueco
+            Color de casa:
+            Bebida:
+            Cigarrillos:
+            Mascota: Perro
+            Posición de casa:
+        Danés
+            Color de casa:
+            Bebida: Té
+            Cigarrillos:
+            Mascota:
+            Posición de casa:
+        Nuruego (Union de R3)
+            Color de casa:
+            Bebida:
+            Cigarrillos:
+            Mascota:
+            Posición de casa: 1 casa_azul
+        Aleman
+            Color de casa:
+            Bebida:
+            Cigarrillos: Prince
+            Mascota:
+            Posición de casa:
+        ?
+            Color de casa: verde
+            Bebida: café
+            Cigarrillos:
+            Mascota:
+            Posición de casa: [1 - casa_azul] verde(3 || 4) - blanca
+        ?
+            Color de casa: verde
+            Bebida: café
+            Cigarrillos:
+            Mascota:
+            Posición de casa:
+        ?
+            Color de casa:
+            Bebida:
+            Cigarrillos: Pall Mall
+            Mascota: pájaros
+            Posición de casa:
+        ? (Union de R1)
+            Color de casa: amarilla
+            Bebida:
+            Cigarrillos: Dunhill
+            Mascota:
+            Posición de casa:
+        ?
+            Color de casa:
+            Bebida: leche
+            Cigarrillos:
+            Mascota:
+            Posición de casa: ? ? centro ? ?
+        ?
+            Color de casa:
+            Bebida:
+            Cigarrillos: Blends
+            Mascota:
+            Posición de casa: del_que_tiene_gato ? del_que_tiene_gato
+        ?
+            Color de casa:
+            Bebida:
+            Cigarrillos:
+            Mascota: caballo
+            Posición de casa:  [1 casa_azul] casa_amarilla ? casa_amarilla
+        ?
+            Color de casa:
+            Bebida: cerveza
+            Cigarrillos: Bluemaster
+            Mascota:
+            Posición de casa:
+        ?
+            Color de casa:
+            Bebida:
+            Cigarrillos: Blends
+            Mascota:
+            Posición de casa: del_que_tiene_gato ? toma_agua || toma_agua ?  del_que_tiene_gato
