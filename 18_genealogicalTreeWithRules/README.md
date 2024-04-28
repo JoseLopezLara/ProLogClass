@@ -2,7 +2,7 @@
 
 ## **Activity, Meke a Genealogical Family tree Relations With Rules**
 
-### Made In: CLISP
+### Made In: ProLog
 
 #### Activity number: 16
 

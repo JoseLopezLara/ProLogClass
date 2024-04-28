@@ -46,4 +46,6 @@ _______________________________________________________
 19. [Activity 19: Designate Properties to sentences](19_designate_properties_to_sentence/README.md)
 20. [Activity 20: Run diseases prolog exercise](20_run_diseases_prolog_exercise/README.md)
 21. [Activity 21: Expert System about system solar](21_solar_system_prolog/README.md)
+22. [Activity 22: Tree about recursive functions exercise](22_treeAboutRecurseveFunction/README.md)
 23. [**--->** **EXAM NUMBER TWO** (Activity 23)](23_Exam2/README.md)
+24. [Activity 24: Properti an relatios between sentences in Einstain Riddle](24_designate_properties_riddle/README.md)
