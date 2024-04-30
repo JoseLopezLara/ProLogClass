@@ -39,7 +39,7 @@ solucion(Solucion) :-
     posibleVecindario(Solucion),
     validarSolucion(Solucion).
 
-% Validate a posible "Vecindario" %
+% Validate a posible Vecindario %
 posibleVecindario(Vecindario) :-
     posibleCasa(Casa1),
     posibleCasa(Casa2),
@@ -49,7 +49,7 @@ posibleVecindario(Vecindario) :-
     Vecindario = [Casa1, Casa2, Casa3, Casa4, Casa5],
     validarVecindario(Vecindario).
 
-
+% Validate houses %
 posibleCasa(Casa) :-
     altura(Altura),
     color(Color),
@@ -64,7 +64,7 @@ posibleCasa(Casa) :-
 % Validaciones %
 validarCasa(Casa) :- forall(restriccionCasa(RestriccionCasa), cumple(RestriccionCasa, Casa)).
 
-validarVecindario(Vecindario) :- forall(restriccionVecindario(RestriccionVecindario), apply(RestriccionVecindario, [Vecindario])).
+    validarVecindario(Vecindario) :- forall(restriccionVecindario(RestriccionVecindario), apply(RestriccionVecindario, [Vecindario])).
 
 validarSolucion(Solucion) :-
     validarAlturas(Solucion),
