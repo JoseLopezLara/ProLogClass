@@ -31,6 +31,7 @@ cigarro(pallMall).
 
 % House Position: Can this take value between 1 and 5 %
 % between is a native function of ProLog %
+% Retur a true if N is between 1 and 5%
 altura(N) :- between(1, 5, N).
 
 % Solucion = [casa(Altura, Color, Nacionalidad, Bebida, Cigarro, Mascota)] %
@@ -50,6 +51,7 @@ posibleVecindario(Vecindario) :-
     validarVecindario(Vecindario).
 
 % Validate houses %
+% Get all conbinations of houses, but only return the convitations that match with restrictions %
 posibleCasa(Casa) :-
     altura(Altura),
     color(Color),
@@ -62,6 +64,7 @@ posibleCasa(Casa) :-
 
 
 % Validaciones %
+% Validate diferents combinatios of houses with the restrictios%
 validarCasa(Casa) :- forall(restriccionCasa(RestriccionCasa), cumple(RestriccionCasa, Casa)).
 
     validarVecindario(Vecindario) :- forall(restriccionVecindario(RestriccionVecindario), apply(RestriccionVecindario, [Vecindario])).
@@ -91,6 +94,7 @@ cumple(RestriccionCasa, Casa) :-
     afecta(RestriccionCasa, Casa),
     forall(member(Condicion, RestriccionCasa), apply(Condicion, [Casa])).
 
+% Restrictions %
 restriccionCasa([nacionalidadCasa(britanico), colorCasa(roja)]). % 1. El británico vive en la casa roja
 restriccionCasa([nacionalidadCasa(sueco), mascotaCasa(perro)]). % 2. El sueco tiene un perro como mascota
 restriccionCasa([nacionalidadCasa(danes), bebidaCasa(te)]). % 3. El danés toma té
@@ -102,7 +106,7 @@ restriccionCasa([colorCasa(amarilla), cigarroCasa(dunhill)]). % 9. El dueño de 
 restriccionCasa([alturaCasa(3), bebidaCasa(leche)]). % 10. El hombre que vive en la casa del centro bebe leche
 restriccionCasa([cigarroCasa(bluemaster), bebidaCasa(cerveza)]). % 13. El propietario que fuma Bluemaster toma cerveza
 
-
+% Relations between restrictions %
 restriccionVecindario(cumpleVecindario(colorCasa(verde), colorCasa(blanca), estaALaIzq)). % 6. La casa verde está inmediatamente a la izquierda de la blanca
 restriccionVecindario(cumpleVecindario(cigarroCasa(blends), mascotaCasa(gato), sonVecinos)). % 11. El vecino que fuma Blends vive al lado del que tiene un gato
 restriccionVecindario(cumpleVecindario(mascotaCasa(caballo), cigarroCasa(dunhill), sonVecinos)). % 12. El hombre que tiene un caballo vive al lado del que fuma Dunhill

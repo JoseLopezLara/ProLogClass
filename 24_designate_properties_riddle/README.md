@@ -42,7 +42,7 @@ ________________________________________________________
         * **El hombre que vive en la casa del centro bebe leche.**
         * **El vecino que fuma Blends vive al lado del que tiene un gato.**
         * **El hombre que tiene un caballo vive al lado del que fuma Dunhill.**
-        * **El propietario que fuma Bluemaster toma cerveza.**
+        * **El propietario que fuma Bluemaster jtoma cerveza.**
         * **El vecino que fuma Blends viveal lado del que toma agua.**
         * **El noruego vive al lado de la casa azul.**
 
