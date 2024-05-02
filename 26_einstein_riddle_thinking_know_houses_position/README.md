@@ -1,14 +1,14 @@
 <p style="text-align: right;"><em>DATE: JANUARY - JUNE 2024</em></p>
 
-## **Activity, Exercise about logic relations**
+## **Activity, Einstein Riddle thinking know houses position**
 
-### Made In: Only MarkDowin
+### Made In: Only MarkDown
 
-#### Activity number: 25
+#### Activity number: 26
 
 #### **DESCRIPTION:**
 
-#### In this exercise I need indetify into sentences the diferences Predicates, variable and constances, properties, quantifiers and actions that accours in given senetences
+#### In this exercise I need indetify how many sentences we needed to find solution, thinkin we know houses position
 
 ________________________________________________________
 ________________________________________________________
@@ -135,6 +135,8 @@ ________________________________________________________
             * **quantifier:**
             * **action:** dueño_de() bebida_que_toma_el()
         * **El vecino que fuma Blends vive al lado del que tiene un gato.**
+            * ***Se va***
+
             **INFERENCES**
             * ***----> DUDA: Hay manera de representar la Y como otro hecho? De la forma: izquierda_o_derecha_de(X, mascota_del(gato ,Y))***
             * **Predicate:** mascota_del(gato ,X) izquierda_o_derecha_de(X, Y)
@@ -143,6 +145,8 @@ ________________________________________________________
             * **quantifier:**
             * **action:** mascota_del() fuma()
         * **El hombre que tiene un caballo vive al lado del que fuma Dunhill.**
+            * ***Se va***
+
             **INFERENCES**
             * **Predicate:** mascota_del(caballo ,X) izquierda_o_derecha_de(X, Y) fuma(X, dunhill)
             * **individual variable/constants:** Variable: hombre  Contante: caballo Dunhill
@@ -164,6 +168,8 @@ ________________________________________________________
             * **quantifier:**
             * **action:** izquierda_o_derecha_de(), bebida_que_toma_el(), fuma(), dueño_de()
         * **El noruego vive al lado de la casa azul.**
+            * ***Se omite***
+
             **INFERENCES**
             * **Predicate:** izquierda_o_derecha_de(nueruego, casa_azul)
             * **individual variable/constants:** Contantes: noruego, caza_azul, azul
@@ -183,193 +189,137 @@ ________________________________________________________
 
     * **Ademas:**
         * **El británico vive en la casa roja.**
-            Britanico
-            Color de casa: Roja
-            Bebida:
-            Cigarrillos:
-            Mascota:
-            Posición de casa:
-        * **El sueco tiene un perro como mascota.**
-            Sueco
-            Color de casa:
-            Bebida:
-            Cigarrillos:
-            Mascota: Perro
-            Posición de casa:
-        * **El danés toma té.**
-            Danés
-            Color de casa:
-            Bebida: Té
-            Cigarrillos:
-            Mascota:
-            Posición de casa:
-        * **El noruego vive en la primera casa.** R3
-            Nuruego
-            Color de casa:
-            Bebida:
-            Cigarrillos:
-            Mascota:
-            Posición de casa: 1
-        * **El alemán fuma Prince.**
-            Aleman
-            Color de casa:
-            Bebida:
-            Cigarrillos: Prince
-            Mascota:
-            Posición de casa:
-        * **La casa verde está inmediatamente a la izquierda de la blanca.** R4
-            ?
-            Color de casa: verde
-            Bebida: café
-            Cigarrillos:
-            Mascota:
-            Posición de casa: verde - blanca
-        * **El dueño de la casa verde bebe café.**  R4
-            ?
-            Color de casa: verde
-            Bebida: café
-            Cigarrillos:
-            Mascota:
-            Posición de casa:
-        * **El propietario que fuma Pall Mall cría pájaros.**
-            ?
-            Color de casa:
-            Bebida:
-            Cigarrillos: Pall Mall
-            Mascota: pájaros
-            Posición de casa:
-        * **El dueño de la casa amarilla fuma Dunhill.** R1
-            ?
-            Color de casa: amarilla
-            Bebida:
-            Cigarrillos: Dunhill
-            Mascota:
-            Posición de casa:
-        * **El hombre que vive en la casa del centro bebe leche.**
-            ?
-            Color de casa:
-            Bebida: leche
-            Cigarrillos:
-            Mascota:
-            Posición de casa: ? ? centro ? ?
-        * **El vecino que fuma Blends vive al lado del que tiene un gato.** R2
-            ?
-            Color de casa:
-            Bebida:
-            Cigarrillos: Blends
-            Mascota:
-            Posición de casa: del_que_tiene_gato ? del_que_tiene_gato
-        * **El hombre que tiene un caballo vive al lado del que fuma Dunhill.** R1
-            ?
-            Color de casa:
-            Bebida:
-            Cigarrillos:
-            Mascota: caballo
-            Posición de casa: del_la_casa_amarilla ? del_la_casa_amarilla
-        * **El propietario que fuma Bluemaster toma cerveza.**
-            ?
-            Color de casa:
-            Bebida: cerveza
-            Cigarrillos: Bluemaster
-            Mascota:
-            Posición de casa:
-        * **El vecino que fuma Blends vive al lado del que toma agua.** R2
-            ?
-            Color de casa:
-            Bebida:
-            Cigarrillos: Blends
-            Mascota:
-            Posición de casa: del_que_tiene_gato ? toma_agua || toma_agua ?  del_que_tiene_gato  
-        * **El noruego vive al lado de la casa azul.** R3
-            nuruego
-            Color de casa:
-            Bebida:
-            Cigarrillos:
-            Mascota:
-            Posición de casa: casa_azul ? casa_azul
+            * ***Se omite por: Posición***
 
-    **Unification**
-        Britanico
-            Color de casa: Roja
-            Bebida:
-            Cigarrillos:
-            Mascota:
-            Posición de casa:
-        Sueco
-            Color de casa:
-            Bebida:
-            Cigarrillos:
-            Mascota: Perro
-            Posición de casa:
-        Danés
-            Color de casa:
-            Bebida: Té
-            Cigarrillos:
-            Mascota:
-            Posición de casa:
-        Nuruego (Union de R3)
-            Color de casa:
-            Bebida:
-            Cigarrillos:
-            Mascota:
-            Posición de casa: 1 casa_azul
-        Aleman
-            Color de casa:
-            Bebida:
-            Cigarrillos: Prince
-            Mascota:
-            Posición de casa:
-        ?
-            Color de casa: verde
-            Bebida: café
-            Cigarrillos:
-            Mascota:
-            Posición de casa: [1 - casa_azul] verde(3 || 4) - blanca
-        ?
-            Color de casa: verde
-            Bebida: café
-            Cigarrillos:
-            Mascota:
-            Posición de casa:
-        ?
-            Color de casa:
-            Bebida:
-            Cigarrillos: Pall Mall
-            Mascota: pájaros
-            Posición de casa:
-        ? (Union de R1)
-            Color de casa: amarilla
-            Bebida:
-            Cigarrillos: Dunhill
-            Mascota:
-            Posición de casa:
-        ?
-            Color de casa:
-            Bebida: leche
-            Cigarrillos:
-            Mascota:
-            Posición de casa: ? ? centro ? ?
-        ?
-            Color de casa:
-            Bebida:
-            Cigarrillos: Blends
-            Mascota:
-            Posición de casa: del_que_tiene_gato ? del_que_tiene_gato
-        ?
-            Color de casa:
-            Bebida:
-            Cigarrillos:
-            Mascota: caballo
-            Posición de casa:  [1 casa_azul] casa_amarilla ? casa_amarilla
-        ?
-            Color de casa:
-            Bebida: cerveza
-            Cigarrillos: Bluemaster
-            Mascota:
-            Posición de casa:
-        ?
-            Color de casa:
-            Bebida:
-            Cigarrillos: Blends
-            Mascota:
-            Posición de casa: del_que_tiene_gato ? toma_agua || toma_agua ?  del_que_tiene_gato
+            * Britanico
+            * Color de casa: Roja
+            * Bebida:
+            * Cigarrillos:
+            * Mascota:
+            * Posición de casa:
+        * **El sueco tiene un perro como mascota.**
+            * ***Se omite por: Mascota***
+
+            * Sueco
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos:
+            * Mascota: Perro
+            * Posición de casa:
+        * **El danés toma té.**
+            * ***Se omite por: Bebida***
+
+            * Danés
+            * Color de casa:
+            * Bebida: Té
+            * Cigarrillos:
+            * Mascota:
+            * Posición de casa:
+        * **El noruego vive en la primera casa.** R3
+            * ***Se omite por: Por posición***
+
+            * Nuruego
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos:
+            * Mascota:
+            * Posición de casa: 1
+        * **El alemán fuma Prince.**
+            * ***Se omite por: Cigarros***
+
+            * Aleman
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos: Prince
+            * Mascota:
+            * Posición de casa:
+        * **La casa verde está inmediatamente a la izquierda de la blanca.** R4
+            * ***Se omite por: Posición***
+
+            * ?
+            * Color de casa: verde
+            * Bebida: café
+            * Cigarrillos:
+            * Mascota:
+            * Posición de casa: verde - blanca
+        * **El dueño de la casa verde bebe café.**  R4
+            * ***Se omite por: Bebida***
+
+            * ?
+            * Color de casa: verde
+            * Bebida: café
+            * Cigarrillos:
+            * Mascota:
+            * Posición de casa:
+        * **El propietario que fuma Pall Mall cría pájaros.**
+            * ***Se omite por: Cigarros***
+
+            * ?
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos: Pall Mall
+            * Mascota: pájaros
+            * Posición de casa:
+        * **El dueño de la casa amarilla fuma Dunhill.** R1
+            * ***Se omite por: Posición***
+
+            * ?
+            * Color de casa: amarilla
+            * Bebida:
+            * Cigarrillos: Dunhill
+            * Mascota:
+            * Posición de casa:
+        * **El hombre que vive en la casa del centro bebe leche.**
+            * ***Se omite por: Posición***
+
+            * Color de casa:
+            * Bebida: leche
+            * Cigarrillos:
+            * Mascota:
+            * Posición de casa: ? ? centro ? ?
+        * **El vecino que fuma Blends vive al lado del que tiene un gato.** R2
+            * ***Se omite por: Posición***
+
+            * ?
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos: Blends
+            * Mascota:
+            * Posición de casa: del_que_tiene_gato ? del_que_tiene_gato
+        * **El hombre que tiene un caballo vive al lado del que fuma Dunhill.**
+            * ***Se omite por: Posición***
+ R1
+            * ?
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos:
+            * Mascota: caballo
+            * Posición de casa: del_la_casa_amarilla ? del_la_casa_amarilla
+        * **El propietario que fuma Bluemaster toma cerveza.**
+            * ***Se omite por: Cigarros***
+
+            * ?
+            * Color de casa:
+            * Bebida: cerveza
+            * Cigarrillos: Bluemaster
+            * Mascota:
+            * Posición de casa:
+        * **El vecino que fuma Blends vive al lado del que toma agua.** R2
+            * ***Se omite por: Posición***
+
+            * ?
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos: Blends
+            * Mascota:
+            * Posición de casa: del_que_tiene_gato ? toma_agua || toma_agua ?  del_que_tiene_gato  
+
+        * **El noruego vive al lado de la casa azul.** R3
+            * ***Se omite por: Posición***
+
+            * nuruego
+            * Color de casa:
+            * Bebida:
+            * Cigarrillos:
+            * Mascota:
+            * Posición de casa: casa_azul ? casa_azul
