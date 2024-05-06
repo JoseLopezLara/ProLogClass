@@ -51,3 +51,4 @@ _______________________________________________________
 24. [Activity 24: Properti an relatios between sentences in Einstain Riddle](24_designate_properties_riddle/README.md)
 25. [Activity 25: Relation between code and sentences of Einstein Riddle](25_relation_between_code_and_sentences/README.md)
 26. [Activity 26: Einstein riddle thinking we houses position know](26_einstein_riddle_thinking_know_houses_position/README.md)
+27. [Activity 27: Add 20 new templates to Elize code](27_elize_add_new_templates_exercise/README.md)
