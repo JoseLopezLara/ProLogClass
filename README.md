@@ -52,3 +52,6 @@ _______________________________________________________
 25. [Activity 25: Relation between code and sentences of Einstein Riddle](25_relation_between_code_and_sentences/README.md)
 26. [Activity 26: Einstein riddle thinking we houses position know](26_einstein_riddle_thinking_know_houses_position/README.md)
 27. [Activity 27: Add 20 new templates to Elize code](27_elize_add_new_templates_exercise/README.md)
+28. [Activity 28: Add new templates with 2 and 3 argumnets to Elize code](28_elize_add_teplate_with_2_and_tree_arguments/README.md)
+29. [Activity 29: Add 3 new templates rules of likes type to Elize code](29_elize_add_3_rule_to_templates/README.md)
+30. [**--->** **FINAL PROJECT PART 1** (Activity 30)](30_elize_add_genealogical_tree_final_project_p1/README.md)
