@@ -97,6 +97,14 @@ template([i, s(_),  _], [i, can, recommend, you, a, book, about, that, issue], [
 template([please, s(_), _], ['No', i, can, not, help, ',', i, am, just, a, machine], []). 
 		 template([tell, me, a, s(_), _], ['No', i, can, not, ',', i, am, bad, at, that], []).
 
+% ---- New templates using multiple results ----
+% ----------------------------------------------
+template([eliza,  s(_), tiene, hijos, .], [flaghijosdepadre], [1]).
+template([eliza,  s(_), es, madre, y, tiene, hijos, .], [flaghijosdemadre], [1]).
+template([eliza,  s(_), tiene, hermanos, .], [flagbrother], [1]).
+template([eliza, s(_), es, padre, de, s(_), .], [flagFather], [1,5]).
+template([eliza, s(_), es, madre, de, s(_), .], [flagMother], [1,5]).
+
 				  
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
@@ -147,6 +155,27 @@ elizaEnemy(X, R):- enemy(X), R = ['Si', X, es, mi, enemigo].
 elizaEnemy(X, R):- \+enemy(X), R = ['No', X, no, es, mi, enemigo].
 enemy(alejandro).
 enemy(enrrique).
+
+hijos_de_padre(X, R) :- 
+    findall(Y, padre(X, Y), Hijos),
+    atomic_list_concat(Hijos, ', ', HijosStr),
+    format(atom(R), 'Si los  hijos de ~w es/son: ~w.', [X, HijosStr]).
+
+hijos_de_madre(X, R) :- 
+    findall(Y, madre(X, Y), Hijos),
+    atomic_list_concat(Hijos, ', ', HijosStr),
+    format(atom(R), 'Si los  hijos de ~w es/son: ~w.', [X, HijosStr]).
+
+brothers(X, R) :- 
+    findall(Y, hermano(X, Y), Hermanos),
+    atomic_list_concat(Hermanos, ', ', HermanosStr),
+    format(atom(R), 'Si los  hermanos de ~w es/son: ~w.', [X, HermanosStr]).	
+
+madrede(X,Y,R):- madre(X, Y), R = ['Yes', X, madre, de, Y].
+madrede(X,Y,R):- \+madre(X,Y), R = ['No', X, no, es, madre, de, Y].
+
+padrede(X,Y,R):- padre(X, Y), R = ['Yes', X, padre, de, Y].
+padrede(X,Y,R):- \+padre(X,Y), R = ['No', X, no, es, padre, de, Y].
 
 match([],[]).
 match([], _):- true.
@@ -205,6 +234,49 @@ replace0([I|_], Input, _, Resp, R):-
 	X == flagEnemy,
 	elizaEnemy(Atom, R).
 
+% Elize know padre childrens
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flaghijosdepadre,
+    hijos_de_padre(Atom, R).
+
+% Elize know mother childrens
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flaghijosdemadre,
+    hijos_de_madre(Atom, R).
+
+% Elize know brothers
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagbrother,
+    brothers(Atom, R).
+
+% Eliza father	
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+	nth0(J, Input, Atom1),
+	nth0(0, Resp, X),
+    X == flagFather,
+    padrede(Atom, Atom1, R).
+
+% Eliza mother
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+	nth0(J, Input, Atom1),
+	nth0(0, Resp, X),
+    X == flagMother,
+    madrede(Atom, Atom1, R).
+
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagfam,
+    familia(Atom, R).
+
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
 	nth0(I, Input, Atom),
@@ -216,3 +288,21 @@ replace0([I|Index], Input, N, Resp, R):-
 	select(N, Resp, Atom, R1),
 	N1 is N + 1,
 	replace0(Index, Input, N1, R1, R),!.
+
+
+
+% ----- Knwoledge Base -----
+padre(jose, ivan).         
+padre(jose, jose_hijo).
+padre(jose, israel). 
+
+madre(leticia, ivan).         
+madre(leticia, jose_hijo).
+madre(leticia, israel).
+
+hermano(jose, ivan).
+hermano(jose, israel).
+hermano(ivan, jose).
+hermano(ivan, israel).
+hermano(israel, ivan).
+hermano(israel, jose).
