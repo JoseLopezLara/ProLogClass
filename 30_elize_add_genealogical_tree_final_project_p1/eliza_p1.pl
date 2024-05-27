@@ -120,6 +120,14 @@ template([quienes, son, los, tios, de, s(_), '?', .], [flagUncle], [5]).
 template([quienes, son, los, tios, hombres, de, s(_), '?', .], [flagUncleBoy], [6]).
 template([quienes, son, los, tios, mujeres, de, s(_), '?', .], [flagAuntGirl], [6]).
 
+template([quienes, son, los, abuelos, de, s(_), '?', .], [flagGrandFathers], [5]).
+template([quienes, son, los, abuelos, hombres, de, s(_), '?', .], [flagGrandFather], [6]).
+template([quienes, son, los, abuelos, mujeres, de, s(_), '?', .], [flagGrandMother], [6]).
+
+template([quienes, son, los, hermanos, de, s(_), '?', .], [flagBrothers], [5]).
+template([quienes, son, los, hermanos, hombres, de, s(_), '?', .], [flagBrother], [6]).
+template([quienes, son, los, hermanos, mujeres, de, s(_), '?', .], [flagSister], [6]).
+
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
 elizaLikes(X, R):- likes(X), R = ['Yeah', i, like, X].
@@ -180,12 +188,15 @@ enemy(enrrique).
 % --------------------------------------- Family Tree rules --------------------------------------- %
 abuelo(X,Y):- padrede(X,Z), padrede(Z,Y); padrede(X,Z), madrede(Z,Y).
 abuela(X,Y):- madrede(X,Z), padrede(Z,Y); madrede(X,Z), madrede(Z,Y).
+abuelos(X,Y):- abuela(X,Y); abuelo(X,Y).
 
 niete(Y,X):- padrede(X,Z), padrede(Z,Y); padrede(X,Z), madrede(Z,Y); madrede(X,Z), madrede(Z,Y); madrede(X,Z), padrede(Z,Y).
 nieteHombre(Y,X):- padrede(X,Z), padrede(Z,Y), hijo(Y); padrede(X,Z), madrede(Z,Y), hijo(Y); madrede(X,Z), madrede(Z,Y), hijo(Y); madrede(X,Z), padrede(Z,Y), hijo(Y).
 nieteMujer(Y,X):- padrede(X,Z), padrede(Z,Y), hija(Y); padrede(X,Z), madrede(Z,Y), hija(Y); madrede(X,Z), madrede(Z,Y), hija(Y); madrede(X,Z), padrede(Z,Y), hija(Y).
 
-hermane(A,B):- padrede(X,A), padrede(X,B); madrede(X,A), madrede(X,B).
+hermane(A,B):- padrede(X,A), padrede(X,B), A \= B; madrede(X,A), madrede(X,B), A \= B.
+hermaneHombre(A,B):- padrede(X,A), padrede(X,B), hijo(B), A \= B; madrede(X,A), madrede(X,B), hijo(B), A \= B.
+hermaneMujer(A,B):- padrede(X,A), padrede(X,B), hija(B), A \= B; madrede(X,A), madrede(X,B), hija(B), A \= B.
 
 tie(B,C):- hermane(A,B), padrede(A,C), \+ padrede(B, C); hermane(A,B), madrede(A,C), \+ madrede(B, C).
 tieHombre(B,C):- hermane(A,B), padrede(A,C), \+ padrede(B, C), hijo(B); hermane(A,B), madrede(A,C), \+ madrede(B, C), hijo(B).
@@ -198,7 +209,8 @@ hijoMujer(X,Y):- padrede(X,Y), hija(Y); madrede(X,Y), hija(Y).
 esposaDe(X, Y):- padrede(X, A), madrede(Y, A), !.
 esposoDe(X, Y):- madrede(X, A), padrede(Y, A), !.
 
-
+% ------------------- GrandSon ------------------- %
+% ------------------------------------------------ %
 grandSen(X, R) :- 
     findall(Y, niete(Y, X), GrandSen),
     atomic_list_concat(GrandSen, ', ', GrandSenStr),
@@ -212,6 +224,8 @@ grandSenGirl(X, R) :-
     atomic_list_concat(GrandSenGirl, ', ', GrandSenGirlStr),
     format(atom(R), 'Los nietos mujeres de ~w es/son: ~w.', [X, GrandSenGirlStr]).
 
+% ------------------- Child ------------------- %
+% ------------------------------------------------ %
 child(X, R) :- 
     findall(Y, hijo(X, Y), Child),
     atomic_list_concat(Child, ', ', ChildStr),
@@ -225,6 +239,8 @@ childGirl(X, R) :-
     atomic_list_concat(ChildGirl, ', ', ChildGirlStr),
     format(atom(R), 'Todos las hijas de ~w es/son: ~w.', [X, ChildGirlStr]).
 
+% ------------------- Uncles and Aunt ------------------- %
+% ------------------------------------------------ %
 uncle(X, R) :- 
     findall(Y, tie(Y, X), Uncle),
     atomic_list_concat(Uncle, ', ', UncleStr),
@@ -246,6 +262,36 @@ auntGirl(X, R) :-
 	eliminar_primer_elemento_y_coma(Resp, NewResp),
     format(atom(R), 'Todas las tias de ~w es/son: ~w.', [X, NewResp]).
 
+% ------------------- Where is GrandFather and GrandMother ------------------- %
+% ---------------------------------------------------------------------------- %
+grandFathers(X, R) :- 
+    findall(Y, abuelos(Y, X), GrandFathers),
+    atomic_list_concat(GrandFathers, ', ', GrandFathersStr),
+    format(atom(R), 'Los abuelos y abuelas de ~w es/son: ~w.', [X, GrandFathersStr]).
+grandFather(X, R) :- 
+    findall(Y, abuelo(Y, X), GrandFather),
+    atomic_list_concat(GrandFather, ', ', GrandFatherStr),
+    format(atom(R), 'Los abuelos de ~w es/son: ~w.', [X, GrandFatherStr]).
+grandMother(X, R) :- 
+    findall(Y, abuela(Y, X), GrandMother),
+    atomic_list_concat(GrandMother, ', ', GrandMotherStr),
+    format(atom(R), 'Las abuelas de ~w es/son: ~w.', [X, GrandMotherStr]).
+
+% ------------------- Brother ------------------- %
+% ------------------------------------------------ %
+brothers(X, R) :- 
+    % findall(Y, hermane(X, Y), Brothers),
+    setof(Y, hermane(X, Y), Brothers),
+    atomic_list_concat(Brothers, ', ', BrothersStr),
+    format(atom(R), 'Los hermanos y hermanas de ~w es/son: ~w.', [X, BrothersStr]).
+brother(X, R) :- 
+    setof(Y, hermaneHombre(X, Y), Brother),
+    atomic_list_concat( Brother, ', ',  BrotherStr),
+    format(atom(R), 'Los hermanos de ~w es/son: ~w.', [X,  BrotherStr]).
+sister(X, R) :- 
+    setof(Y, hermaneMujer(X, Y), Sister),
+    atomic_list_concat(Sister, ', ', SisterStr),
+    format(atom(R), 'Todas las hermanas de ~w es/son: ~w.', [X, SisterStr]).
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -407,20 +453,56 @@ replace0([I|_], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     X == flagUncle,
     uncle(Atom, R).
-
 % tieBoyReplace 
 replace0([I|_], Input, _, Resp, R) :- 
     nth0(I, Input, Atom),
     nth0(0, Resp, X),
     X == flagUncleBoy,
     uncleMan(Atom, R).
-
 % tieGirlReplace 
 replace0([I|_], Input, _, Resp, R) :- 
     nth0(I, Input, Atom),
     nth0(0, Resp, X),
     X == flagAuntGirl,
     auntGirl(Atom, R).
+
+% grandFathersReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagGrandFathers,
+    grandFathers(Atom, R).
+% childBoyReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagGrandFather,
+    grandFather(Atom, R).
+% childGirlReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagGrandMother,
+    grandMother(Atom, R).
+
+% brothersReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagBrothers,
+    brothers(Atom, R).
+% brotherReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagBrother,
+    brother(Atom, R).
+% sisterReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagSister,
+    sister(Atom, R).
 
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
@@ -439,6 +521,8 @@ replace0([I|Index], Input, N, Resp, R):-
 % --- START KNOWLEDGE BASE TO FAMILY TREE--- %
 % --- START KNOWLEDGE BASE TO FAMILY TREE--- %
 
+hijo(jose_abuelo).
+hijo(salud).
 hijo(jose).
 hijo(israel).
 hijo(ivan).
@@ -457,6 +541,8 @@ hijo(cristian).
 hijo(alejandro).
 hijo(jason). 
 hijo(willian_l).
+hija(martha_abuela).
+hija(paula).
 hija(veronica).
 hija(alejandra).
 hija(aira).
