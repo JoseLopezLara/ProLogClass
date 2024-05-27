@@ -108,6 +108,8 @@ template([please, s(_), _], ['No', i, can, not, help, ',', i, am, just, a, machi
 % --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
 % --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
 
+% ********************** 20 template of 1 argument to family tree ********************** %
+% ************************************************************************************** %
 template([quienes, son, los, nietos, de, s(_), '?', .], [flagGradSen], [5]).
 template([quienes, son, los, nietos, hombres, de, s(_), '?', .], [flagGradSenBoy], [6]).
 template([quienes, son, los, nietos, mujeres, de, s(_), '?', .], [flagGradSenGirl], [6]).
@@ -127,6 +129,17 @@ template([quienes, son, los, abuelos, mujeres, de, s(_), '?', .], [flagGrandMoth
 template([quienes, son, los, hermanos, de, s(_), '?', .], [flagBrothers], [5]).
 template([quienes, son, los, hermanos, hombres, de, s(_), '?', .], [flagBrother], [6]).
 template([quienes, son, los, hermanos, mujeres, de, s(_), '?', .], [flagSister], [6]).
+
+template([quien, es, el, esposo, de, s(_), '?', .], [flagHusband], [5]).
+template([quien, es, la, esposa, de, s(_), '?', .], [flagWife], [5]).
+
+template([s(_), esta, casado, '?', .], [flagHasWife], [0]).
+template([s(_), esta, casada, '?', .], [flagHasHusband], [0]).
+
+template([s(_), tiene, hermanos, '?', .], [flagHasBrothers], [0]).
+
+% ********************** 20 template of 1 argument to family tree ********************** %
+% ************************************************************************************** %
 
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
@@ -209,6 +222,14 @@ hijoMujer(X,Y):- padrede(X,Y), hija(Y); madrede(X,Y), hija(Y).
 esposaDe(X, Y):- padrede(X, A), madrede(Y, A), !.
 esposoDe(X, Y):- madrede(X, A), padrede(Y, A), !.
 
+tieneEsposa(X, R):- padrede(X, A), madrede(_, A), R = ['Si', X, 'esta casado'], !.
+tieneEsposa(X, R):- \+ padrede(X, _), R = ['No', X, 'no esta casado']; padrede(X, A), \+ madrede(_, A), R = ['No', X, 'esta casado'], !.
+tieneEsposo(X, R):- madrede(X, A), padrede(_, A), R = ['Si', X, ' esta casada'], !.
+tieneEsposo(X, R):- \+ madrede(X, _), R = ['No', X, 'no esta casada']; madrede(X, A), \+ padrede(_, A), R = ['No', X, 'no esta casada'], !.
+
+tieneHermane(A,R):- padrede(X,A), padrede(X,B), A \= B, R = ['Si', A,'tiene hermanos'], !; madrede(X,A), madrede(X,B), A \= B, R = ['Si', A, 'tiene hermanos'], !.
+% tieneHermane(A,R):- padrede(X,A), A \= B, \+ padrede(X,B), R = ['No', A,' no tiene hermanos'], !; madrede(X,A), A \= B, \+ madrede(X,B), R = ['No', A, 'no tiene hermanos'], !.
+tieneHermane(A,R):- \+ (padrede(X,A), padrede(X,B), A \= B), R = ['No', A,' no tiene hermanos']; \+ (madrede(X,A), madrede(X,B), A \= B), R = ['No', A, 'no tiene hermanos'].
 % ------------------- GrandSon ------------------- %
 % ------------------------------------------------ %
 grandSen(X, R) :- 
@@ -292,6 +313,18 @@ sister(X, R) :-
     setof(Y, hermaneMujer(X, Y), Sister),
     atomic_list_concat(Sister, ', ', SisterStr),
     format(atom(R), 'Todas las hermanas de ~w es/son: ~w.', [X, SisterStr]).
+
+% ------------------- Husband and Wife ------------------- %
+% ------------------------------------------------ %
+husband(X, R) :- 
+    findall(Y, esposoDe(X, Y), Husband),
+    atomic_list_concat(Husband, ', ', HusbandStr),
+    format(atom(R), 'El esposo de ~w es: ~w.', [X, HusbandStr]).
+
+wife(X, R) :- 
+    findall(Y, esposaDe(X, Y), Wife),
+    atomic_list_concat(Wife, ', ', WifeStr),
+    format(atom(R), 'La esposa de ~w es: ~w.', [X, WifeStr]).
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -504,6 +537,39 @@ replace0([I|_], Input, _, Resp, R) :-
     X == flagSister,
     sister(Atom, R).
 
+% husbandReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagHusband,
+    husband(Atom, R).
+% wifeReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagWife,
+    wife(Atom, R).
+
+% HasHusbandReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagHasHusband,
+    tieneEsposo(Atom, R).
+% hasWifeReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagHasWife,
+    tieneEsposa(Atom, R).
+
+% hasBrothersReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagHasBrothers,
+    tieneHermane(Atom, R).
+
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
 	nth0(I, Input, Atom),
@@ -610,14 +676,11 @@ madrede(martha_abuela, veronica).
 madrede(leticia, jose).
 madrede(leticia, israel).
 madrede(leticia, ivan).
-madrede(rosa, viviana).
 madrede(laura, edwin).
 madrede(laura, willian).
 madrede(laura, karla).
 madrede(rosa, cesar).
-madrede(rosa, edwin).
-madrede(rosa, willian).
-madrede(rosa, karla).
+madrede(rosa, viviana).
 madrede(martha, willian_l).
 madrede(veronica, alejandra).
 madrede(veronica, aira).
