@@ -116,7 +116,7 @@ template([quienes, son, los, nietos, mujeres, de, s(_), '?', .], [flagGradSenGir
 
 template([quienes, son, los, hijos, de, s(_), '?', .], [flagChild], [5]).
 template([quienes, son, los, hijos, hombres, de, s(_), '?', .], [flagChildBoy], [6]).
-template([quienes, son, los, hijos, mujeres, de, s(_), '?', .], [flagChildGirl], [6]).
+template([quienes, son, [los, las], [hijos, hijas], mujeres, de, s(_), '?', .], [flagChildGirl], [6]).
 
 template([quienes, son, los, tios, de, s(_), '?', .], [flagUncle], [5]).
 template([quienes, son, los, tios, hombres, de, s(_), '?', .], [flagUncleBoy], [6]).
