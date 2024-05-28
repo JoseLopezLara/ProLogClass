@@ -138,8 +138,22 @@ template([s(_), esta, casada, '?', .], [flagHasHusband], [0]).
 
 template([s(_), tiene, hermanos, '?', .], [flagHasBrothers], [0]).
 
-% ********************** 20 template of 1 argument to family tree ********************** %
+% ********************** 5 template of 2 argument to family tree ********************** %
 % ************************************************************************************** %
+template([s(_), es, padre, de, s(_), '?', .], [flagFatherOf], [0,4]).
+template([s(_), es, madre, de, s(_), '?', .], [flagMotherOf], [0,4]).
+template([s(_), es, esposo, de, s(_), '?', .], [flagHusbandOf], [0,4]).
+template([s(_), es, esposa, de, s(_), '?', .], [flagWifeOf], [0,4]).
+template([s(_), es, hermano, de, s(_), '?', .], [flagBrotherOf], [0,4]).
+
+% ********************** 5 template of 3 argument to family tree ********************** %
+% ************************************************************************************** %
+template([s(_), ',', s(_), y, s(_), son, hermanos, '?', .], [flagAreBrother], [0,2,4]).
+template([s(_), 'y', s(_), tienen, un, hijo, llamado, s(_), '?', .], [flaghaveChild], [0,2,7]).
+template([s(_), 'y', s(_), tienen, un, nieto, llamado, s(_), '?', .], [flagHaveGrandSon], [0,2,7]).
+template([s(_), 'y', s(_), quieren, mucho, a, su, nieto, s(_), '?', .], [flagWeLoveGrandSon], [0,2,8]).
+template([s(_), 'y', s(_), quieren, mucho, a, su, hijo, s(_), '?', .], [flagWeLoveChild], [0,2,8]).
+
 
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
@@ -228,8 +242,39 @@ tieneEsposo(X, R):- madrede(X, A), padrede(_, A), R = ['Si', X, ' esta casada'],
 tieneEsposo(X, R):- \+ madrede(X, _), R = ['No', X, 'no esta casada']; madrede(X, A), \+ padrede(_, A), R = ['No', X, 'no esta casada'], !.
 
 tieneHermane(A,R):- padrede(X,A), padrede(X,B), A \= B, R = ['Si', A,'tiene hermanos'], !; madrede(X,A), madrede(X,B), A \= B, R = ['Si', A, 'tiene hermanos'], !.
-% tieneHermane(A,R):- padrede(X,A), A \= B, \+ padrede(X,B), R = ['No', A,' no tiene hermanos'], !; madrede(X,A), A \= B, \+ madrede(X,B), R = ['No', A, 'no tiene hermanos'], !.
 tieneHermane(A,R):- \+ (padrede(X,A), padrede(X,B), A \= B), R = ['No', A,' no tiene hermanos']; \+ (madrede(X,A), madrede(X,B), A \= B), R = ['No', A, 'no tiene hermanos'].
+
+esPadreDe(X,Y,R):- padrede(X, Y), R = ['Si', X, 'es padre de', Y].
+esPadreDe(X,Y,R):- \+ padrede(X,Y), R = ['No', X, 'no es padre de', Y].
+
+esMadreDe(X,Y,R):- madrede(X, Y), R = ['Si', X, 'es madre de', Y].
+esMadreDe(X,Y,R):- \+ madrede(X,Y), R = ['No', X, 'no es madre de', Y].
+
+esEsposoDe(X, Y, R):- padrede(X, A), madrede(Y, A), R = ['Si', X, 'es esposo de', Y], !.
+esEsposoDe(X, Y, R):- \+ (padrede(X, A), madrede(Y, A)), R = ['No', X, 'no es esposo de', Y].
+esEsposaDe(X, Y, R):- madrede(X, A), padrede(Y, A), R = ['Si', X, 'es esposa de', Y], !.
+esEsposaDe(X, Y, R):- \+ (madrede(X, A), padrede(Y, A)), R = ['No', X, 'no es esposa de', Y].
+
+hermaneDe(A, B, R):- padrede(X,A), padrede(X,B), A \= B, R = ['Si', A,'es hermano de', B], !; madrede(X,A), madrede(X,B), A \= B, R = ['Si', A, 'es hermano de', B], !.
+hermaneDe(A, B, R):- \+ (padrede(X,A), padrede(X,B), A \= B), R = ['No', A,' no es hermano de', B]; \+ (madrede(X,A), madrede(X,B), A \= B), R = ['No', A, 'no es hermano de', B].
+
+sonHermane(A, B, C, R):- padrede(X,A), padrede(X,B), padrede(X,C), A \= B, B \= C, R = ['Si', A, ' ', B, ' y', C, ' son hermanos'], !; madrede(X,A), madrede(X,B), madrede(X,C), A \= B, B \= C, R = ['Si', A, ' ', B, ' y', C, ' son hermanos'], !.
+sonHermane(A, B, C, R):- \+ (padrede(X,A), padrede(X,B), padrede(X,C), A \= B , B \= C), R = ['No', A, ' ', B, ' y', C, ' no son hermanos']; \+ (madrede(X,A), madrede(X,B), madrede(X,C), A \= B , B \= C), R = ['No', A, ' ', B, ' y', C, ' no son hermanos'].
+
+tienenHijoLlamado(A, B, C, R):- padrede(A, C), madrede(B, C), R = ['Si', A, 'y', B, 'son padres de ', C];  madrede(A, C), padrede(B, C), R = ['Si', A, 'y', B, 'son padres de ', C].
+tienenHijoLlamado(A, B, C, R):- \+ (padrede(A, C), madrede(B, C)), R = ['No', A, 'y', B, 'no son padres de ', C];  \+ (madrede(A, C), padrede(B, C)), R = ['No', A, 'y', B, 'no son padres de ', C].
+
+tienenNieteLlamado(A, B, C, R):- niete(C, A), niete(C, B), R = ['Si', A, 'y', B, 'tienen un nieto llamado ', C].
+tienenNieteLlamado(A, B, C, R):- \+ (niete(C, A), niete(C, B)), R = ['No', A, 'y', B, 'no tienen un nieto llamado ', C].
+
+quierenAlNieteLlamado(A, B, C, R):- niete(C, A), niete(C, B), R = [A, 'y', B, ' quieren mucho a su nieto ', C].
+quierenAlNieteLlamado(A, B, C, R):- \+ (niete(C, A), niete(C, B)), R = ['No', A, 'y', B, 'no tienen un nieto llamado ', C].
+
+quierenAlHijoLlamado(A, B, C, R):- padrede(A, C), madrede(B, C), R = [A, 'y', B, 'quieren mucho a si hijo(a) ', C];  madrede(A, C), padrede(B, C), R = ['Si', A, 'y', B, 'quieren mucho a si hijo(a) ', C].
+quierenAlHijoLlamado(A, B, C, R):- \+ (padrede(A, C), madrede(B, C)), R = ['No', A, 'y', B, 'no son padres de ', C];  \+ (madrede(A, C), padrede(B, C)), R = ['No', A, 'y', B, 'no son padres de ', C].
+
+
+
 % ------------------- GrandSon ------------------- %
 % ------------------------------------------------ %
 grandSen(X, R) :- 
@@ -569,6 +614,89 @@ replace0([I|_], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     X == flagHasBrothers,
     tieneHermane(Atom, R).
+
+% fatherOfReplace 
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(0, Resp, X),
+    X == flagFatherOf,
+    esPadreDe(Atom0, Atom1, R).
+% motherOfReplace 
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(0, Resp, X),
+    X == flagMotherOf,
+    esMadreDe(Atom0, Atom1, R).
+
+% HusbandOfReplace 
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(0, Resp, X),
+    X == flagHusbandOf,
+    esEsposoDe(Atom0, Atom1, R).
+% WifeOfReplace 
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(0, Resp, X),
+    X == flagWifeOf,
+    esEsposaDe(Atom0, Atom1, R).
+
+% HermaneOfReplace 
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(0, Resp, X),
+    X == flagBrotherOf,
+    hermaneDe(Atom0, Atom1, R).
+
+% AreBrothersReplace 
+replace0([I, J, K], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(0, Resp, X),
+    X == flagAreBrother,
+    sonHermane(Atom0, Atom1, Atom2, R).
+
+% haveChildNamedOfReplace 
+replace0([I, J, K], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(0, Resp, X),
+    X == flaghaveChild,
+    tienenHijoLlamado(Atom0, Atom1, Atom2, R).   
+       
+% haveGrandSonOfReplace 
+replace0([I, J, K], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(0, Resp, X),
+    X == flagHaveGrandSon,
+    tienenNieteLlamado(Atom0, Atom1, Atom2, R).    
+
+% weLoveGrandSonOfReplace 
+replace0([I, J, K], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(0, Resp, X),
+    X == flagWeLoveGrandSon,
+    quierenAlNieteLlamado(Atom0, Atom1, Atom2, R).
+
+% weLoveGrandSonOfReplace 
+replace0([I, J, K], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(0, Resp, X),
+    X == flagWeLoveChild,
+    quierenAlHijoLlamado(Atom0, Atom1, Atom2, R).    
 
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
