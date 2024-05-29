@@ -99,14 +99,6 @@ template([please, s(_), _], ['No', i, can, not, help, ',', i, am, just, a, machi
 
 % --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
 % --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO FAMILY TREE  --------------------------------------- %
 
 % ********************** 20 template of 1 argument to family tree ********************** %
 % ************************************************************************************** %
@@ -154,6 +146,16 @@ template([s(_), 'y', s(_), tienen, un, nieto, llamado, s(_), '?', .], [flagHaveG
 template([s(_), 'y', s(_), quieren, mucho, a, su, nieto, s(_), '?', .], [flagWeLoveGrandSon], [0,2,8]).
 template([s(_), 'y', s(_), quieren, mucho, a, su, hijo, s(_), '?', .], [flagWeLoveChild], [0,2,8]).
 
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
 
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
@@ -203,14 +205,6 @@ elizaEnemy(X, R):- \+enemy(X), R = ['No', X, no, es, mi, enemigo].
 enemy(alejandro).
 enemy(enrrique).
 
-% --------------------------------------- Family Tree rules --------------------------------------- %
-% --------------------------------------- Family Tree rules --------------------------------------- %
-% --------------------------------------- Family Tree rules --------------------------------------- %
-% --------------------------------------- Family Tree rules --------------------------------------- %
-% --------------------------------------- Family Tree rules --------------------------------------- %
-% --------------------------------------- Family Tree rules --------------------------------------- %
-% --------------------------------------- Family Tree rules --------------------------------------- %
-% --------------------------------------- Family Tree rules --------------------------------------- %
 % --------------------------------------- Family Tree rules --------------------------------------- %
 % --------------------------------------- Family Tree rules --------------------------------------- %
 abuelo(X,Y):- padrede(X,Z), padrede(Z,Y); padrede(X,Z), madrede(Z,Y).
@@ -371,6 +365,29 @@ wife(X, R) :-
     atomic_list_concat(Wife, ', ', WifeStr),
     format(atom(R), 'La esposa de ~w es: ~w.', [X, WifeStr]).
 
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+% --------------------------------------- DISEASES RULES --------------------------------------- %
+
+% Find diseases rule [1st Prameter: Symptoms List, 2nd Prameter: Disease, 3rd Prameter:Ocurrences] %
+buscar([], E , 0).
+buscar(X , E , 1) :- sintomade(X, E). 
+buscar([X|Xs] , E , P) :- enfermedad(E) , buscar(X , E , S1) , buscar(Xs , E ,S2) , P is S1 + S2. 
+
+% rule that return count of symptoms of desease selected 
+cantSint(E , C) :- findall(X , sintoma(X, E) , L) , length(L , R), C is R.
+
+% diagnostico rule return the probability tha the person has the disease 
+% [1st Prameter: Symptoms List, 2nd Prameter: Disease, 3rd Prameter: Return probability]
+diagnostico([X|Xs] , E , K) :- buscar([X|Xs] , E , P) , cantSint(E , T) , K is P * 100 / T. 
+
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
 % Dividir una cadena en una lista de elementos
@@ -472,21 +489,8 @@ replace0([I|_], Input, _, Resp, R):-
 	X == flagEnemy,
 	elizaEnemy(Atom, R).
 
-
-
-
 % --------------------------------------- Replace Family Tree  --------------------------------------- %
 % --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-% --------------------------------------- Replace Family Tree  --------------------------------------- %
-
 % grandSenReplace 
 replace0([I|_], Input, _, Resp, R) :- 
     nth0(I, Input, Atom),
@@ -698,6 +702,18 @@ replace0([I, J, K], Input, _, Resp, R) :-
     X == flagWeLoveChild,
     quierenAlHijoLlamado(Atom0, Atom1, Atom2, R).    
 
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+% --------------------------------------- Diseases Replace --------------------------------------- %
+
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
 	nth0(I, Input, Atom),
@@ -817,3 +833,103 @@ madrede(veronica, anaury).
 % --- END KNOWLEDGE BASE TO FAMILY TREE--- %
 % --- END KNOWLEDGE BASE TO FAMILY TREE--- %
 % --- END KNOWLEDGE BASE TO FAMILY TREE--- %
+
+% --- START KNOWLEDGE BASE TO DISEASES--- %
+% --- START KNOWLEDGE BASE TO DISEASES--- %
+% --- START KNOWLEDGE BASE TO DISEASES--- %
+
+% --------- Diseases statement --------- %
+enfermedad(gota).
+enfermedad(sarampion).
+enfermedad(cancer_de_mama).
+
+% --------- Diseases symptoms --------- %
+sintomade(dolor_articular_intenso, gota).
+sintomade(molestia_articular_persistente, gota).
+sintomade(inflamacion, gota).
+sintomade(enrojecimiento, gota).
+sintomade(amplitud_de_movimiento_limitada, gota).
+sintomade(sensacion_de_calor_en_el_lugar_del_dolor, gota).
+sintomade(fiebre, gota).
+sintomade(nodulos_en_la_piel, gota).
+
+sintomade(fiebre, sarampion).
+sintomade(tos_seca, sarampion).
+sintomade(congestion_nasal, sarampion).
+sintomade(dolor_de_garganta, sarampion).
+sintomade(ojos_inflamados, sarampion).
+sintomade(pequenas_manchas_blancas_dentro_de_la_boca, sarampion).
+sintomade(sarpullido, sarampion).
+sintomade(cuerpo_cortado, sarampion).
+
+sintomade(bulto_en_area_de_la_mama, cancer_de_mama).
+sintomade(hinchazon_en_area_de_la_mama, cancer_de_mama).
+sintomade(piel_con_hoyuelos, cancer_de_mama).
+sintomade(pezonretraido, cancer_de_mama).
+sintomade(enrojecimiento, cancer_de_mama).
+sintomade(formacion_de_costras, cancer_de_mama).
+sintomade(secrecion_del_pezon, cancer_de_mama).
+sintomade(dolor_en_cualquier_parte_de_la_mama, cancer_de_mama).
+sintomade(ganglios_linfaticos_inflamados, cancer_de_mama).
+
+% --------- Medicine Symptoms --------- %
+medicine(ibuprofeno_antiinflamatorio_no_esteroide, gota).
+medicine(naproxeno_sodico_antinflamatorio_no_esteroide, gota).
+medicine(colquicina_antiinflamatorio, gota).
+medicine(prednisona_corticosteroide, gota).
+medicine(probenecid_uricosurico, gota).
+medicine(alopurinol_inhibidor_de_la_produccion_de_acido_urico, gota).
+medicine(febuxostat_un_inhibidor_de_la_produccion_de_acido_urico, gota).
+medicine(pegloticase_disolvente_de_acido_urico, gota).
+
+medicine(paracetamol_antifebril, sarampion).
+medicine(ibuprofeno_antifebril, sarampion).
+medicine(vitamina_a_vitaminico, sarampion).
+
+medicine(doxorrubicina_quimioterapia, cancer_de_mama).
+medicine(ciclofosfamida_quimioterapia, cancer_de_mama).
+medicine(taxol_quimioterapia, cancer_de_mama).
+medicine(tamoxifeno_terapia_hormonal, cancer_de_mama).
+medicine(anastrozol_terapia_hormonal, cancer_de_mama).
+medicine(trastuzumab_terapia_dirigida, cancer_de_mama).
+medicine(pertuzumab_terapia_dirigida, cancer_de_mama).
+medicine(palbociclib_terapia_dirigida, cancer_de_mama).
+medicine(pembrolizumab_inmunoterapia, cancer_de_mama).
+
+% --------- Specialist --------- %
+especialistade(reumatologo, gota).
+especialistade(nefrologo, gota). %% Para valorar cuestiones adyacentes al riñon
+
+especialistade(infectologo, sarampion).
+especialistade(dermatologo, sarampion).
+
+especialistade(ginecologo, cancer_de_mama).
+especialistade(oncologo, cancer_de_mama).
+especialistade(mastologo, cancer_de_mama).
+especialistade(radioterapeuta, cancer_de_mama).
+especialistade(radiologo, cancer_de_mama).
+especialistade(patologo, cancer_de_mama).
+especialistade(oncologo_radiologo, cancer_de_mama).
+
+% --------- Foot that detonate --------- %
+alimentoquedetoda(higado, gota).
+alimentoquedetoda(rinones, gota).
+alimentoquedetoda(mollejas, gota).
+alimentoquedetoda(carne_de_vaca, gota).
+alimentoquedetoda(carne_de_cordero, gota).
+alimentoquedetoda(carne_de_cerdo, gota).
+alimentoquedetoda(anchoas, gota).
+alimentoquedetoda(moluscos, gota).
+alimentoquedetoda(sardinas, gota).
+alimentoquedetoda(caballa, gota).
+alimentoquedetoda(arenque, gota).
+alimentoquedetoda(sardinas, gota).
+alimentoquedetoda(cerveza, gota).
+alimentoquedetoda(licores_destilados_de_alta_graduacion, gota).
+
+alimentoquedetoda(alto_contenido_de_grasas_trans, cancer_de_mama).
+alimentoquedetoda(dietas_altas_en_carbohidratos, cancer_de_mama).
+
+% --- END KNOWLEDGE BASE TO DISEASES --- %
+% --- END KNOWLEDGE BASE TO DISEASES --- %
+% --- END KNOWLEDGE BASE TO DISEASES --- %
