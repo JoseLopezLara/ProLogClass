@@ -157,6 +157,69 @@ template([s(_), 'y', s(_), quieren, mucho, a, su, hijo, s(_), '?', .], [flagWeLo
 % --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
 % --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
 
+% tienes información de la enfermedad s(-) ? .
+% cuales son los síntomas del s(-) ? .  
+% que medicinas son utilizadas para la s(_) ? .
+% que especialistas atienden s(_) ? .
+% que alimentos detonan s(_) ? .
+% que región encapsula la s(_) ? .
+% cuantos síntomas diferentes tiene el s(_) ? .
+% cuantas medicinas diferentes pueden tratar el (_) ? .
+% cuantos especialistas diferentes pueden atender el (_) ? .
+% cuantos alimentos diferentes pueden detonar el (_) ? .
+% el sintoma s(_) a que enfermedades puede pertenecer () ? .
+% el medicamento s(_) que enfermedades puede tratar ? .
+% el especialista s(_) que enfermedades puede tratar ? .
+% el abuso de s(_) que enfermedades puede detonar ? .
+% a que enfermedad o enfermedades pertenece el sintoma de s(_) ? .
+% la medicamento s(_) que enfermedad trata ? .
+% el especialista s(_) que enfermedad trata ? .
+% el alimento s(_) que enfermedad detona ? .
+% que tipo de medicamente es el s(_) ? .
+% como se suministra el medicamento s() ? .
+
+template([tienes, informacion, de, la, enfermedad, s(-), '?' .], [flag], [5]).
+% cuales son los síntomas del s(-) ? .
+template([cuales, son, los, sintomas, del, s(-), '?' .], [flag], [5]).
+% que medicinas son utilizadas para la s(_) ? .
+template([que, medicinas, son, utilizadas, para, la, s(_), '?' .], [flag], [6]).
+% que especialistas atienden s(_) ? .
+template([que, especialistas, atienden, s(_), '?' .], [flag], [3]).
+% que alimentos detonan s(_) ? .
+template([que, alimentos, detonan, s(_), '?' .], [flag], [3]).
+% que región encapsula la s(_) ? .
+template([que, region, encapsula, la, s(_), '?' .], [flag], [5]).
+% cuantos síntomas diferentes tiene el s(_) ? .
+template([cuantos, sintomas, diferentes, tiene, el, s(_), '?' .], [flag], [5]).
+% cuantas medicinas diferentes pueden tratar el (_) ? .
+template([cuantas, medicinas, diferentes, pueden, tratar, el, s(_), '?' .], [flag], [6]).
+% cuantos especialistas diferentes pueden atender el (_) ? .
+template([cuantos, especialistas, diferentes, pueden, atender, el, s(_), '?' .], [flag], [6]).
+% cuantos alimentos diferentes pueden detonar el (_) ? .
+template([cuantos, alimentos, diferentes, pueden, detonar, el, s(_), '?' .], [flag], [6]).
+% el sintoma s(_) a que enfermedades puede pertenecer () ? .
+template([el, sintoma, s(_), a, que, enfermedades, puede, pertenecer, '?' .], [flag], [2]).
+% el medicamento s(_) que enfermedades puede tratar ? .
+template([el, medicamento, s(_), que, enfermedades, puede, tratar, '?' .], [flag], [2]).
+% el especialista s(_) que enfermedades puede tratar ? .
+template([el, especialista, s(_), que, enfermedades, puede, tratar, '?' .], [flag], [2]).
+% el abuso de s(_) que enfermedades puede detonar ? .
+template([el, abuso, de, s(_), que, enfermedades, puede, detonar, '?' .], [flag], [3]).
+% a que enfermedad o enfermedades pertenece el sintoma de s(_) ? .
+template([a, que, enfermedad, o, enfermedades, pertenece, el, sintoma, de, s(_), '?' .], [flag], [9]).
+% la medicamento s(_) que enfermedad trata ? .
+template([la, medicamento, s(_), que, enfermedad, trata, '?' .], [flag], [2]).
+% el especialista s(_) que enfermedad trata ? .
+template([el, especialista, s(_), que, enfermedad, trata, '?' .], [flag], [2]).
+% el alimento s(_) que enfermedad detona ? .
+template([el, alimento, s(_), que, enfermedad, detona, '?' .], [flag], [2]).
+% que tipo de medicamente es el s(_) ? .
+template([que, tipo, de, medicamento, es, el, s(_), '?' .], [flag], [6]).
+% como se suministra el medicamento s() ? .
+template([como, se, suministra, el, medicamento, s(_), '?' .], [flag], [5]).
+
+
+
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
 elizaLikes(X, R):- likes(X), R = ['Yeah', i, like, X].
