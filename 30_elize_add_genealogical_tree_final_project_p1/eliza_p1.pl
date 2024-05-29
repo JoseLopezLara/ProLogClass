@@ -382,11 +382,21 @@ buscar(X , E , 1) :- sintomade(X, E).
 buscar([X|Xs] , E , P) :- enfermedad(E) , buscar(X , E , S1) , buscar(Xs , E ,S2) , P is S1 + S2. 
 
 % rule that return count of symptoms of desease selected 
-cantSint(E , C) :- findall(X , sintoma(X, E) , L) , length(L , R), C is R.
+cantSint(E , C) :- findall(X , sintomade(X, E) , L) , length(L , R), C is R.
 
-% diagnostico rule return the probability tha the person has the disease 
+% diagnostico rule return the probability that the person has the disease 
 % [1st Prameter: Symptoms List, 2nd Prameter: Disease, 3rd Prameter: Return probability]
 diagnostico([X|Xs] , E , K) :- buscar([X|Xs] , E , P) , cantSint(E , T) , K is P * 100 / T. 
+
+%rule that prescription medicine according symptom
+% TODO: Cheche if need delete this rule  
+recetade(M, S):- sintomade(S, Z), medicinade(M, Z).
+
+% rule tha return the medicine and specialist according any disease 
+% [1st Prameter: specialist tha return, 2nd Prameter: Medicine that return, 3rd Prameter: Disease]
+atiendeespecialista(E, S):- sintomade(S,Z), especialistade(E, Z).
+mereceta(Es, M, E):- medicinade(M, E), sintomade(S, E), atiendeespecialista(Es,S).  
+
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -873,28 +883,100 @@ sintomade(dolor_en_cualquier_parte_de_la_mama, cancer_de_mama).
 sintomade(ganglios_linfaticos_inflamados, cancer_de_mama).
 
 % --------- Medicine Symptoms --------- %
-medicine(ibuprofeno_antiinflamatorio_no_esteroide, gota).
-medicine(naproxeno_sodico_antinflamatorio_no_esteroide, gota).
-medicine(colquicina_antiinflamatorio, gota).
-medicine(prednisona_corticosteroide, gota).
-medicine(probenecid_uricosurico, gota).
-medicine(alopurinol_inhibidor_de_la_produccion_de_acido_urico, gota).
-medicine(febuxostat_un_inhibidor_de_la_produccion_de_acido_urico, gota).
-medicine(pegloticase_disolvente_de_acido_urico, gota).
+medicinade(ibuprofeno, gota).
+medicinade(naproxeno, gota).
+medicinade(colquicina, gota).
+medicinade(prednisona, gota).
+medicinade(probenecid, gota).
+medicinade(alopurinol, gota).
+medicinade(febuxostat, gota).
+medicinade(pegloticase, gota).
 
-medicine(paracetamol_antifebril, sarampion).
-medicine(ibuprofeno_antifebril, sarampion).
-medicine(vitamina_a_vitaminico, sarampion).
+medicinade(paracetamol, sarampion).
+medicinade(ibuprofeno, sarampion).
+medicinade(vitamina, sarampion).
 
-medicine(doxorrubicina_quimioterapia, cancer_de_mama).
-medicine(ciclofosfamida_quimioterapia, cancer_de_mama).
-medicine(taxol_quimioterapia, cancer_de_mama).
-medicine(tamoxifeno_terapia_hormonal, cancer_de_mama).
-medicine(anastrozol_terapia_hormonal, cancer_de_mama).
-medicine(trastuzumab_terapia_dirigida, cancer_de_mama).
-medicine(pertuzumab_terapia_dirigida, cancer_de_mama).
-medicine(palbociclib_terapia_dirigida, cancer_de_mama).
-medicine(pembrolizumab_inmunoterapia, cancer_de_mama).
+medicinade(doxorrubicina, cancer_de_mama).
+medicinade(ciclofosfamida, cancer_de_mama).
+medicinade(taxol, cancer_de_mama).
+medicinade(tamoxifeno, cancer_de_mama).
+medicinade(anastrozol, cancer_de_mama).
+medicinade(trastuzumab, cancer_de_mama).
+medicinade(pertuzumab, cancer_de_mama).
+medicinade(palbociclib, cancer_de_mama).
+medicinade(pembrolizumab, cancer_de_mama).
+
+% --------- Medicine --------- %
+medicina(ibuprofeno).
+medicina(naproxeno).
+medicina(colquicina).
+medicina(prednisona).
+medicina(probenecid).
+medicina(alopurinol).
+medicina(febuxostat).
+medicina(pegloticase).
+
+medicina(paracetamol).
+medicina(ibuprofeno).
+medicina(vitamina).
+
+medicina(doxorrubicina).
+medicina(ciclofosfamida).
+medicina(taxol).
+medicina(tamoxifeno).
+medicina(anastrozol).
+medicina(trastuzumab).
+medicina(pertuzumab).
+medicina(palbociclib).
+medicina(pembrolizumab).
+
+% --------- Medicine type --------- %
+tipodemedicina(antiinflamatorio_no_esteroide, ibuprofeno).
+tipodemedicina(sodico_antinflamatorio_no_esteroide, naproxeno).
+tipodemedicina(antiinflamatorio, colquicina).
+tipodemedicina(corticosteroide, prednisona).
+tipodemedicina(uricosurico, probenecid).
+tipodemedicina(inhibidor_de_la_produccion_de_acido_urico, alopurinol).
+tipodemedicina(un_inhibidor_de_la_produccion_de_acido_urico, febuxostat).
+tipodemedicina(disolvente_de_acido_urico, pegloticase).
+
+tipodemedicina(antifebril, paracetamol).
+tipodemedicina(antifebril, ibuprofeno).
+tipodemedicina(vitaminico, vitamina_a).
+
+tipodemedicina(quimioterapeutico, doxorrubicina).
+tipodemedicina(quimioterapeutico, ciclofosfamida).
+tipodemedicina(quimioterapeutico, taxol).
+tipodemedicina(terapeutico_hormonal, tamoxifeno).
+tipodemedicina(terapeutico_hormonal, anastrozol).
+tipodemedicina(terapeutico_dirigido, trastuzumab).
+tipodemedicina(terapeutico_dirigido, pertuzumab).
+tipodemedicina(terapeutico_dirigido, palbociclib).
+tipodemedicina(inmunoterapeutico, pembrolizumab).
+
+% --------- Medicine Prenscription use --------- %
+infodemedicina(la_dosis_habitual_para_adultos_es_de_400_a_800_mg_cada_6_a_8_horas, 1-1-1, ibuprofeno).
+infodemedicina(se_suele_recomendar_500_mg_dos_veces_al_dia_para_adultos, 1-0-1, naproxeno).
+infodemedicina(suele_suministrarse_1_mg_seguido_de_0_5_mg_cada_dos_horas_hasta_que_cede_el_dolor_la_dosis_maxima_recomendada_es_de_1_8_mg_durante_un_periodo_de_1_hora, 1-1-1-1, colquicina).
+infodemedicina(la_dosis_inicial_puede_ser_de_5_a_60_mg_al_dia_en_adultos_ajustandose_segun_la_respuesta_del_paciente, 1-0-0, prednisona).
+infodemedicina(la_dosis_inicial_suele_ser_de_250_mg_dos_veces_al_dia_aumentando_gradualmente_hasta_un_maximo_de_2_g_al_dia, 1-0-1, probenecid).
+infodemedicina(la_dosis_inicial_habitual_es_de_100_mg_al_dia_aumentando_gradualmente_hasta_un_maximo_de_800_mg_al_dia_segun_la_respuesta_del_paciente, 1-0-0, alopurinol).
+infodemedicina(la_dosis_recomendada_es_de_40_mg_una_vez_al_dia_que_puede_aumentarse_a_80_mg_una_vez_al_dia_si_los_niveles_de_acido_urico_no_se_controlan_adecuadamente, 1-0-0, febuxostat).
+infodemedicina(se_administra_como_infusion_intravenosa_de_8_mg_cada_2_semanas, 1-0-0, pegloticase).
+
+infodemedicina(para_adultos_la_dosis_recomendada_es_de_500_a_1000_mg_cada_4_a_6_horas_sin_exceder_4000_mg_en_24_horas, 1-1-1-1, paracetamol).
+infodemedicina(se_recomienda_una_dosis_de_200_a_400_mg_cada_4_a_6_horas_segun_sea_necesario, 1-1-1-1, ibuprofeno).
+infodemedicina(para_ninos_con_sarampion_y_riesgo_de_deficiencia_de_vitamina_a_se_recomienda_una_dosis_oral_de_200000_ui_unidades_internacionales_para_ninos_mayores_de_un_ano_y_100000_ui_para_bebes_de_6_a_12_meses_administrada_dos_dias_consecutivos_esta_dosificacion_puede_variar_segun_las_directrices_locales_y_la_evaluacion_del_medico, 1-0-0, vitamina_a).
+
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_puede_variar_pero_una_dosis_comun_es_de_60_mg_m2_administrada_cada_3_semanas, 1-0-0, doxorrubicina).
+infodemedicina(se_administra_por_via_oral_o_intravenosa_la_dosis_oral_comun_es_de_100_a_200_mg_m2_diarios_durante_14_dias_seguidos_de_un_descanso_o_600_mg_m2_por_via_intravenosa_cada_2_a_4_semanas, 1-0-0, ciclofosfamida).
+infodemedicina(se_administra_por_via_intravenosa_una_dosis_tipica_es_de_175_mg_m2_administrada_cada_3_semanas, 1-0-0, taxol).
+infodemedicina(se_toma_por_via_oral_en_forma_de_pildoras_la_dosis_estandar_es_de_20_mg_diarios_generalmente_durante_5_anos, 1-0-0, tamoxifeno).
+infodemedicina(inhibidores_de_la_aromatasa_como_anastrozol_letrozol_se_toman_por_via_oral_la_dosis_estandar_es_de_1_mg_diario_para_anastrozol_y_2_5_mg_diario_para_letrozol_generalmente_durante_5_anos, 1-0-0, anastrozol).
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_inicial_es_de_4_mg_m2_seguida_de_dosis_semanales_de_2_mg_m2_o_una_dosis_cada_tres_semanas_de_6_mg_m2_despues_de_la_dosis_de_carga, 1-0-0, trastuzumab).
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_inicial_es_de_840_mg_seguida_de_dosis_de_mantenimiento_de_420_mg_cada_3_semanas, 1-0-0, pertuzumab).
+infodemedicina(se_toma_por_via_oral_la_dosis_recomendada_es_de_125_mg_una_vez_al_dia_durante_21_dias_consecutivos_seguidos_de_7_dias_sin_medicacion, 1-0-0, palbociclib).
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_recomendada_es_de_200_mg_cada_3_semanas, 1-0-0, pembrolizumab).
 
 % --------- Specialist --------- %
 especialistade(reumatologo, gota).
@@ -927,8 +1009,10 @@ alimentoquedetoda(sardinas, gota).
 alimentoquedetoda(cerveza, gota).
 alimentoquedetoda(licores_destilados_de_alta_graduacion, gota).
 
-alimentoquedetoda(alto_contenido_de_grasas_trans, cancer_de_mama).
-alimentoquedetoda(dietas_altas_en_carbohidratos, cancer_de_mama).
+% --------- Region from disease --------- %
+regionde(no_tiene_una_region_de_origen, gota).
+regionde(no_tiene_una_region_de_origen, sarampion).
+regionde(no_tiene_una_region_de_origen, cancer_de_mama).
 
 % --- END KNOWLEDGE BASE TO DISEASES --- %
 % --- END KNOWLEDGE BASE TO DISEASES --- %
