@@ -178,45 +178,45 @@ template([s(_), 'y', s(_), quieren, mucho, a, su, hijo, s(_), '?', .], [flagWeLo
 % que tipo de medicamente es el s(_) ? .
 % como se suministra el medicamento s() ? .
 
-template([tienes, informacion, de, la, enfermedad, s(-), '?' .], [flag], [5]).
+template([tienes, informacion, de, la, enfermedad, s(-), '?', .], [flagDiseaseInformation], [5]).
 % cuales son los síntomas del s(-) ? .
-template([cuales, son, los, sintomas, del, s(-), '?' .], [flag], [5]).
+template([cuales, son, los, sintomas, del, s(-), '?', .], [flagSymptomOf], [5]).
 % que medicinas son utilizadas para la s(_) ? .
-template([que, medicinas, son, utilizadas, para, la, s(_), '?' .], [flag], [6]).
+template([que, medicinas, son, utilizadas, para, la, s(_), '?', .], [flagMeicineTo], [6]).
 % que especialistas atienden s(_) ? .
-template([que, especialistas, atienden, s(_), '?' .], [flag], [3]).
+template([que, especialistas, atienden, s(_), '?', .], [flagEspecialistTo], [3]).
 % que alimentos detonan s(_) ? .
-template([que, alimentos, detonan, s(_), '?' .], [flag], [3]).
+template([que, alimentos, detonan, s(_), '?', .], [flagFootDetonateTo], [3]).
 % que región encapsula la s(_) ? .
-template([que, region, encapsula, la, s(_), '?' .], [flag], [5]).
+template([que, region, encapsula, la, s(_), '?', .], [flagRegionOf], [5]).
 % cuantos síntomas diferentes tiene el s(_) ? .
-template([cuantos, sintomas, diferentes, tiene, el, s(_), '?' .], [flag], [5]).
+template([cual, es, el, numero, de, sintomas, diferentes, que, tiene, el, s(_), '?', .], [flagNumberSymptom], [11]).
 % cuantas medicinas diferentes pueden tratar el (_) ? .
-template([cuantas, medicinas, diferentes, pueden, tratar, el, s(_), '?' .], [flag], [6]).
+template([cual, es, el, numero, de, medicinas, diferentes, que, pueden, tratar, el, s(_), '?', .], [flagNumberMedicine], [11]).
 % cuantos especialistas diferentes pueden atender el (_) ? .
-template([cuantos, especialistas, diferentes, pueden, atender, el, s(_), '?' .], [flag], [6]).
+template([cual, es, el, numero, de, especialistas, diferentes, que, pueden, atender, el, s(_), '?', .], [flagNumberEspecialist], [11]).
 % cuantos alimentos diferentes pueden detonar el (_) ? .
-template([cuantos, alimentos, diferentes, pueden, detonar, el, s(_), '?' .], [flag], [6]).
+template([cual, es, el, numero, de, alimentos, diferentes, que, pueden, detonar, el, s(_), '?', .], [flagNumberFoodThatDetonate], [11]).
 % el sintoma s(_) a que enfermedades puede pertenecer () ? .
-template([el, sintoma, s(_), a, que, enfermedades, puede, pertenecer, '?' .], [flag], [2]).
+template([el, sintoma, s(_), a, que, enfermedades, puede, pertenecer, '?', .], [flag], [2]).
 % el medicamento s(_) que enfermedades puede tratar ? .
-template([el, medicamento, s(_), que, enfermedades, puede, tratar, '?' .], [flag], [2]).
+template([el, medicamento, s(_), que, enfermedades, puede, tratar, '?', .], [flag], [2]).
 % el especialista s(_) que enfermedades puede tratar ? .
-template([el, especialista, s(_), que, enfermedades, puede, tratar, '?' .], [flag], [2]).
+template([el, especialista, s(_), que, enfermedades, puede, tratar, '?', .], [flag], [2]).
 % el abuso de s(_) que enfermedades puede detonar ? .
-template([el, abuso, de, s(_), que, enfermedades, puede, detonar, '?' .], [flag], [3]).
+template([el, abuso, de, s(_), que, enfermedades, puede, detonar, '?', .], [flag], [3]).
 % a que enfermedad o enfermedades pertenece el sintoma de s(_) ? .
-template([a, que, enfermedad, o, enfermedades, pertenece, el, sintoma, de, s(_), '?' .], [flag], [9]).
+template([a, que, enfermedad, o, enfermedades, pertenece, el, sintoma, de, s(_), '?', .], [flag], [9]).
 % la medicamento s(_) que enfermedad trata ? .
-template([la, medicamento, s(_), que, enfermedad, trata, '?' .], [flag], [2]).
+template([la, medicamento, s(_), que, enfermedad, trata, '?', .], [flag], [2]).
 % el especialista s(_) que enfermedad trata ? .
-template([el, especialista, s(_), que, enfermedad, trata, '?' .], [flag], [2]).
+template([el, especialista, s(_), que, enfermedad, trata, '?', .], [flag], [2]).
 % el alimento s(_) que enfermedad detona ? .
-template([el, alimento, s(_), que, enfermedad, detona, '?' .], [flag], [2]).
+template([el, alimento, s(_), que, enfermedad, detona, '?', .], [flag], [2]).
 % que tipo de medicamente es el s(_) ? .
-template([que, tipo, de, medicamento, es, el, s(_), '?' .], [flag], [6]).
+template([que, tipo, de, medicamento, es, el, s(_), '?', .], [flag], [6]).
 % como se suministra el medicamento s() ? .
-template([como, se, suministra, el, medicamento, s(_), '?' .], [flag], [5]).
+template([como, se, suministra, el, medicamento, s(_), '?', .], [flag], [5]).
 
 
 
@@ -460,7 +460,40 @@ recetade(M, S):- sintomade(S, Z), medicinade(M, Z).
 atiendeespecialista(E, S):- sintomade(S,Z), especialistade(E, Z).
 mereceta(Es, M, E):- medicinade(M, E), sintomade(S, E), atiendeespecialista(Es,S).  
 
+% -Rules that template with one argument- %
+diseaseInformation(X, R) :- enfermedad(X), R = ['Si tengo informacion sobre', X, 'puedes preguntarme sobre suministacion, medicmentos, especialistas, sintomas, etc.'].
+diseaseInformation(X, R) :- \+ enfermedad(X), R = ['No tengo informacion sobre', X, 'unicamente tengo información sobre gota, sampion y cancer de mama'].
 
+symptomOf(X, R) :- 
+    findall(Y, sintomade(Y, X), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'Los sintomas de ~w es/son: ~w.', [X, AuxStr]).
+    
+ meicineTo(X, R) :- 
+    findall(Y, medicinade(Y, X), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'La medicina para tratar ~w es/son: ~w.', [X, AuxStr]). 
+    
+ especialistTo(X, R) :- 
+    findall(Y, especialistade(Y, X), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'Los especialistas que tratan el/la ~w es/son: ~w.', [X, AuxStr]). 
+
+ footDetonateTo(X, R) :- 
+    findall(Y, alimentoquedetoda(Y, X), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'Los alimentos que detonan el/la ~w es/son: ~w.', [X, AuxStr]). 
+
+regionOf(X, R) :- 
+    findall(Y, regionde(Y, X), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'La region que encapsula el/la ~w es/son: ~w.', [X, AuxStr]).
+
+numberSymptom(E, Result):-findall(X , sintomade(X, E) , L) , length(L , R), C is R, Result = ['El numero de sintomas que tiene el/la ', E, 'es: ', C].
+numberMedicine(E, Result):-findall(X , medicinade(X, E) , L) , length(L , R), C is R, Result = ['El numero de medicamentos que atienden el/la ', E, 'es: ', C].
+numberEspecialist(E, Result):-findall(X , especialistade(X, E) , L) , length(L , R), C is R, Result = ['El numero de especialistas que atienden el/la ', E, 'es: ', C].
+numberFoodThatDetonate(E, Result):-findall(X , alimentoquedetoda(X, E) , L) , length(L , R), C is R, Result = ['El numero de comidas que detonan el/la ', E, 'es: ', C].
+ 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
 % Dividir una cadena en una lista de elementos
@@ -786,6 +819,56 @@ replace0([I, J, K], Input, _, Resp, R) :-
 % --------------------------------------- Diseases Replace --------------------------------------- %
 % --------------------------------------- Diseases Replace --------------------------------------- %
 % --------------------------------------- Diseases Replace --------------------------------------- %
+
+% DiseaseInformationReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagDiseaseInformation,
+    diseaseInformation(Atom, R).
+
+% DiseaseInformationReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagSymptomOf,
+    symptomOf(Atom, R).
+
+% MedicineToReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagMeicineTo,
+    meicineTo(Atom, R).
+
+% MedicineToReplace 
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    X == flagEspecialistTo,
+    especialistTo(Atom, R).
+
+% % FootDetonateToReplace 
+% replace0([I|_], Input, _, Resp, R) :- 
+%     nth0(I, Input, Atom),
+%     nth0(0, Resp, X),
+%     X == flagFootDetonateTo,
+%     footDetonateTo(Atom, R).
+
+% % RegionOfReplace 
+% replace0([I|_], Input, _, Resp, R) :- 
+%     nth0(I, Input, Atom),
+%     nth0(0, Resp, X),
+%     X == flagRegionOf,
+%     regionOf(Atom, R).
+
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    (X == flagFootDetonateTo -> footDetonateTo(Atom, R) ; 
+     X == flagRegionOf -> regionOf(Atom, R)).
+
+
 
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
