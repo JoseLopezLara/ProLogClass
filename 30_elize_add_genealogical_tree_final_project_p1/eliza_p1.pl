@@ -178,45 +178,46 @@ template([s(_), 'y', s(_), quieren, mucho, a, su, hijo, s(_), '?', .], [flagWeLo
 % que tipo de medicamente es el s(_) ? .
 % como se suministra el medicamento s() ? .
 
+% tienes informacion de la enfermedad gota ? .
 template([tienes, informacion, de, la, enfermedad, s(-), '?', .], [flagDiseaseInformation], [5]).
-% cuales son los síntomas del s(-) ? .
+% cuales son los sintomas del gota ? .
 template([cuales, son, los, sintomas, del, s(-), '?', .], [flagSymptomOf], [5]).
-% que medicinas son utilizadas para la s(_) ? .
+% que medicinas son utilizadas para la gota ? .
 template([que, medicinas, son, utilizadas, para, la, s(_), '?', .], [flagMeicineTo], [6]).
-% que especialistas atienden s(_) ? .
+% que especialistas atienden gota ? .
 template([que, especialistas, atienden, s(_), '?', .], [flagEspecialistTo], [3]).
-% que alimentos detonan s(_) ? .
+% que alimentos detonan gota ? .
 template([que, alimentos, detonan, s(_), '?', .], [flagFootDetonateTo], [3]).
-% que región encapsula la s(_) ? .
-template([que, region, encapsula, la, s(_), '?', .], [flagRegionOf], [5]).
-% cuantos síntomas diferentes tiene el s(_) ? .
-template([cual, es, el, numero, de, sintomas, diferentes, que, tiene, el, s(_), '?', .], [flagNumberSymptom], [11]).
-% cuantas medicinas diferentes pueden tratar el (_) ? .
+% que region encapsula la gota ? .
+template([que, region, encapsula, la, s(_), '?', .], [flagRegionOf], [4]).
+% cual es el numero de sintomas diferentes que tiene el gota ? .
+template([cual, es, el, numero, de, sintomas, diferentes, que, tiene, el, s(_), '?', .], [flagNumberSymptom], [10]).
+% cual es el numero de medicinas diferentes que pueden tratar el gota ? .
 template([cual, es, el, numero, de, medicinas, diferentes, que, pueden, tratar, el, s(_), '?', .], [flagNumberMedicine], [11]).
-% cuantos especialistas diferentes pueden atender el (_) ? .
+% cual es el numero de especialistas diferentes que pueden atender el gota ? .
 template([cual, es, el, numero, de, especialistas, diferentes, que, pueden, atender, el, s(_), '?', .], [flagNumberEspecialist], [11]).
-% cuantos alimentos diferentes pueden detonar el (_) ? .
+% cual es el numero de alimentos diferentes que pueden detonar el gota ? .
 template([cual, es, el, numero, de, alimentos, diferentes, que, pueden, detonar, el, s(_), '?', .], [flagNumberFoodThatDetonate], [11]).
-% el sintoma s(_) a que enfermedades puede pertenecer () ? .
-template([el, sintoma, s(_), a, que, enfermedades, puede, pertenecer, '?', .], [flag], [2]).
-% el medicamento s(_) que enfermedades puede tratar ? .
-template([el, medicamento, s(_), que, enfermedades, puede, tratar, '?', .], [flag], [2]).
-% el especialista s(_) que enfermedades puede tratar ? .
-template([el, especialista, s(_), que, enfermedades, puede, tratar, '?', .], [flag], [2]).
-% el abuso de s(_) que enfermedades puede detonar ? .
-template([el, abuso, de, s(_), que, enfermedades, puede, detonar, '?', .], [flag], [3]).
-% a que enfermedad o enfermedades pertenece el sintoma de s(_) ? .
-template([a, que, enfermedad, o, enfermedades, pertenece, el, sintoma, de, s(_), '?', .], [flag], [9]).
-% la medicamento s(_) que enfermedad trata ? .
-template([la, medicamento, s(_), que, enfermedad, trata, '?', .], [flag], [2]).
-% el especialista s(_) que enfermedad trata ? .
-template([el, especialista, s(_), que, enfermedad, trata, '?', .], [flag], [2]).
-% el alimento s(_) que enfermedad detona ? .
-template([el, alimento, s(_), que, enfermedad, detona, '?', .], [flag], [2]).
-% que tipo de medicamente es el s(_) ? .
-template([que, tipo, de, medicamento, es, el, s(_), '?', .], [flag], [6]).
-% como se suministra el medicamento s() ? .
-template([como, se, suministra, el, medicamento, s(_), '?', .], [flag], [5]).
+% el sintoma fiebre a que enfermedades puede pertenecer ? .
+template([el, sintoma, s(_), a, que, enfermedades, puede, pertenecer, '?', .], [flagSymptomCorrespondentTo], [2]).
+% el medicamento ibuprofeno que enfermedades puede tratar ? .
+template([el, medicamento, s(_), que, enfermedades, puede, tratar, '?', .], [flagPossibleMedicineTo], [2]).
+% el especialista radiologo que enfermedades puede tratar ? .
+template([el, especialista, s(_), que, enfermedades, puede, tratar, '?', .], [flagPossibleEspecialistTo], [2]).
+% el abuso de higado que enfermedades puede detonar ? .
+template([el, abuso, de, s(_), que, enfermedades, puede, detonar, '?', .], [flagPossibleFoodThatDetonateTo], [3]).
+% a que enfermedad o enfermedades pertenece el sintoma de fiebre ? .
+template([a, que, enfermedad, o, enfermedades, pertenece, el, sintoma, de, s(_), '?', .], [flagSymptomCorrespondentTo], [9]).
+% el medicamento paracetamol que enfermedad o enfermedades trata ? .
+template([el, medicamento, s(_), que, enfermedad, o, enfermedades, trata, '?', .], [flagPossibleMedicineTo], [2]).
+% el especialista infectologo  que enfermedad o enfermedades trata ? .
+template([el, especialista, s(_), que, enfermedad, o, enfermedades, trata, '?', .], [flagPossibleEspecialistTo], [2]).
+% el alimento higado que enfermedad o que enfermedades detona ? .
+template([el, alimento, s(_), que, enfermedad, o, que, enfermedades, detona, '?', .], [flagPossibleFoodThatDetonateTo], [2]).
+% que tipo de medicamento es el paracetamol ? .
+template([que, tipo, de, medicamento, es, el, s(_), '?', .], [flagMedicineType], [6]).
+% como se suministra el medicamento paracetamol ? .
+template([como, se, suministra, el, medicamento, s(_), '?', .], [flagHowPrencriptionMedicine], [5]).
 
 
 
@@ -493,7 +494,33 @@ numberSymptom(E, Result):-findall(X , sintomade(X, E) , L) , length(L , R), C is
 numberMedicine(E, Result):-findall(X , medicinade(X, E) , L) , length(L , R), C is R, Result = ['El numero de medicamentos que atienden el/la ', E, 'es: ', C].
 numberEspecialist(E, Result):-findall(X , especialistade(X, E) , L) , length(L , R), C is R, Result = ['El numero de especialistas que atienden el/la ', E, 'es: ', C].
 numberFoodThatDetonate(E, Result):-findall(X , alimentoquedetoda(X, E) , L) , length(L , R), C is R, Result = ['El numero de comidas que detonan el/la ', E, 'es: ', C].
- 
+
+symptomCorrespondentTo(X, R) :- 
+    findall(Y, sintomade(X, Y), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'El sisntoma de ~w pertenece a/las enfermedad/es: ~w.', [X, AuxStr]).
+possibleMedicineTo(X, R) :- 
+    findall(Y, medicinade(X, Y), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'El medicamento ~w puede tratar a/las enfermedad/es: ~w.', [X, AuxStr]).
+pissibleEspecialistTo(X, R) :- 
+    findall(Y, especialistade(X, Y), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'El especialista ~w puede tratar a/las enfermedad/es: ~w.', [X, AuxStr]).
+possibleFoodThatDetonateTo(X, R) :- 
+    findall(Y, alimentoquedetoda(X, Y), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'El alimento ~w puede detonar a/las enfermedad/es: ~w.', [X, AuxStr]).
+
+medicineType(X, R) :- 
+    findall(Y, tipodemedicina(Y, X), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'El medicamento ~w partenece a la categorio del farmaco: ~w.', [X, AuxStr]).
+
+howPrencriptionMedicine(X, R) :- 
+    findall(Y, infodemedicina(Y, X), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'El medicamento ~w de prensribe de la siguiente forma ~w.', [X, AuxStr]).
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
 % Dividir una cadena en una lista de elementos
@@ -820,53 +847,28 @@ replace0([I, J, K], Input, _, Resp, R) :-
 % --------------------------------------- Diseases Replace --------------------------------------- %
 % --------------------------------------- Diseases Replace --------------------------------------- %
 
-% DiseaseInformationReplace 
+% ----- One argument rules ---- %
 replace0([I|_], Input, _, Resp, R) :- 
     nth0(I, Input, Atom),
     nth0(0, Resp, X),
-    X == flagDiseaseInformation,
-    diseaseInformation(Atom, R).
-
-% DiseaseInformationReplace 
-replace0([I|_], Input, _, Resp, R) :- 
-    nth0(I, Input, Atom),
-    nth0(0, Resp, X),
-    X == flagSymptomOf,
-    symptomOf(Atom, R).
-
-% MedicineToReplace 
-replace0([I|_], Input, _, Resp, R) :- 
-    nth0(I, Input, Atom),
-    nth0(0, Resp, X),
-    X == flagMeicineTo,
-    meicineTo(Atom, R).
-
-% MedicineToReplace 
-replace0([I|_], Input, _, Resp, R) :- 
-    nth0(I, Input, Atom),
-    nth0(0, Resp, X),
-    X == flagEspecialistTo,
-    especialistTo(Atom, R).
-
-% % FootDetonateToReplace 
-% replace0([I|_], Input, _, Resp, R) :- 
-%     nth0(I, Input, Atom),
-%     nth0(0, Resp, X),
-%     X == flagFootDetonateTo,
-%     footDetonateTo(Atom, R).
-
-% % RegionOfReplace 
-% replace0([I|_], Input, _, Resp, R) :- 
-%     nth0(I, Input, Atom),
-%     nth0(0, Resp, X),
-%     X == flagRegionOf,
-%     regionOf(Atom, R).
-
-replace0([I|_], Input, _, Resp, R) :- 
-    nth0(I, Input, Atom),
-    nth0(0, Resp, X),
-    (X == flagFootDetonateTo -> footDetonateTo(Atom, R) ; 
-     X == flagRegionOf -> regionOf(Atom, R)).
+    (
+        X == flagDiseaseInformation -> diseaseInformation(Atom, R) ; 
+        X == flagSymptomOf -> symptomOf(Atom, R) ; 
+        X == flagMeicineTo -> meicineTo(Atom, R) ; 
+        X == flagEspecialistTo -> especialistTo(Atom, R) ; 
+        X == flagFootDetonateTo -> footDetonateTo(Atom, R) ; 
+        X == flagRegionOf -> regionOf(Atom, R);
+        X == flagNumberSymptom -> numberSymptom(Atom, R);
+        X == flagNumberMedicine -> numberMedicine(Atom, R);
+        X == flagNumberEspecialist -> numberEspecialist(Atom, R);
+        X == flagNumberFoodThatDetonate -> numberFoodThatDetonate(Atom, R);
+        X == flagSymptomCorrespondentTo -> symptomCorrespondentTo(Atom, R);
+        X == flagPossibleMedicineTo -> possibleMedicineTo(Atom, R);
+        X == flagPossibleEspecialistTo -> pissibleEspecialistTo(Atom, R);
+        X == flagPossibleFoodThatDetonateTo -> possibleFoodThatDetonateTo(Atom, R);
+        X == flagMedicineType -> medicineType(Atom, R);
+        X == flagHowPrencriptionMedicine -> howPrencriptionMedicine(Atom, R)
+    ).
 
 
 
@@ -1101,28 +1103,28 @@ tipodemedicina(terapeutico_dirigido, palbociclib).
 tipodemedicina(inmunoterapeutico, pembrolizumab).
 
 % --------- Medicine Prenscription use --------- %
-infodemedicina(la_dosis_habitual_para_adultos_es_de_400_a_800_mg_cada_6_a_8_horas, 1-1-1, ibuprofeno).
-infodemedicina(se_suele_recomendar_500_mg_dos_veces_al_dia_para_adultos, 1-0-1, naproxeno).
-infodemedicina(suele_suministrarse_1_mg_seguido_de_0_5_mg_cada_dos_horas_hasta_que_cede_el_dolor_la_dosis_maxima_recomendada_es_de_1_8_mg_durante_un_periodo_de_1_hora, 1-1-1-1, colquicina).
-infodemedicina(la_dosis_inicial_puede_ser_de_5_a_60_mg_al_dia_en_adultos_ajustandose_segun_la_respuesta_del_paciente, 1-0-0, prednisona).
-infodemedicina(la_dosis_inicial_suele_ser_de_250_mg_dos_veces_al_dia_aumentando_gradualmente_hasta_un_maximo_de_2_g_al_dia, 1-0-1, probenecid).
-infodemedicina(la_dosis_inicial_habitual_es_de_100_mg_al_dia_aumentando_gradualmente_hasta_un_maximo_de_800_mg_al_dia_segun_la_respuesta_del_paciente, 1-0-0, alopurinol).
-infodemedicina(la_dosis_recomendada_es_de_40_mg_una_vez_al_dia_que_puede_aumentarse_a_80_mg_una_vez_al_dia_si_los_niveles_de_acido_urico_no_se_controlan_adecuadamente, 1-0-0, febuxostat).
-infodemedicina(se_administra_como_infusion_intravenosa_de_8_mg_cada_2_semanas, 1-0-0, pegloticase).
+infodemedicina(la_dosis_habitual_para_adultos_es_de_400_a_800_mg_cada_6_a_8_horas_con_esquema_1_1_1, ibuprofeno).
+infodemedicina(se_suele_recomendar_500_mg_dos_veces_al_dia_para_adultos_con_esquema_1_0_1, naproxeno).
+infodemedicina(suele_suministrarse_1_mg_seguido_de_0_5_mg_cada_dos_horas_hasta_que_cede_el_dolor_la_dosis_maxima_recomendada_es_de_1_8_mg_durante_un_periodo_de_1_hora_con_esquema_1_1_1_1, colquicina).
+infodemedicina(la_dosis_inicial_puede_ser_de_5_a_60_mg_al_dia_en_adultos_ajustandose_segun_la_respuesta_del_paciente_con_esquema_1_0_0, prednisona).
+infodemedicina(la_dosis_inicial_suele_ser_de_250_mg_dos_veces_al_dia_aumentando_gradualmente_hasta_un_maximo_de_2_g_al_dia_con_esquema_1_0_1, probenecid).
+infodemedicina(la_dosis_inicial_habitual_es_de_100_mg_al_dia_aumentando_gradualmente_hasta_un_maximo_de_800_mg_al_dia_segun_la_respuesta_del_paciente_con_esquema_1_0_0, alopurinol).
+infodemedicina(la_dosis_recomendada_es_de_40_mg_una_vez_al_dia_que_puede_aumentarse_a_80_mg_una_vez_al_dia_si_los_niveles_de_acido_urico_no_se_controlan_adecuadamente_con_esquema_1_0_0, febuxostat).
+infodemedicina(se_administra_como_infusion_intravenosa_de_8_mg_cada_2_semanas_con_esquema_1_0_0, pegloticase).
 
-infodemedicina(para_adultos_la_dosis_recomendada_es_de_500_a_1000_mg_cada_4_a_6_horas_sin_exceder_4000_mg_en_24_horas, 1-1-1-1, paracetamol).
-infodemedicina(se_recomienda_una_dosis_de_200_a_400_mg_cada_4_a_6_horas_segun_sea_necesario, 1-1-1-1, ibuprofeno).
-infodemedicina(para_ninos_con_sarampion_y_riesgo_de_deficiencia_de_vitamina_a_se_recomienda_una_dosis_oral_de_200000_ui_unidades_internacionales_para_ninos_mayores_de_un_ano_y_100000_ui_para_bebes_de_6_a_12_meses_administrada_dos_dias_consecutivos_esta_dosificacion_puede_variar_segun_las_directrices_locales_y_la_evaluacion_del_medico, 1-0-0, vitamina_a).
+infodemedicina(para_adultos_la_dosis_recomendada_es_de_500_a_1000_mg_cada_4_a_6_horas_sin_exceder_4000_mg_en_24_horas_con_esquema_1_1_1_1, paracetamol).
+infodemedicina(se_recomienda_una_dosis_de_200_a_400_mg_cada_4_a_6_horas_segun_sea_necesario_con_esquema_1_1_1_1, ibuprofeno).
+infodemedicina(para_ninos_con_sarampion_y_riesgo_de_deficiencia_de_vitamina_a_se_recomienda_una_dosis_oral_de_200000_ui_unidades_internacionales_para_ninos_mayores_de_un_ano_y_100000_ui_para_bebes_de_6_a_12_meses_administrada_dos_dias_consecutivos_esta_dosificacion_puede_variar_segun_las_directrices_locales_y_la_evaluacion_del_medico_con_esquema_1_0_0, vitamina_a).
 
-infodemedicina(se_administra_por_via_intravenosa_la_dosis_puede_variar_pero_una_dosis_comun_es_de_60_mg_m2_administrada_cada_3_semanas, 1-0-0, doxorrubicina).
-infodemedicina(se_administra_por_via_oral_o_intravenosa_la_dosis_oral_comun_es_de_100_a_200_mg_m2_diarios_durante_14_dias_seguidos_de_un_descanso_o_600_mg_m2_por_via_intravenosa_cada_2_a_4_semanas, 1-0-0, ciclofosfamida).
-infodemedicina(se_administra_por_via_intravenosa_una_dosis_tipica_es_de_175_mg_m2_administrada_cada_3_semanas, 1-0-0, taxol).
-infodemedicina(se_toma_por_via_oral_en_forma_de_pildoras_la_dosis_estandar_es_de_20_mg_diarios_generalmente_durante_5_anos, 1-0-0, tamoxifeno).
-infodemedicina(inhibidores_de_la_aromatasa_como_anastrozol_letrozol_se_toman_por_via_oral_la_dosis_estandar_es_de_1_mg_diario_para_anastrozol_y_2_5_mg_diario_para_letrozol_generalmente_durante_5_anos, 1-0-0, anastrozol).
-infodemedicina(se_administra_por_via_intravenosa_la_dosis_inicial_es_de_4_mg_m2_seguida_de_dosis_semanales_de_2_mg_m2_o_una_dosis_cada_tres_semanas_de_6_mg_m2_despues_de_la_dosis_de_carga, 1-0-0, trastuzumab).
-infodemedicina(se_administra_por_via_intravenosa_la_dosis_inicial_es_de_840_mg_seguida_de_dosis_de_mantenimiento_de_420_mg_cada_3_semanas, 1-0-0, pertuzumab).
-infodemedicina(se_toma_por_via_oral_la_dosis_recomendada_es_de_125_mg_una_vez_al_dia_durante_21_dias_consecutivos_seguidos_de_7_dias_sin_medicacion, 1-0-0, palbociclib).
-infodemedicina(se_administra_por_via_intravenosa_la_dosis_recomendada_es_de_200_mg_cada_3_semanas, 1-0-0, pembrolizumab).
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_puede_variar_pero_una_dosis_comun_es_de_60_mg_m2_administrada_cada_3_semanas_con_esquema_1_0_0, doxorrubicina).
+infodemedicina(se_administra_por_via_oral_o_intravenosa_la_dosis_oral_comun_es_de_100_a_200_mg_m2_diarios_durante_14_dias_seguidos_de_un_descanso_o_600_mg_m2_por_via_intravenosa_cada_2_a_4_semanas_con_esquema_1_0_0, ciclofosfamida).
+infodemedicina(se_administra_por_via_intravenosa_una_dosis_tipica_es_de_175_mg_m2_administrada_cada_3_semanas_con_esquema_1_0_0, taxol).
+infodemedicina(se_toma_por_via_oral_en_forma_de_pildoras_la_dosis_estandar_es_de_20_mg_diarios_generalmente_durante_5_anos_con_esquema_1_0_0, tamoxifeno).
+infodemedicina(inhibidores_de_la_aromatasa_como_anastrozol_letrozol_se_toman_por_via_oral_la_dosis_estandar_es_de_1_mg_diario_para_anastrozol_y_2_5_mg_diario_para_letrozol_generalmente_durante_5_anos_con_esquema_1_0_0, anastrozol).
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_inicial_es_de_4_mg_m2_seguida_de_dosis_semanales_de_2_mg_m2_o_una_dosis_cada_tres_semanas_de_6_mg_m2_despues_de_la_dosis_de_carga_con_esquema_1_0_0, trastuzumab).
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_inicial_es_de_840_mg_seguida_de_dosis_de_mantenimiento_de_420_mg_cada_3_semanas_con_esquema_1_0_0, pertuzumab).
+infodemedicina(se_toma_por_via_oral_la_dosis_recomendada_es_de_125_mg_una_vez_al_dia_durante_21_dias_consecutivos_seguidos_de_7_dias_sin_medicacion_con_esquema_1_0_0, palbociclib).
+infodemedicina(se_administra_por_via_intravenosa_la_dosis_recomendada_es_de_200_mg_cada_3_semanas_con_esquema_1_0_0, pembrolizumab).
 
 % --------- Specialist --------- %
 especialistade(reumatologo, gota).
