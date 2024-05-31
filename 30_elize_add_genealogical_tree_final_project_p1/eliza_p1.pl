@@ -596,7 +596,7 @@ fullDiagnostic(X, R) :-
         )
     ),
     format(atom(R), '
-            ----------------- DIAGNOSTICO ----------------- 
+            ----------------- DIAGNOSTICO -----------------\n 
             \nUsted ingreso los siguientes sintomas: ~w. 
             \nDebido a que la probabilidad obtenida ~w% es mayor al 80%. 
             \nSe determina que usted tiene: ~w.\n
