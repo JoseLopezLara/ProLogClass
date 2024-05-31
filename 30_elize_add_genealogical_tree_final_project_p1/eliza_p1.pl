@@ -219,6 +219,34 @@ template([que, tipo, de, medicamento, es, el, s(_), '?', .], [flagMedicineType],
 % como se suministra el medicamento paracetamol ? .
 template([como, se, suministra, el, medicamento, s(_), '?', .], [flagHowPrencriptionMedicine], [5]).
 
+% tengo el siguiente sintoma fiebre. que enfermedad puedo tener ? .
+template([tengo, el, siguiente, sintoma, _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording1Symptom], [4]).
+% tengo los siguientes sintomas fiebre, tos_seca. que enfermedad puedo tener ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording2Symptom], [4,6]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording3Symptom], [4,6,8]).
+% tengo los siguientes sintomas fiebre, tos_seca, sarpullido, congestion_nasal. que enfermedad puedo tener ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording4Symptom], [4,6,8,10]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording5Symptom], [4,6,8,10,12]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording6Symptom], [4,6,8,10,12,14]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording7Symptom], [4,6,8,10,12,14,16]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording8Symptom], [4,6,8,10,12,14,18]).
+% tengo los siguientes sintomas bulto_en_area_de_la_mama, hinchazon_en_area_de_la_mama, piel_con_hoyuelos, pezon_retraido, enrojecimiento, formacion_de_costras, secrecion_del_pezon, dolor_en_cualquier_parte_de_la_mama, ganglios_linfaticos_inflamados. que enfermedad puedo tener ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording9Symptom], [4,6,8,10,12,14,16,18,20]).
+
+% tengo el siguiente sintoma enrojecimiento. que enfermedad puedo tener y cual es la probabilidad ? .
+template([tengo, el, siguiente, sintoma, _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording1SymptomWithProbability], [4]).
+% tengo los siguientes sintomas enrojecimiento, pezon_retraido. que enfermedad puedo tener y cual es la probabilidad ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording2SymptomWithProbability], [4,6]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording3SymptomWithProbability], [4,6,8]).
+% tengo los siguientes sintomas enrojecimiento, pezon_retraido, formacion_de_costras, secrecion_del_pezon. que enfermedad puedo tener y cual es la probabilidad ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording4SymptomWithProbability], [4,6,8,10]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording5SymptomWithProbability], [4,6,8,10,12]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording6SymptomWithProbability], [4,6,8,10,12,14]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording7SymptomWithProbability], [4,6,8,10,12,14,16]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording8SymptomWithProbability], [4,6,8,10,12,14,16,18]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording9SymptomWithProbability], [4,6,8,10,12,14,16,18,20]).
+% tengo los siguientes sintomas bulto_en_area_de_la_mama, hinchazon_en_area_de_la_mama, piel_con_hoyuelos, pezon_retraido, enrojecimiento, formacion_de_costras, secrecion_del_pezon, dolor_en_cualquier_parte_de_la_mama, ganglios_linfaticos_inflamados. que enfermedad puedo tener y cual es la probabilidad ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording10SymptomWithProbability], [4,6,8,10,12,14,16,18,20,22]).
 
 
 template(_, ['Please', explain, a, little, more, '.'], []). 
@@ -441,7 +469,7 @@ wife(X, R) :-
 % --------------------------------------- DISEASES RULES --------------------------------------- %
 
 % Find diseases rule [1st Prameter: Symptoms List, 2nd Prameter: Disease, 3rd Prameter:Ocurrences] %
-buscar([], E , 0).
+buscar([], _ , 0).
 buscar(X , E , 1) :- sintomade(X, E). 
 buscar([X|Xs] , E , P) :- enfermedad(E) , buscar(X , E , S1) , buscar(Xs , E ,S2) , P is S1 + S2. 
 
@@ -521,6 +549,68 @@ howPrencriptionMedicine(X, R) :-
     findall(Y, infodemedicina(Y, X), Aux),
     atomic_list_concat(Aux, ', ', AuxStr),
     format(atom(R), 'El medicamento ~w de prensribe de la siguiente forma ~w.', [X, AuxStr]).
+
+howDiseaseCanIHaveAccordingNumber(X, P, R) :- 
+    findall(E, buscar(X, E, P), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    format(atom(R), 'Los sintomas presetados: ~w. pertenecen a la enfermedad/es: ~w.', [X, AuxStr]).
+
+howDiseaseCanIHaveAccordingSymptomWithProbability(X, R) :- 
+    findall(E, diagnostico(X, E , K), Aux),
+    atomic_list_concat(Aux, ', ', AuxStr),
+    findall(K, diagnostico(X, E , K), AuxProb),
+    atomic_list_concat(AuxProb, ', ', AuxStrProb),
+    format(atom(R), 'Los sintomas presetados: ~w. pertenecen a la enfermedad/es: ~w. Con las probablidades: ~w, respectivamente.', [X, AuxStr, AuxStrProb]).
+
+fullDiagnostic(X, R) :- 
+    findall(Probability, diagnostico(X, E , Probability), AuxProb),
+    (
+        AuxProb >= 80 -> (
+            findall(E, diagnostico(X, E , _), AuxDisease),      
+            findall(Y, (member(Disease, AuxDisease), medicinade(Y, Disease)), AuxMedicine),
+            findall(Info, (member(Med, AuxMedicine), infodemedicina(Info, Med)), AuxMedicineInfo),
+            
+            % Concatenar información de medicamentos y prescripciones
+            findall(InfoStr, (
+                nth1(Index, AuxMedicine, Med),
+                nth1(Index, AuxMedicineInfo, Presc),
+                atomic_list_concat(['\n   * Medicamento: ', Med, '\n   * Prescripcion: ', Presc], InfoStr)
+            ), AuxMecineWithInfo),
+            atomic_list_concat(AuxMecineWithInfo, '\n', AuxMecineWithInfoStr),
+
+            % Concatenar información de alimentos
+            findall(FoodStr, (
+                alimentoquedetoda(Food, Disease),
+                member(Disease, AuxDisease),
+                atomic_list_concat(['\n   * Alimento: ', Food], FoodStr)
+            ), AuxFoodWithFormat),
+            atomic_list_concat(AuxFoodWithFormat, '\n', AuxFoodWithFormatStr),
+
+            % Concatenar información de especialistas
+            findall(SpecStr, (
+                especialistade(Spec, Disease),
+                member(Disease, AuxDisease),
+                atomic_list_concat(['\n   * Especialista: ', Spec], SpecStr)
+            ), AuxEpecialistWithFormat),
+            atomic_list_concat(AuxEpecialistWithFormat, '\n', AuxEpecialistWithFormatStr)
+        )
+    ),
+    format(atom(R), '
+            ----------------- DIAGNOSTICO ----------------- 
+            \nUsted ingreso los siguientes sintomas: ~w. 
+            \nDebido a que la probabilidad obtenida ~w% es mayor al 80%. 
+            \nSe determina que usted tiene: ~w.\n
+            ----------------- MEDICAMENTO -----------------
+            \n~w\n 
+            ----------------- ALIMENTACION -----------------
+            \n~w\n
+            ----------------- ESPECIALISTAS -----------------
+            \n~w\n
+        ', [X, AuxProb, AuxDisease, AuxMecineWithInfoStr, AuxFoodWithFormatStr, AuxEpecialistWithFormatStr]).
+
+test :-
+    fullDiagnostic([bulto_en_area_de_la_mama, hinchazon_en_area_de_la_mama, piel_con_hoyuelos, pezon_retraido, enrojecimiento, formacion_de_costras, secrecion_del_pezon, dolor_en_cualquier_parte_de_la_mama, ganglios_linfaticos_inflamados], R), writeln(R).
+
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
 % Dividir una cadena en una lista de elementos
@@ -870,6 +960,134 @@ replace0([I|_], Input, _, Resp, R) :-
         X == flagHowPrencriptionMedicine -> howPrencriptionMedicine(Atom, R)
     ).
 
+% replace0([I|_], Input, _, Resp, R) :- 
+%     nth0(I, Input, Atom0),
+%     Enf =  [Atom0],
+%     nth0(0, Resp, X),
+%     X == flagHowDiseaseCanIHaveAccording1Symptom,
+%     howDiseaseCanIHaveAccordingNumber(Enf, 1, R).
+
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    Enf =  [Atom0],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording1Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 1, R);
+        X == flagHowDiseaseCanIHaveAccording1SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R)
+    ).
+    
+    
+ 
+replace0([I, J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    Enf =  [Atom0, Atom1],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording2Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 2, R);
+        X == flagHowDiseaseCanIHaveAccording2SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+replace0([I, J, K], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    Enf =  [Atom0, Atom1, Atom2],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording3Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 3, R);
+        X == flagHowDiseaseCanIHaveAccording3SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+replace0([I, J, K, L], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(L, Input, Atom3),
+    Enf =  [Atom0, Atom1, Atom2, Atom3],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording4Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 4, R);
+        X == flagHowDiseaseCanIHaveAccording4SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+replace0([I, J, K, L, M], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(L, Input, Atom3),
+    nth0(M, Input, Atom4),
+    Enf =  [Atom0, Atom1, Atom2, Atom3, Atom4],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording5Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 5, R);
+        X == flagHowDiseaseCanIHaveAccording5SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+replace0([I, J, K, L, M, N], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(L, Input, Atom3),
+    nth0(M, Input, Atom4),
+    nth0(N, Input, Atom5),
+    Enf =  [Atom0, Atom1, Atom2, Atom3, Atom4, Atom5],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording6Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 6, R);
+        X == flagHowDiseaseCanIHaveAccording6SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+replace0([I, J, K, L, M, N, O], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(L, Input, Atom3),
+    nth0(M, Input, Atom4),
+    nth0(N, Input, Atom5),
+    nth0(O, Input, Atom6),
+    Enf =  [Atom0, Atom1, Atom2, Atom3, Atom4, Atom5, Atom6],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording7Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 7, R);
+        X == flagHowDiseaseCanIHaveAccording7SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+replace0([I, J, K, L, M, N, O, P], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(L, Input, Atom3),
+    nth0(M, Input, Atom4),
+    nth0(N, Input, Atom5),
+    nth0(O, Input, Atom6),
+    nth0(P, Input, Atom7),
+    Enf =  [Atom0, Atom1, Atom2, Atom3, Atom4, Atom5, Atom6, Atom7],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording8Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 8, R);
+        X == flagHowDiseaseCanIHaveAccording8SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+replace0([I, J, K, L, M, N, O, P, Q], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(L, Input, Atom3),
+    nth0(M, Input, Atom4),
+    nth0(N, Input, Atom5),
+    nth0(O, Input, Atom6),
+    nth0(P, Input, Atom7),
+    nth0(Q, Input, Atom8),
+    Enf =  [Atom0, Atom1, Atom2, Atom3, Atom4, Atom5, Atom6, Atom7, Atom8],
+    nth0(0, Resp, X),
+    (
+        X == flagHowDiseaseCanIHaveAccording9Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 9, R);
+        X == flagHowDiseaseCanIHaveAccording9SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+    ).
+    
+
+
 
 
 replace0([I|Index], Input, N, Resp, R):-
@@ -1023,7 +1241,7 @@ sintomade(cuerpo_cortado, sarampion).
 sintomade(bulto_en_area_de_la_mama, cancer_de_mama).
 sintomade(hinchazon_en_area_de_la_mama, cancer_de_mama).
 sintomade(piel_con_hoyuelos, cancer_de_mama).
-sintomade(pezonretraido, cancer_de_mama).
+sintomade(pezon_retraido, cancer_de_mama).
 sintomade(enrojecimiento, cancer_de_mama).
 sintomade(formacion_de_costras, cancer_de_mama).
 sintomade(secrecion_del_pezon, cancer_de_mama).
