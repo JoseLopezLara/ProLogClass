@@ -1,7 +1,10 @@
 
-eliza:-	writeln('Hola , mi nombre es  Eliza tu  chatbot,
-	por favor ingresa tu consulta,
-	usar solo minúsculas sin . al final:'),
+eliza:-	writeln('HOLA, mi nombre es Eliza tu chatbot,
+	tengo conocimiento de:
+	   * El arbol familiar de Jose, mi creador.
+	   * Enfermedades como: Gota, Sarampion y Cancer de mama.
+	   * Los personajes principales de Harry Potter.
+    '),
 	readln(Input),
 	eliza(Input),!.
 eliza(Input):- Input == ['Adios'],
@@ -247,6 +250,21 @@ template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '
 template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording9SymptomWithProbability], [4,6,8,10,12,14,16,18,20]).
 % tengo los siguientes sintomas bulto_en_area_de_la_mama, hinchazon_en_area_de_la_mama, piel_con_hoyuelos, pezon_retraido, enrojecimiento, formacion_de_costras, secrecion_del_pezon, dolor_en_cualquier_parte_de_la_mama, ganglios_linfaticos_inflamados. que enfermedad puedo tener y cual es la probabilidad ? .
 template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', que, enfermedad, puedo, tener, y, cual, es, la, probabilidad, '?', .], [flagHowDiseaseCanIHaveAccording10SymptomWithProbability], [4,6,8,10,12,14,16,18,20,22]).
+
+% tengo el siguiente sintoma dolor_articular_intenso. cual es mi diagnostico ? .
+template([tengo, el, siguiente, sintoma, _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith1SymptomWithProbability], [4]).
+% tengo los siguientes sintomas dolor_articular_intenso, molestia_articular_persistente. cual es mi diagnostico ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith2SymptomWithProbability], [4,6]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith3SymptomWithProbability], [4,6,8]).
+% tengo los siguientes sintomas dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento. cual es mi diagnostico ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith4SymptomWithProbability], [4,6,8,10]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith5SymptomWithProbability], [4,6,8,10,12]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith6SymptomWithProbability], [4,6,8,10,12,14]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith7SymptomWithProbability], [4,6,8,10,12,14,16]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith8SymptomWithProbability], [4,6,8,10,12,14,16,18]).
+% tengo los siguientes sintomas dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento, amplitud_de_movimiento_limitada, sensacion_de_calor_en_el_lugar_del_dolor, fiebre, nodulos_en_la_piel. cual es mi diagnostico ? .
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith9SymptomWithProbability], [4,6,8,10,12,14,16,18,20]).
+template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith10SymptomWithProbability], [4,6,8,10,12,14,16,18,20,22]).
 
 
 template(_, ['Please', explain, a, little, more, '.'], []). 
@@ -565,7 +583,8 @@ howDiseaseCanIHaveAccordingSymptomWithProbability(X, R) :-
 fullDiagnostic(X, R) :- 
     findall(Probability, diagnostico(X, E , Probability), AuxProb),
     (
-        AuxProb >= 80 -> (
+        max_list(AuxProb, MaxProb),
+        MaxProb >= 80.00 -> (
             findall(E, diagnostico(X, E , _), AuxDisease),      
             findall(Y, (member(Disease, AuxDisease), medicinade(Y, Disease)), AuxMedicine),
             findall(Info, (member(Med, AuxMedicine), infodemedicina(Info, Med)), AuxMedicineInfo),
@@ -608,8 +627,26 @@ fullDiagnostic(X, R) :-
             \n~w\n
         ', [X, AuxProb, AuxDisease, AuxMecineWithInfoStr, AuxFoodWithFormatStr, AuxEpecialistWithFormatStr]).
 
+fullDiagnostic(X, R) :- 
+    findall(Probability, diagnostico(X, _ , Probability), AuxProb),
+    (
+        max_list(AuxProb, MaxProb),
+        MaxProb < 80.00
+    ),
+    format(atom(R), '
+            ----------------- DIAGNOSTICO -----------------\n 
+            \nUsted ingreso los siguientes sintomas: ~w. 
+            \nDebido a que la probabilidad obtenida ~w% es menor al 80%. 
+            \nUnsted no es candidato para ser diagnosticado por una enferemedad que requiera atencio de un especialista\n
+            \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            \n  ES IMPORTANTE QUE SIGA LAS INDICACIONES DE SU MEDIGO FAMILIAR
+            \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        ', [X, AuxProb]).
+
 test :-
-    fullDiagnostic([bulto_en_area_de_la_mama, hinchazon_en_area_de_la_mama, piel_con_hoyuelos, pezon_retraido, enrojecimiento, formacion_de_costras, secrecion_del_pezon, dolor_en_cualquier_parte_de_la_mama, ganglios_linfaticos_inflamados], R), writeln(R).
+    fullDiagnostic([dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento, amplitud_de_movimiento_limitada, sensacion_de_calor_en_el_lugar_del_dolor], R), writeln(R).
+    % fullDiagnostic([dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento, amplitud_de_movimiento_limitada, sensacion_de_calor_en_el_lugar_del_dolor, fiebre], R), writeln(R).
+    % fullDiagnostic([dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento, amplitud_de_movimiento_limitada, sensacion_de_calor_en_el_lugar_del_dolor, fiebre, nodulos_en_la_piel], R), writeln(R).
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -959,13 +996,7 @@ replace0([I|_], Input, _, Resp, R) :-
         X == flagMedicineType -> medicineType(Atom, R);
         X == flagHowPrencriptionMedicine -> howPrencriptionMedicine(Atom, R)
     ).
-
-% replace0([I|_], Input, _, Resp, R) :- 
-%     nth0(I, Input, Atom0),
-%     Enf =  [Atom0],
-%     nth0(0, Resp, X),
-%     X == flagHowDiseaseCanIHaveAccording1Symptom,
-%     howDiseaseCanIHaveAccordingNumber(Enf, 1, R).
+% ----- Multiple arguments rules ---- %
 
 replace0([I|_], Input, _, Resp, R) :- 
     nth0(I, Input, Atom0),
@@ -973,11 +1004,10 @@ replace0([I|_], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording1Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 1, R);
-        X == flagHowDiseaseCanIHaveAccording1SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R)
+        X == flagHowDiseaseCanIHaveAccording1SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith1SymptomWithProbability -> fullDiagnostic(Enf, R)
     ).
-    
-    
- 
+     
 replace0([I, J], Input, _, Resp, R) :- 
     nth0(I, Input, Atom0),
     nth0(J, Input, Atom1),
@@ -985,7 +1015,8 @@ replace0([I, J], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording2Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 2, R);
-        X == flagHowDiseaseCanIHaveAccording2SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording2SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith2SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 replace0([I, J, K], Input, _, Resp, R) :- 
@@ -996,7 +1027,8 @@ replace0([I, J, K], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording3Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 3, R);
-        X == flagHowDiseaseCanIHaveAccording3SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording3SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith3SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 replace0([I, J, K, L], Input, _, Resp, R) :- 
@@ -1008,7 +1040,8 @@ replace0([I, J, K, L], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording4Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 4, R);
-        X == flagHowDiseaseCanIHaveAccording4SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording4SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith4SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 replace0([I, J, K, L, M], Input, _, Resp, R) :- 
@@ -1021,7 +1054,8 @@ replace0([I, J, K, L, M], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording5Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 5, R);
-        X == flagHowDiseaseCanIHaveAccording5SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording5SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith5SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 replace0([I, J, K, L, M, N], Input, _, Resp, R) :- 
@@ -1035,7 +1069,8 @@ replace0([I, J, K, L, M, N], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording6Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 6, R);
-        X == flagHowDiseaseCanIHaveAccording6SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording6SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith6SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 replace0([I, J, K, L, M, N, O], Input, _, Resp, R) :- 
@@ -1050,7 +1085,8 @@ replace0([I, J, K, L, M, N, O], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording7Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 7, R);
-        X == flagHowDiseaseCanIHaveAccording7SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording7SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith7SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 replace0([I, J, K, L, M, N, O, P], Input, _, Resp, R) :- 
@@ -1066,7 +1102,8 @@ replace0([I, J, K, L, M, N, O, P], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording8Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 8, R);
-        X == flagHowDiseaseCanIHaveAccording8SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording8SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith8SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 replace0([I, J, K, L, M, N, O, P, Q], Input, _, Resp, R) :- 
@@ -1083,12 +1120,12 @@ replace0([I, J, K, L, M, N, O, P, Q], Input, _, Resp, R) :-
     nth0(0, Resp, X),
     (
         X == flagHowDiseaseCanIHaveAccording9Symptom -> howDiseaseCanIHaveAccordingNumber(Enf, 9, R);
-        X == flagHowDiseaseCanIHaveAccording9SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R) 
+        X == flagHowDiseaseCanIHaveAccording9SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
+        X == flagWhatIsMyFullDiagnosticWith9SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
     
 
-
-
+% ----- Others rules ---- %
 
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
