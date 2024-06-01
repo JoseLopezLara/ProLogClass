@@ -498,10 +498,6 @@ cantSint(E , C) :- findall(X , sintomade(X, E) , L) , length(L , R), C is R.
 % [1st Prameter: Symptoms List, 2nd Prameter: Disease, 3rd Prameter: Return probability]
 diagnostico([X|Xs] , E , K) :- buscar([X|Xs] , E , P) , cantSint(E , T) , K is P * 100 / T. 
 
-%rule that prescription medicine according symptom
-% TODO: Cheche if need delete this rule  
-recetade(M, S):- sintomade(S, Z), medicinade(M, Z).
-
 % rule tha return the medicine and specialist according any disease 
 % [1st Prameter: specialist tha return, 2nd Prameter: Medicine that return, 3rd Prameter: Disease]
 atiendeespecialista(E, S):- sintomade(S,Z), especialistade(E, Z).
