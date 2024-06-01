@@ -149,38 +149,8 @@ template([s(_), 'y', s(_), tienen, un, nieto, llamado, s(_), '?', .], [flagHaveG
 template([s(_), 'y', s(_), quieren, mucho, a, su, nieto, s(_), '?', .], [flagWeLoveGrandSon], [0,2,8]).
 template([s(_), 'y', s(_), quieren, mucho, a, su, hijo, s(_), '?', .], [flagWeLoveChild], [0,2,8]).
 
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO DISEASES TREE  --------------------------------------- %
-
-% tienes información de la enfermedad s(-) ? .
-% cuales son los síntomas del s(-) ? .  
-% que medicinas son utilizadas para la s(_) ? .
-% que especialistas atienden s(_) ? .
-% que alimentos detonan s(_) ? .
-% que región encapsula la s(_) ? .
-% cuantos síntomas diferentes tiene el s(_) ? .
-% cuantas medicinas diferentes pueden tratar el (_) ? .
-% cuantos especialistas diferentes pueden atender el (_) ? .
-% cuantos alimentos diferentes pueden detonar el (_) ? .
-% el sintoma s(_) a que enfermedades puede pertenecer () ? .
-% el medicamento s(_) que enfermedades puede tratar ? .
-% el especialista s(_) que enfermedades puede tratar ? .
-% el abuso de s(_) que enfermedades puede detonar ? .
-% a que enfermedad o enfermedades pertenece el sintoma de s(_) ? .
-% la medicamento s(_) que enfermedad trata ? .
-% el especialista s(_) que enfermedad trata ? .
-% el alimento s(_) que enfermedad detona ? .
-% que tipo de medicamente es el s(_) ? .
-% como se suministra el medicamento s() ? .
-
+% ********************** 20 template of 1 argument to disease system expert ********************** %
+% ************************************************************************************** %
 % tienes informacion de la enfermedad gota ? .
 template([tienes, informacion, de, la, enfermedad, s(-), '?', .], [flagDiseaseInformation], [5]).
 % cuales son los sintomas del gota ? .
@@ -222,6 +192,8 @@ template([que, tipo, de, medicamento, es, el, s(_), '?', .], [flagMedicineType],
 % como se suministra el medicamento paracetamol ? .
 template([como, se, suministra, el, medicamento, s(_), '?', .], [flagHowPrencriptionMedicine], [5]).
 
+% ********************** 30 template of multiple arguments to system expert ********************** %
+% ************************************************************************************** %
 % tengo el siguiente sintoma fiebre. que enfermedad puedo tener ? .
 template([tengo, el, siguiente, sintoma, _, '.', que, enfermedad, puedo, tener, '?', .], [flagHowDiseaseCanIHaveAccording1Symptom], [4]).
 % tengo los siguientes sintomas fiebre, tos_seca. que enfermedad puedo tener ? .
@@ -266,6 +238,18 @@ template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '
 template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith9SymptomWithProbability], [4,6,8,10,12,14,16,18,20]).
 template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, ',', _, '.', cual, es, mi, diagnostico, '?', .], [flagWhatIsMyFullDiagnosticWith10SymptomWithProbability], [4,6,8,10,12,14,16,18,20,22]).
 
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
+% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
 
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
@@ -475,16 +459,9 @@ wife(X, R) :-
     atomic_list_concat(Wife, ', ', WifeStr),
     format(atom(R), 'La esposa de ~w es: ~w.', [X, WifeStr]).
 
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
-% --------------------------------------- DISEASES RULES --------------------------------------- %
+
+% --------------------------------------- Disease System Expert rules --------------------------------------- %
+% --------------------------------------- Disease System Expert rules --------------------------------------- %
 
 % Find diseases rule [1st Prameter: Symptoms List, 2nd Prameter: Disease, 3rd Prameter:Ocurrences] %
 buscar([], _ , 0).
@@ -639,10 +616,18 @@ fullDiagnostic(X, R) :-
             \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         ', [X, AuxProb]).
 
-test :-
-    fullDiagnostic([dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento, amplitud_de_movimiento_limitada, sensacion_de_calor_en_el_lugar_del_dolor], R), writeln(R).
-    % fullDiagnostic([dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento, amplitud_de_movimiento_limitada, sensacion_de_calor_en_el_lugar_del_dolor, fiebre], R), writeln(R).
-    % fullDiagnostic([dolor_articular_intenso, molestia_articular_persistente, inflamacion, enrojecimiento, amplitud_de_movimiento_limitada, sensacion_de_calor_en_el_lugar_del_dolor, fiebre, nodulos_en_la_piel], R), writeln(R).
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -958,18 +943,8 @@ replace0([I, J, K], Input, _, Resp, R) :-
     X == flagWeLoveChild,
     quierenAlHijoLlamado(Atom0, Atom1, Atom2, R).    
 
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-% --------------------------------------- Diseases Replace --------------------------------------- %
-
+% --------------------------------------- Replace Disease System Expert  --------------------------------------- %
+% --------------------------------------- Replace Disease System Expert  --------------------------------------- %
 % ----- One argument rules ---- %
 replace0([I|_], Input, _, Resp, R) :- 
     nth0(I, Input, Atom),
@@ -1119,7 +1094,19 @@ replace0([I, J, K, L, M, N, O, P, Q], Input, _, Resp, R) :-
         X == flagHowDiseaseCanIHaveAccording9SymptomWithProbability -> howDiseaseCanIHaveAccordingSymptomWithProbability(Enf, R);
         X == flagWhatIsMyFullDiagnosticWith9SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
-    
+
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
+% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
 
 % ----- Others rules ---- %
 
@@ -1416,3 +1403,192 @@ regionde(no_tiene_una_region_de_origen, cancer_de_mama).
 % --- END KNOWLEDGE BASE TO DISEASES --- %
 % --- END KNOWLEDGE BASE TO DISEASES --- %
 % --- END KNOWLEDGE BASE TO DISEASES --- %
+
+
+% --- START KNOWLEDGE BASE TO HARRY POTTER --- %
+% --- START KNOWLEDGE BASE TO HARRY POTTER --- %
+% --- START KNOWLEDGE BASE TO HARRY POTTER --- %
+
+% Main chacteres to Harry Potter Saga
+personaje(harry_potter).
+personaje(ron_weasley).
+personaje(hermione_granger).
+personaje(ginny_weasley).
+personaje(fred_weasley).
+personaje(george_weasley).
+personaje(neville_longbottom).
+personaje(draco_malfoy).
+personaje(cedric_diggory).
+personaje(albus_dumbledore).
+personaje(rubeus_hagrid).
+personaje(sirius_black).
+personaje(severus_snape).
+personaje(lucius_malfoy).
+personaje(voldemort).
+personaje(cornelius_fudge).
+personaje(luna_lovegood).
+personaje(cho_chang).
+personaje(nicolas_flamel).
+
+% Gender of chacteres
+genero(harry_potter, masculino).
+genero(ron_weasley, masculino).
+genero(fred_weasley, masculino).
+genero(george_weasley, masculino).
+genero(neville_longbottom, masculino).
+genero(draco_malfoy, masculino).
+genero(cedric_diggory, masculino).
+genero(albus_dumbledore, masculino).
+genero(rubeus_hagrid, masculino).
+genero(sirius_black, masculino).
+genero(severus_snape, masculino).
+genero(lucius_malfoy, masculino).
+genero(voldemort, masculino).
+genero(cornelius_fudge, masculino).
+genero(luna_lovegood, femenino).
+genero(cho_chang, femenino).
+genero(ginny_weasley, femenino).
+genero(hermione_granger, femenino).
+
+% Houses
+casa(gryffindor).
+casa(slytherin).
+casa(hufflepuff).
+casa(ravenclaw).
+
+% House according to person
+perteneceA(harry_potter, gryffindor).
+perteneceA(ron_weasley, gryffindor).
+perteneceA(hermione_granger, gryffindor).
+perteneceA(ginny_weasley, gryffindor).
+perteneceA(fred_weasley, gryffindor).
+perteneceA(george_weasley, gryffindor).
+perteneceA(neville_longbottom, gryffindor).
+perteneceA(draco_malfoy, slytherin).
+perteneceA(cedric_diggory, hufflepuff).
+perteneceA(luna_lovegood, ravenclaw).
+perteneceA(cho_chang, ravenclaw).
+
+% Families
+familia(potter).
+familia(weasley).
+familia(malfoy).
+
+% Family according to any person
+familiaQuePertenece(harry_potter, potter).
+familiaQuePertenece(sirius_black, potter).
+familiaQuePertenece(ron_weasley, weasley).
+familiaQuePertenece(ginny_weasley, weasley).
+familiaQuePertenece(fred_weasley, weasley).
+familiaQuePertenece(george_weasley, weasley).
+familiaQuePertenece(draco_malfoy, malfoy).
+familiaQuePertenece(lucius_malfoy, malfoy).
+
+% Any chacter accordin to any person
+caracteristica(harry_potter, atractivo).
+
+caracteristica(fred_weasley, tiene_gemelo).
+caracteristica(george_weasley, tiene_gemelo).
+
+caracteristica(albus_dumbledore, cabello_largo).
+caracteristica(rubeus_hagrid, cabello_largo).
+caracteristica(sirius_black, cabello_largo).
+caracteristica(severus_snape, cabello_largo).
+
+caracteristica(lucius_malfoy, cabello_rubio).
+
+caracteristica(albus_dumbledore, cabello_blanco).
+caracteristica(luna_lovegood, cabello_blanco).
+
+caracteristica(rubeus_hagrid, barba_grande).
+caracteristica(albus_dumbledore, barba_grande).
+
+caracteristica(severus_snape, ha_matado).
+caracteristica(voldemort, ha_matado).
+
+caracteristica(severus_snape, profesor).
+
+caracteristica(lucius_malfoy, ha_matado).
+
+
+% --- Magic objects ---
+objeto_magico(varita_de_sauco).
+objeto_magico(capa_de_invisibilidad).
+objeto_magico(piedra_filosofal).
+objeto_magico(libro_de_hechizos).
+objeto_magico(sombrero_seleccionador).
+objeto_magico(espada_de_gryffindor).
+
+% property to any object
+propietario(harry_potter, capa_de_invisibilidad).
+propietario(albus_dumbledore, varita_de_sauco).
+propietario(nicolas_flamel, piedra_filosofal).
+propietario(harry_potter, libro_de_hechizos).
+propietario(hogwarts, sombrero_seleccionador).
+propietario(neville_longbottom, espada_de_gryffindor).
+
+% --- Magic locations ---
+lugar(hogwarts).
+lugar(la_madriguera).
+lugar(azkaban).
+lugar(diagon_alley).
+lugar(la_torre_de_ravenclaw).
+lugar(el_bosque_prohibido).
+
+
+% --- Magic criatures ---
+criatura(hipogrifo).
+criatura(dementor).
+criatura(elfo_domestico).
+criatura(fenix).
+criatura(hombre_lobo).
+criatura(centauro).
+
+% description to any magic criature
+descripcion(hipogrifo, 'Una criatura mágica con el cuerpo de un caballo y las alas y cabeza de un águila.').
+descripcion(dementor, 'Seres oscuros que absorben la felicidad de las personas y pueden realizar el "beso del dementor".').
+descripcion(elfo_domestico, 'Una criatura mágica que sirve a una familia de magos y tiene poderes mágicos propios.').
+descripcion(fenix, 'Un ave mágica que renace de sus cenizas, conocida por sus lágrimas curativas.').
+descripcion(hombre_lobo, 'Un ser humano que se transforma en lobo durante la luna llena.').
+descripcion(centauro, 'Una criatura con la cabeza, el torso y los brazos de un humano y el cuerpo y las piernas de un caballo.').
+
+
+% description object
+descripcion(varita_de_sauco, 'Una de las tres Reliquias de la Muerte, la varita más poderosa jamás creada.').
+descripcion(capa_de_invisibilidad, 'Una de las tres Reliquias de la Muerte, hace invisible al portador.').
+descripcion(piedra_filosofal, 'Una piedra mágica capaz de convertir cualquier metal en oro y producir el Elixir de la Vida.').
+descripcion(libro_de_hechizos, 'Un libro que contiene una colección de hechizos mágicos.').
+descripcion(sombrero_seleccionador, 'Un sombrero mágico que selecciona a los estudiantes en una de las cuatro casas de Hogwarts.').
+descripcion(espada_de_gryffindor, 'Una espada mágica que pertenece a la casa Gryffindor y aparece en momentos de necesidad.').
+
+% descriptions to chacteres
+descripcion(harry_potter, 'El niño que vivió, famoso por sobrevivir el ataque de Voldemort siendo un bebé.').
+descripcion(ron_weasley, 'El mejor amigo de Harry, miembro de la familia Weasley.').
+descripcion(hermione_granger, 'La mejor amiga de Harry, conocida por su inteligencia y habilidades mágicas.').
+descripcion(ginny_weasley, 'Hermana menor de Ron, miembro de la familia Weasley y eventual esposa de Harry.').
+descripcion(fred_weasley, 'Uno de los gemelos Weasley, conocido por su sentido del humor y travesuras.').
+descripcion(george_weasley, 'Uno de los gemelos Weasley, conocido por su sentido del humor y travesuras.').
+descripcion(neville_longbottom, 'Estudiante de Gryffindor conocido por su valentía y desarrollo a lo largo de la saga.').
+descripcion(draco_malfoy, 'Estudiante de Slytherin, rival de Harry y miembro de la familia Malfoy.').
+descripcion(cedric_diggory, 'Estudiante de Hufflepuff, conocido por su nobleza y participación en el Torneo de los Tres Magos.').
+descripcion(albus_dumbledore, 'Director de Hogwarts, uno de los magos más poderosos y respetados.').
+descripcion(rubeus_hagrid, 'Guardián de las llaves y terrenos de Hogwarts, conocido por su amor por las criaturas mágicas.').
+descripcion(sirius_black, 'Padrino de Harry, conocido por su lealtad y valentía.').
+descripcion(severus_snape, 'Profesor de Pociones, conocido por su papel ambiguo y su sacrificio final.').
+descripcion(lucius_malfoy, 'Miembro de la familia Malfoy, conocido por su lealtad a las artes oscuras.').
+descripcion(voldemort, 'El mago tenebroso más poderoso de todos los tiempos, conocido por su intento de dominar el mundo mágico.').
+descripcion(cornelius_fudge, 'Ministro de Magia durante gran parte de la saga, conocido por su incompetencia y negación de la amenaza de Voldemort.').
+descripcion(luna_lovegood, 'Estudiante de Ravenclaw, conocida por su personalidad excéntrica y sus creencias inusuales.').
+descripcion(cho_chang, 'Estudiante de Ravenclaw, conocida por su relación con Cedric Diggory y su breve romance con Harry.').
+
+% Magic locations descriptions
+descripcion(hogwarts, 'El colegio de magia y hechicería más famoso, donde los jóvenes magos y brujas aprenden.').
+descripcion(la_madriguera, 'El hogar de la familia Weasley, una casa mágica y acogedora.').
+descripcion(azkaban, 'La prisión mágica de alta seguridad para magos y brujas.').
+descripcion(diagon_alley, 'Una calle mágica donde los magos pueden comprar suministros y equipos mágicos.').
+descripcion(la_torre_de_ravenclaw, 'La torre donde se encuentra la sala común de la casa Ravenclaw en Hogwarts.').
+descripcion(el_bosque_prohibido, 'Un bosque oscuro y peligroso en los terrenos de Hogwarts, hogar de muchas criaturas mágicas.').
+
+% --- END KNOWLEDGE BASE TO HARRY POTTER --- %
+% --- END KNOWLEDGE BASE TO HARRY POTTER --- %
+% --- END KNOWLEDGE BASE TO HARRY POTTER --- %
