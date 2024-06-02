@@ -251,6 +251,49 @@ template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '
 % --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
 % --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
 
+% ********************** 20 template of zero and one argumnet arguments to system expert ********************** %
+% ************************************************************************************** %
+% cuales son los principales objetos magicos que conoces ? .
+template([cuales, son, los, principales, objetos, magicos, que, conoces, '?'], [flagKnowMagicalObjects], [_]).
+% quien es el propietario de varita_de_sauco ? .
+template([quien, es, el, propietario, de, s(_), '?'], [flagOwner], [5]).
+% que personajes de genero femenino conoces ? .
+template([que, personajes, de, genero, s(_), conoces, '?'], [flagCharactersByGender], [4]).
+% cuales son las casas de Hogwarts ? .
+template([cuales, son, las, casas, de, hogwarts, '?'], [flagHogwartsHouses], []).
+% a que casa pertenece s(_) ? .
+template([a, que, casa, pertenece, s(_), '?'], [flagHouseOf], [4]).
+% que familias conoces s(_) ? .
+template([que, familias, conoces, s(_), '?'], [flagFamilies], [4]).
+% a que familia pertenece s(_) ? .
+template([a, que, familia, pertenece, s(_), '?'], [flagFamilyOf], [4]).
+% quienes pertenecen a la familia s(_) ? .
+template([quienes, pertenecen, a, la, familia, s(_), '?'], [flagFamilyMembers], [6]).
+% que personajes tiene la caracteristica s(_) ? .
+template([que, personajes, tienen, la, caracteristica, s(_), '?'], [flagCharactersByTrait], [6]).
+% que caracteristicas tiene s(_) ? .
+template([que, caracteristicas, tiene, s(_), '?'], [flagTraitsOf], [3]).
+% cuales objetos magicos conoces ?
+template([cuales, objetos, magicos, conoces, '?'], [flagMagicalObjects], []).
+% a quien le pertenece el objeto magico s(_) ? .
+template([a, quien, le, pertenece, el, objeto, magico, s(_), '?'], [flagOwnerOfObject], [6]).
+% que locaciones magicas conoces s(_) ? .
+template([que, locaciones, magicas, conoces, s(_), '?'], [flagMagicalLocations], [4]).
+% cuales son las principales criaturas magicas que conoces ? .
+template([cuales, son, las, principales, criaturas, magicas, que, conoces, '?'], [flagMagicalCreatures], []).
+% que conoces del la criatura magica s(_) ? .
+template([que, conoces, de, la, criatura, magica, s(_), '?'], [flagInfoCreature], [5]).
+% que conoces del objeto magico s(_) ? .
+template([que, conoces, del, objeto, magico, s(_), '?'], [flagInfoObject], [5]).
+% que conoces del personaje s(_) ? .
+template([que, conoces, del, personaje, s(_), '?'], [flagInfoCharacter], [4]).
+% que conoces del lugar s(_) ? .
+template([que, conoces, del, lugar, s(_), '?'], [flagInfoPlace], [4]).
+% s(_) es estudiante ? .
+template([s(_), es, estudiante, '?'], [flagIsStudent], [0]).
+
+% ********************** Other templates ********************** %
+% ************************************************************* %
 template(_, ['Please', explain, a, little, more, '.'], []). 
 % Lo que le gusta a eliza : flagLike
 elizaLikes(X, R):- likes(X), R = ['Yeah', i, like, X].
@@ -546,6 +589,7 @@ howDiseaseCanIHaveAccordingNumber(X, P, R) :-
     atomic_list_concat(Aux, ', ', AuxStr),
     format(atom(R), 'Los sintomas presetados: ~w. pertenecen a la enfermedad/es: ~w.', [X, AuxStr]).
 
+% -Rules that template with multiple arguments- %
 howDiseaseCanIHaveAccordingSymptomWithProbability(X, R) :- 
     findall(E, diagnostico(X, E , K), Aux),
     atomic_list_concat(Aux, ', ', AuxStr),
@@ -562,7 +606,7 @@ fullDiagnostic(X, R) :-
             findall(Y, (member(Disease, AuxDisease), medicinade(Y, Disease)), AuxMedicine),
             findall(Info, (member(Med, AuxMedicine), infodemedicina(Info, Med)), AuxMedicineInfo),
             
-            % Concatenar información de medicamentos y prescripciones
+            % concat medicine information
             findall(InfoStr, (
                 nth1(Index, AuxMedicine, Med),
                 nth1(Index, AuxMedicineInfo, Presc),
@@ -570,7 +614,7 @@ fullDiagnostic(X, R) :-
             ), AuxMecineWithInfo),
             atomic_list_concat(AuxMecineWithInfo, '\n', AuxMecineWithInfoStr),
 
-            % Concatenar información de alimentos
+            % concat foot information
             findall(FoodStr, (
                 alimentoquedetoda(Food, Disease),
                 member(Disease, AuxDisease),
@@ -578,7 +622,7 @@ fullDiagnostic(X, R) :-
             ), AuxFoodWithFormat),
             atomic_list_concat(AuxFoodWithFormat, '\n', AuxFoodWithFormatStr),
 
-            % Concatenar información de especialistas
+            % Concat specilist information
             findall(SpecStr, (
                 especialistade(Spec, Disease),
                 member(Disease, AuxDisease),
@@ -628,6 +672,21 @@ fullDiagnostic(X, R) :-
 % --------------------------------------- HARRY POTTER RULES --------------------------------------- %
 % --------------------------------------- HARRY POTTER RULES --------------------------------------- %
 % --------------------------------------- HARRY POTTER RULES --------------------------------------- %
+
+knowMagicalObjects(R) :-
+    findall(X, objeto_magico(X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Los principales objetos magicos que conosco son:\n   * ~w.', [AuxStr]).
+
+owner(X, R) :-
+    findall(Y, propietario(Y,X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'El propietario de ~w es: ~w.', [X, AuxStr]).
+
+charactersByGender(X, R) :-
+    findall(Y, genero(Y, X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Lospersonajes de genero ~w son:\n   * ~w.', [X, AuxStr]).
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -1108,6 +1167,15 @@ replace0([I, J, K, L, M, N, O, P, Q], Input, _, Resp, R) :-
 % --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
 % --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
 
+% ----- Zero One argument rules ---- %
+replace0([I|_], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom),
+    nth0(0, Resp, X),
+    (
+        X == flagKnowMagicalObjects -> knowMagicalObjects(R); 
+        X == flagOwner -> owner(Atom, R) ;
+        X == flagCharactersByGender -> charactersByGender(Atom, R) 
+    ).
 % ----- Others rules ---- %
 
 replace0([I|Index], Input, N, Resp, R):-
