@@ -251,7 +251,7 @@ template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '
 % --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
 % --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
 
-% ********************** 20 template of zero and one argumnet arguments to system expert ********************** %
+% ********************** 20 template of zero and one  arguments  ********************** %
 % ************************************************************************************** %
 % cuales son los principales objetos magicos que conoces ? .
 template([cuales, son, los, principales, objetos, magicos, que, conoces, '?'], [flagKnowMagicalObjects], [_]).
@@ -291,6 +291,20 @@ template([que, conoces, del, personaje, s(_), '?'], [flagInfoCharacter], [4]).
 template([que, conoces, del, lugar, s(_), '?'], [flagInfoPlace], [4]).
 % ginny_weasley es estudiante ? .
 template([s(_), es, estudiante, '?'], [flagIsStudent], [0]).
+
+% **************************** 5 template of two argumnets ***************************** %
+% ************************************************************************************** %
+% varita_de_sauco es un objeto magico y en total son 6 ? .
+template([s(_), es, un, objeto, magico, y, en, total, son, s(_), '?'], [flagExistObjetAndCount], [0,9]).
+% azkaban es un lugar conocido y en total son 6 ? .
+template([s(_), es, un, lugar, conocido, y, en, total, son, s(_), '?'], [flagExistLocationAndCount], [0,9]).
+% ravenclaw es una casa de hogwarts y en total son 4 ? .
+template([s(_), es, una, casa, de, hogwarts, y, en, total, son, s(_), '?'], [flagExistHouseAndCount], [0,10]).
+% fenix es una criatura magica y en total son 6 ? .
+template([s(_), es, una, criatura, magica, y, en, total, son, s(_), '?'], [flagExistCriatureAndCount], [0,9]).
+% fenix es una criatura magica y en total son 6 ? .
+template([el, s(_), es, [una, un], [criatura, criatur], [magica, magca], y, en, [total], son, s(_), '?'], [flagExistCriatureAndCount], [1,10]).
+
 
 % ********************** Other templates ********************** %
 % ************************************************************* %
@@ -766,7 +780,26 @@ infoPlace(X, R) :-
 isStudent(X, R):- perteneceA(X, A), R = ['Si', X, 'es estudiante de ', A], !.
 isStudent(X, R):- \+ perteneceA(X, _), R = ['No', X, 'no es estudiante'], !.
 
+% ----- Two arguments rules ---- %
+existObjetAndCount(Obj, Number, Result):- objeto_magico(Obj), (findall(_ , objeto_magico(_) , L), length(L , R), C is R, C == Number), Result = ['Si exite el objeto magico ', Obj, ' y SI en total son: ', Number].
+existObjetAndCount(Obj, Number, Result):- \+ objeto_magico(Obj), (findall(_ , objeto_magico(_) , L), length(L , R), C is R, C == Number), Result = ['No exite el objeto magico ', Obj, ' pero en total si son: ', Number].
+existObjetAndCount(Obj, Number, Result):- objeto_magico(Obj),  findall(_ , objeto_magico(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['Si exite el objeto magico ', Obj, ' pero en total No son: ', Number, ' si no, ', C].
+existObjetAndCount(Obj, Number, Result):- \+ objeto_magico(Obj), findall(_ , objeto_magico(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['No exite el objeto magico ', Obj, 'y en total No son: ', Number, ' si no, ', C].
 
+existLocationAndCount(Obj, Number, Result):- lugar(Obj), (findall(_ , lugar(_) , L), length(L , R), C is R, C == Number), Result = ['Si exite el objeto magico ', Obj, ' y SI en total son: ', Number].
+existLocationAndCount(Obj, Number, Result):- \+ lugar(Obj), (findall(_ , lugar(_) , L), length(L , R), C is R, C == Number), Result = ['No exite el objeto magico ', Obj, ' pero en total si son: ', Number].
+existLocationAndCount(Obj, Number, Result):- lugar(Obj),  findall(_ , lugar(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['Si exite el objeto magico ', Obj, ' pero en total No son: ', Number, ' si no, ', C].
+existLocationAndCount(Obj, Number, Result):- \+ lugar(Obj), findall(_ , lugar(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['No exite el objeto magico ', Obj, 'y en total No son: ', Number, ' si no, ', C].
+
+existHouseAndCount(Obj, Number, Result):- casa(Obj), (findall(_ , casa(_) , L), length(L , R), C is R, C == Number), Result = ['Si exite el objeto magico ', Obj, ' y SI en total son: ', Number].
+existHouseAndCount(Obj, Number, Result):- \+ casa(Obj), (findall(_ , casa(_) , L), length(L , R), C is R, C == Number), Result = ['No exite el objeto magico ', Obj, ' pero en total si son: ', Number].
+existHouseAndCount(Obj, Number, Result):- casa(Obj),  findall(_ , casa(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['Si exite el objeto magico ', Obj, ' pero en total No son: ', Number, ' si no, ', C].
+existHouseAndCount(Obj, Number, Result):- \+ casa(Obj), findall(_ , casa(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['No exite el objeto magico ', Obj, 'y en total No son: ', Number, ' si no, ', C].
+
+existCriatureAndCount(Obj, Number, Result):- criatura(Obj), (findall(_ , criatura(_) , L), length(L , R), C is R, C == Number), Result = ['Si exite el objeto magico ', Obj, ' y SI en total son: ', Number].
+existCriatureAndCount(Obj, Number, Result):- \+ criatura(Obj), (findall(_ , criatura(_) , L), length(L , R), C is R, C == Number), Result = ['No exite el objeto magico ', Obj, ' pero en total si son: ', Number].
+existCriatureAndCount(Obj, Number, Result):- criatura(Obj),  findall(_ , criatura(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['Si exite el objeto magico ', Obj, ' pero en total No son: ', Number, ' si no, ', C].
+existCriatureAndCount(Obj, Number, Result):- \+ criatura(Obj), findall(_ , criatura(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['No exite el objeto magico ', Obj, 'y en total No son: ', Number, ' si no, ', C].
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -1272,7 +1305,21 @@ replace0([I|_], Input, _, Resp, R) :-
         X == flagInfoPlace -> infoPlace(Atom, R); 
         X == flagIsStudent -> isStudent(Atom, R)
     ).
-% ----- Others rules ---- %
+
+% ----- Two argument rules ---- %
+replace0([I,J], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(0, Resp, X),
+    (
+        X == flagExistObjetAndCount -> existObjetAndCount(Atom0, Atom1, R); 
+        X == flagExistLocationAndCount -> existLocationAndCount(Atom0, Atom1, R); 
+        X == flagExistHouseAndCount -> existHouseAndCount(Atom0, Atom1, R); 
+        X == flagExistCriatureAndCount -> existCriatureAndCount(Atom0, Atom1, R) 
+    ).
+
+
+% ----- Others repleaces ---- %
 
 replace0([I|Index], Input, N, Resp, R):-
 	length(Index, M), M =:= 0,
