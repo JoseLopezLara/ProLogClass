@@ -259,37 +259,37 @@ template([cuales, son, los, principales, objetos, magicos, que, conoces, '?'], [
 template([quien, es, el, propietario, de, s(_), '?'], [flagOwner], [5]).
 % que personajes de genero femenino conoces ? .
 template([que, personajes, de, genero, s(_), conoces, '?'], [flagCharactersByGender], [4]).
-% cuales son las casas de Hogwarts ? .
-template([cuales, son, las, casas, de, hogwarts, '?'], [flagHogwartsHouses], []).
-% a que casa pertenece s(_) ? .
+% cuales son las casas de hogwarts ? .
+template([cuales, son, las, casas, de, hogwarts, '?'], [flagHogwartsHouses], [_]).
+% a que casa pertenece harry_potter ? . ------------------------
 template([a, que, casa, pertenece, s(_), '?'], [flagHouseOf], [4]).
-% que familias conoces s(_) ? .
-template([que, familias, conoces, s(_), '?'], [flagFamilies], [4]).
-% a que familia pertenece s(_) ? .
+% que familias conoces ? .
+template([que, familias, conoces, '?'], [flagFamilies], [_]).
+% a que familia pertenece harry_potter ? .
 template([a, que, familia, pertenece, s(_), '?'], [flagFamilyOf], [4]).
-% quienes pertenecen a la familia s(_) ? .
-template([quienes, pertenecen, a, la, familia, s(_), '?'], [flagFamilyMembers], [6]).
-% que personajes tiene la caracteristica s(_) ? .
-template([que, personajes, tienen, la, caracteristica, s(_), '?'], [flagCharactersByTrait], [6]).
-% que caracteristicas tiene s(_) ? .
+% quienes pertenecen a la familia weasley ? .
+template([quienes, pertenecen, a, la, familia, s(_), '?'], [flagFamilyMembers], [5]).
+% que personajes tienen la caracteristica cabello_largo ? .
+template([que, personajes, tienen, la, caracteristica, s(_), '?'], [flagCharactersByTrait], [5]).
+% que caracteristicas tiene albus_dumbledore ? .
 template([que, caracteristicas, tiene, s(_), '?'], [flagTraitsOf], [3]).
 % cuales objetos magicos conoces ?
-template([cuales, objetos, magicos, conoces, '?'], [flagMagicalObjects], []).
-% a quien le pertenece el objeto magico s(_) ? .
-template([a, quien, le, pertenece, el, objeto, magico, s(_), '?'], [flagOwnerOfObject], [6]).
-% que locaciones magicas conoces s(_) ? .
-template([que, locaciones, magicas, conoces, s(_), '?'], [flagMagicalLocations], [4]).
+template([cuales, objetos, magicos, conoces, '?'], [flagMagicalObjects], [_]).
+% a quien le pertenece el objeto magico varita_de_sauco ? .
+template([a, quien, le, pertenece, el, objeto, magico, s(_), '?'], [flagOwnerOfObject], [7]).
+% que locaciones magicas conoces ? .
+template([que, locaciones, magicas, conoces, '?'], [flagMagicalLocations], [_]).
 % cuales son las principales criaturas magicas que conoces ? .
-template([cuales, son, las, principales, criaturas, magicas, que, conoces, '?'], [flagMagicalCreatures], []).
-% que conoces del la criatura magica s(_) ? .
-template([que, conoces, de, la, criatura, magica, s(_), '?'], [flagInfoCreature], [5]).
-% que conoces del objeto magico s(_) ? .
+template([cuales, son, las, principales, criaturas, magicas, que, conoces, '?'], [flagMagicalCreatures], [_]).
+% que conoces de la criatura magica elfo_domestico ? .
+template([que, conoces, de, la, criatura, magica, s(_), '?'], [flagInfoCreature], [6]).
+% que conoces del objeto magico varita_de_sauco ? .
 template([que, conoces, del, objeto, magico, s(_), '?'], [flagInfoObject], [5]).
-% que conoces del personaje s(_) ? .
+% que conoces del personaje albus_dumbledore ? .
 template([que, conoces, del, personaje, s(_), '?'], [flagInfoCharacter], [4]).
-% que conoces del lugar s(_) ? .
+% que conoces del lugar diagon_alley ? .
 template([que, conoces, del, lugar, s(_), '?'], [flagInfoPlace], [4]).
-% s(_) es estudiante ? .
+% ginny_weasley es estudiante ? .
 template([s(_), es, estudiante, '?'], [flagIsStudent], [0]).
 
 % ********************** Other templates ********************** %
@@ -687,6 +687,86 @@ charactersByGender(X, R) :-
     findall(Y, genero(Y, X), Aux),
     atomic_list_concat(Aux, '\n   * ', AuxStr),
     format(atom(R), 'Lospersonajes de genero ~w son:\n   * ~w.', [X, AuxStr]).
+
+hogwartsHouses(R) :-
+    findall(X, casa(X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Las 4 casa de hogwarts son:\n   * ~w.', [AuxStr]).
+
+houseOf(X, R) :-
+    findall(Y, perteneceA(X,Y), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), '~w pertenece a : ~w.', [X, AuxStr]).
+
+families(R) :-
+    findall(X, familia(X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Las familias que conosco son:\n   * ~w.', [AuxStr]).
+
+familyOf(X, R) :-
+    findall(Y, familiaQuePertenece(X,Y), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), '~w pertenece a la familia: ~w.', [X, AuxStr]).
+
+familyMembers(X, R) :-
+    findall(Y, familiaQuePertenece(Y,X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'En la familia ~w pertenecen:\n   * ~w.', [X, AuxStr]).
+
+charactersByTrait(X, R) :-
+    findall(Y, caracteristica(Y,X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Los personajes que tienen la caracteristica de ~w son:\n   * ~w.', [X, AuxStr]).
+
+traitsOf(X, R) :-
+    findall(Y, caracteristica(X,Y), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'El personaje ~w tiene las siguientes caracteristicas:\n   * ~w.', [X, AuxStr]).
+
+magicalObjects(R) :-
+    findall(X, objeto_magico(X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Las objetos magicos que conozco son:\n   * ~w.', [AuxStr]).
+
+ownerOfObject(X, R) :-
+    findall(Y, propietario(Y,X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'El/la ~w le pertenece a: ~w.', [X, AuxStr]).
+
+magicalLocations(R) :-
+    findall(X, lugar(X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Las locaciones magicas que conozco son:\n   * ~w.', [AuxStr]).
+
+magicalCreatures(R) :-
+    findall(X, criatura(X), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'Las criaturas magicas que conozco son:\n   * ~w.', [AuxStr]).
+
+infoCreature(X, R) :-
+    findall(Y, descripcion(X,Y), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'De ~w conosco lo siguiente: ~w.', [X, AuxStr]).
+
+infoObject(X, R) :-
+    findall(Y, descripcion(X,Y), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'De ~w conosco lo siguiente: ~w.', [X, AuxStr]).
+
+infoCharacter(X, R) :-
+    findall(Y, descripcion(X,Y), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'De ~w conosco lo siguiente: ~w.', [X, AuxStr]).
+
+infoPlace(X, R) :-
+    findall(Y, descripcion(X,Y), Aux),
+    atomic_list_concat(Aux, '\n   * ', AuxStr),
+    format(atom(R), 'De ~w conosco lo siguiente: ~w.', [X, AuxStr]).
+
+isStudent(X, R):- perteneceA(X, A), R = ['Si', X, 'es estudiante de ', A], !.
+isStudent(X, R):- \+ perteneceA(X, _), R = ['No', X, 'no es estudiante'], !.
+
+
 
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
@@ -1174,7 +1254,23 @@ replace0([I|_], Input, _, Resp, R) :-
     (
         X == flagKnowMagicalObjects -> knowMagicalObjects(R); 
         X == flagOwner -> owner(Atom, R) ;
-        X == flagCharactersByGender -> charactersByGender(Atom, R) 
+        X == flagCharactersByGender -> charactersByGender(Atom, R); 
+        X == flagHogwartsHouses -> hogwartsHouses(R);
+        X == flagHouseOf -> houseOf(Atom, R); 
+        X == flagFamilies -> families(R); 
+        X == flagFamilyOf -> familyOf(Atom, R); 
+        X == flagFamilyMembers -> familyMembers(Atom, R); 
+        X == flagCharactersByTrait -> charactersByTrait(Atom, R); 
+        X == flagTraitsOf -> traitsOf(Atom, R); 
+        X == flagMagicalObjects -> magicalObjects(R); 
+        X == flagOwnerOfObject -> ownerOfObject(Atom, R); 
+        X == flagMagicalLocations -> magicalLocations(R); 
+        X == flagMagicalCreatures -> magicalCreatures(R); 
+        X == flagInfoCreature -> infoCreature(Atom, R); 
+        X == flagInfoObject -> infoObject(Atom, R); 
+        X == flagInfoCharacter -> infoCharacter(Atom, R); 
+        X == flagInfoPlace -> infoPlace(Atom, R); 
+        X == flagIsStudent -> isStudent(Atom, R)
     ).
 % ----- Others rules ---- %
 
