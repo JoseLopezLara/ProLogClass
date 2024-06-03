@@ -105,49 +105,81 @@ template([please, s(_), _], ['No', i, can, not, help, ',', i, am, just, a, machi
 
 % ********************** 20 template of 1 argument to family tree ********************** %
 % ************************************************************************************** %
+% quienes son los nietos de X ? .
 template([quienes, son, los, nietos, de, s(_), '?', .], [flagGradSen], [5]).
+% quienes son los nietos hombres de X ? .
 template([quienes, son, los, nietos, hombres, de, s(_), '?', .], [flagGradSenBoy], [6]).
+% quienes son los nietos mujeres de X ? .
 template([quienes, son, los, nietos, mujeres, de, s(_), '?', .], [flagGradSenGirl], [6]).
 
+% quienes son los hijos de X ? .
 template([quienes, son, los, hijos, de, s(_), '?', .], [flagChild], [5]).
+% quienes son los hijos hombres de X ? .
 template([quienes, son, los, hijos, hombres, de, s(_), '?', .], [flagChildBoy], [6]).
+% quienes son los hijos o hijas mujeres de X ? .
 template([quienes, son, [los, las], [hijos, hijas], mujeres, de, s(_), '?', .], [flagChildGirl], [6]).
 
+% quienes son los tios de X ? .
 template([quienes, son, los, tios, de, s(_), '?', .], [flagUncle], [5]).
+% quienes son los tios hombres de X ? .
 template([quienes, son, los, tios, hombres, de, s(_), '?', .], [flagUncleBoy], [6]).
+% quienes son los tios mujeres de X ? .
 template([quienes, son, los, tios, mujeres, de, s(_), '?', .], [flagAuntGirl], [6]).
 
+% quienes son los abuelos de X ? .
 template([quienes, son, los, abuelos, de, s(_), '?', .], [flagGrandFathers], [5]).
+% quienes son los abuelos hombres de X ? .
 template([quienes, son, los, abuelos, hombres, de, s(_), '?', .], [flagGrandFather], [6]).
+% quienes son los abuelos mujeres de X ? .
 template([quienes, son, los, abuelos, mujeres, de, s(_), '?', .], [flagGrandMother], [6]).
 
+% quienes son los hermanos de X ? .
 template([quienes, son, los, hermanos, de, s(_), '?', .], [flagBrothers], [5]).
+% quienes son los hermanos hombres de X ? .
 template([quienes, son, los, hermanos, hombres, de, s(_), '?', .], [flagBrother], [6]).
+% quienes son los hermanos mujeres de X ? .
 template([quienes, son, los, hermanos, mujeres, de, s(_), '?', .], [flagSister], [6]).
 
+% quien es el esposo de X ? .
 template([quien, es, el, esposo, de, s(_), '?', .], [flagHusband], [5]).
+% quien es la esposa de X ? .
 template([quien, es, la, esposa, de, s(_), '?', .], [flagWife], [5]).
 
+% X esta casado ? .
 template([s(_), esta, casado, '?', .], [flagHasWife], [0]).
+% X esta casada ? .
 template([s(_), esta, casada, '?', .], [flagHasHusband], [0]).
-
+% X tiene hermanos ? .
 template([s(_), tiene, hermanos, '?', .], [flagHasBrothers], [0]).
 
 % ********************** 5 template of 2 argument to family tree ********************** %
 % ************************************************************************************** %
+% X es padre de Y ? .
 template([s(_), es, padre, de, s(_), '?', .], [flagFatherOf], [0,4]).
+% X es madre de Y ? .
 template([s(_), es, madre, de, s(_), '?', .], [flagMotherOf], [0,4]).
+% X es esposo de Y ? .
 template([s(_), es, esposo, de, s(_), '?', .], [flagHusbandOf], [0,4]).
+% X es esposa de Y ? .
 template([s(_), es, esposa, de, s(_), '?', .], [flagWifeOf], [0,4]).
+% X es hermano de Y ? .
 template([s(_), es, hermano, de, s(_), '?', .], [flagBrotherOf], [0,4]).
 
 % ********************** 5 template of 3 argument to family tree ********************** %
 % ************************************************************************************** %
+% X, Y y Z son hermanos ? .
 template([s(_), ',', s(_), y, s(_), son, hermanos, '?', .], [flagAreBrother], [0,2,4]).
+% X y Y tienen un hijo llamado Z ? .
 template([s(_), 'y', s(_), tienen, un, hijo, llamado, s(_), '?', .], [flaghaveChild], [0,2,7]).
+% X y Y tienen un nieto llamado Z ? .
 template([s(_), 'y', s(_), tienen, un, nieto, llamado, s(_), '?', .], [flagHaveGrandSon], [0,2,7]).
+% X y Y quieren mucho a su nieto Z ? .
 template([s(_), 'y', s(_), quieren, mucho, a, su, nieto, s(_), '?', .], [flagWeLoveGrandSon], [0,2,8]).
+% X y Y quieren mucho a su hijo Z ? .
 template([s(_), 'y', s(_), quieren, mucho, a, su, hijo, s(_), '?', .], [flagWeLoveChild], [0,2,8]).
+
+% --------------------------------------- TEMPLATE TO DISEASES --------------------------------------- %
+% --------------------------------------- TEMPLATE TO DISEASES --------------------------------------- %
 
 % ********************** 20 template of 1 argument to disease system expert ********************** %
 % ************************************************************************************** %
@@ -240,16 +272,6 @@ template([tengo, los, siguientes, sintomas, _, ',', _, ',', _, ',', _, ',', _, '
 
 % --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
 % --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
-% --------------------------------------- TEMPLATE TO HARRY POTTER  --------------------------------------- %
 
 % ********************** 20 template of zero and one  arguments  ********************** %
 % ************************************************************************************** %
@@ -318,9 +340,6 @@ template([s(_), y, s(_), pertenecen, a, la, casa, s(_), de, hogwarts, '?'], [fla
 % albus_dumbledore y luna_lovegood tienen la caracteristica de cabello_blanco ? .
 template([s(_), 'y', s(_), tienen, la, caracteristica, de, s(_), '?'], [flagHasTrait], [0, 2, 7]).
 
-
-% **************************** 5 template of two argumnets ***************************** %
-% ************************************************************************************** %
 
 % ********************** Other templates ********************** %
 % ************************************************************* %
@@ -690,16 +709,6 @@ fullDiagnostic(X, R) :-
             \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         ', [X, AuxProb]).
 
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
-% --------------------------------------- HARRY POTTER RULES --------------------------------------- %
 % --------------------------------------- HARRY POTTER RULES --------------------------------------- %
 % --------------------------------------- HARRY POTTER RULES --------------------------------------- %
 
@@ -1311,16 +1320,6 @@ replace0([I, J, K, L, M, N, O, P, Q], Input, _, Resp, R) :-
         X == flagWhatIsMyFullDiagnosticWith9SymptomWithProbability -> fullDiagnostic(Enf, R)  
     ).
 
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
-% --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
 % --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
 % --------------------------------------- HARRY POTTER REPLACE --------------------------------------- %
 

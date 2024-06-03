@@ -54,5 +54,5 @@ _______________________________________________________
 27. [Activity 27: Add 20 new templates to Elize code](27_elize_add_new_templates_exercise/README.md)
 28. [Activity 28: Add new templates with 2 and 3 argumnets to Elize code](28_elize_add_teplate_with_2_and_tree_arguments/README.md)
 29. [Activity 29: Add 3 new templates rules of likes type to Elize code](29_elize_add_3_rule_to_templates/README.md)
-30. [**--->** **FINAL PROJECT PART 1** (Activity 30)](30_elize_add_genealogical_tree_final_project_p1/README.md)
+30. [**--->** **FINAL PROJECT PART 1** (Activity 30)](30_final_project/README.md)
 31. [Activity 31: Add 5 new templates rules with multiple results](31_elize_add_5_templtes_with_more_results/README.md)
