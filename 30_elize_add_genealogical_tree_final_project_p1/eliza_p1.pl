@@ -298,13 +298,29 @@ template([s(_), es, estudiante, '?'], [flagIsStudent], [0]).
 template([s(_), es, un, objeto, magico, y, en, total, son, s(_), '?'], [flagExistObjetAndCount], [0,9]).
 % azkaban es un lugar conocido y en total son 6 ? .
 template([s(_), es, un, lugar, conocido, y, en, total, son, s(_), '?'], [flagExistLocationAndCount], [0,9]).
-% ravenclaw es una casa de hogwarts y en total son 4 ? .
+% ravenclaw es una casa de hogwarts y en total son 6 ? .
 template([s(_), es, una, casa, de, hogwarts, y, en, total, son, s(_), '?'], [flagExistHouseAndCount], [0,10]).
 % fenix es una criatura magica y en total son 6 ? .
 template([s(_), es, una, criatura, magica, y, en, total, son, s(_), '?'], [flagExistCriatureAndCount], [0,9]).
-% fenix es una criatura magica y en total son 6 ? .
-template([el, s(_), es, [una, un], [criatura, criatur], [magica, magca], y, en, [total], son, s(_), '?'], [flagExistCriatureAndCount], [1,10]).
+% el fenix es una criatura magica y en total son 6 ? .
+template([[el], s(_), [es], [una], [criatura], [magica], [y], [en], [total], [son], s(_), '?'], [flagExistCriatureAndCount], [1,10]).
 
+% **************************** 5 template of tree argumnets ***************************** %
+% ************************************************************************************** %
+% ron_weasley, ginny_weasley y fred_weasley pertenecen a la misma familia ? .
+template([s(_), ',', s(_), y, s(_), pertenecen, a, la, misma, familia, '?'], [flagSameFamily], [0, 2, 4]).
+% ginny_weasley y fred_weasley pertenecen a la familia weasley? .
+template([s(_), y, s(_), pertenecen, a, la, familia, s(_), '?'], [flagBelongFamily], [0, 2, 7]).
+% ron_weasley, ginny_weasley y fred_weasley pertenecen a la misma casa de hogwarts ? .
+template([s(_), ',', s(_), y, s(_), pertenecen, a, la, misma, casa, de, hogwarts, '?'], [flagSameHouse], [0, 2, 4]).
+% ron_weasley y ginny_weasley pertenecen a la casa gryffindor de hogwarts ? .
+template([s(_), y, s(_), pertenecen, a, la, casa, s(_), de, hogwarts, '?'], [flagBelongHouse], [0, 2, 7]).
+% albus_dumbledore y luna_lovegood tienen la caracteristica de cabello_blanco ? .
+template([s(_), 'y', s(_), tienen, la, caracteristica, de, s(_), '?'], [flagHasTrait], [0, 2, 7]).
+
+
+% **************************** 5 template of two argumnets ***************************** %
+% ************************************************************************************** %
 
 % ********************** Other templates ********************** %
 % ************************************************************* %
@@ -801,6 +817,34 @@ existCriatureAndCount(Obj, Number, Result):- \+ criatura(Obj), (findall(_ , cria
 existCriatureAndCount(Obj, Number, Result):- criatura(Obj),  findall(_ , criatura(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['Si exite el objeto magico ', Obj, ' pero en total No son: ', Number, ' si no, ', C].
 existCriatureAndCount(Obj, Number, Result):- \+ criatura(Obj), findall(_ , criatura(_) , L), length(L , R), C is R, \+ (C == Number), Result = ['No exite el objeto magico ', Obj, 'y en total No son: ', Number, ' si no, ', C].
 
+% ----- Three arguments rules ---- %
+sameFamily(P1, P2, P3, Result):- familiaQuePertenece(P1, C1), familiaQuePertenece(P2, C2), familiaQuePertenece(P3, C3), C1 == C2, C1 == C3, Result = ['Si ', P1, P2, ' y ', P3, ' pertenecen a las/los', C1].
+sameFamily(P1, P2, P3, Result):- familiaQuePertenece(P1, C1), familiaQuePertenece(P2, C2), familiaQuePertenece(P3, C3), \+ (C1 == C2, C1 == C3), Result = ['No ', P1, P2, ' y ', P3, ' no pertenecen a la misma familia'].
+sameFamily(P1, P2, P3, Result):- \+ (familiaQuePertenece(P1, C1), familiaQuePertenece(P2, C1), familiaQuePertenece(P3, C1)), Result = ['No ', P1, P2, ' y ', P3, ' no pertenecen a la misma familia'].
+
+
+belongFamily(P1, P2, Fam, Result):- 
+    (familiaQuePertenece(P1, Fam), familiaQuePertenece(P2, Fam), Result = ['Si ', P1, ' y ', P2, ' pertenecen a la familia ', Fam]);
+    (familiaQuePertenece(P1, Fam), \+ familiaQuePertenece(P2, Fam), Result = [ P1, ' si pertenece a la familia ', Fam, ' pero ', P2, ' no pertenece']);
+    (\+ familiaQuePertenece(P1, Fam), familiaQuePertenece(P2, Fam), Result = [ P2, ' si pertenece a la familia ', Fam, ' pero ', P1, ' no pertenece']);
+    (\+ familiaQuePertenece(P1, Fam), \+ familiaQuePertenece(P2, Fam), Result = ['No ', P1, ' y ', P2, ' no pertenecen a la familia ', Fam]).
+
+sameHouse(P1, P2, P3, Result):- perteneceA(P1, C1), perteneceA(P2, C2), perteneceA(P3, C3), C1 == C2, C1 == C3, Result = ['Si ', P1, P2, ' y ', P3, ' pertenecen a ', C1].
+sameHouse(P1, P2, P3, Result):- perteneceA(P1, C1), perteneceA(P2, C2), perteneceA(P3, C3), \+ (C1 == C2, C1 == C3), Result = ['No ', P1, P2, ' y ', P3, ' no pertenecen a la misma casa'].
+sameHouse(P1, P2, P3, Result):- \+ (perteneceA(P1, C1), perteneceA(P2, C1), perteneceA(P3, C1)), Result = ['No ', P1, P2, ' y ', P3, ' no pertenecen a la misma casa'].
+
+
+belongHouse(P1, P2, Fam, Result):- 
+    (perteneceA(P1, Fam), perteneceA(P2, Fam), Result = ['Si ', P1, ' y ', P2, ' pertenecen a la casa ', Fam]);
+    (perteneceA(P1, Fam), \+ perteneceA(P2, Fam), Result = [ P1, ' si pertenece a la casa ', Fam, ' pero ', P2, ' no pertenece']);
+    (\+ perteneceA(P1, Fam), perteneceA(P2, Fam), Result = [ P2, ' si pertenece a la casa ', Fam, ' pero ', P1, ' no pertenece']);
+    (\+ perteneceA(P1, Fam), \+ perteneceA(P2, Fam), Result = ['No ', P1, ' y ', P2, ' no pertenecen a la casa ', Fam]).
+
+hasTrait(P1, P2, Trait, Result):- 
+    (caracteristica(P1, Trait), caracteristica(P2, Trait), Result = ['Si ', P1, ' y ', P2, ' tienen el/la ', Trait]);
+    (caracteristica(P1, Trait), \+ caracteristica(P2, Trait), Result = [ P1, ' si tiene el/la ', Trait, ' pero ', P2, ' no ']);
+    (\+ caracteristica(P1, Trait), caracteristica(P2, Trait), Result = [ P2, ' no tienene el/la ', Trait, ' pero ', P1, ' si']);
+    (\+ caracteristica(P1, Trait), \+ caracteristica(P2, Trait), Result = ['No ', P1, ' y ', P2, ' no tienen el/la ', Trait]).
 % -------------- Other functios -------------- %
 % -------------------------------------------- %
 % Dividir una cadena en una lista de elementos
@@ -1316,6 +1360,20 @@ replace0([I,J], Input, _, Resp, R) :-
         X == flagExistLocationAndCount -> existLocationAndCount(Atom0, Atom1, R); 
         X == flagExistHouseAndCount -> existHouseAndCount(Atom0, Atom1, R); 
         X == flagExistCriatureAndCount -> existCriatureAndCount(Atom0, Atom1, R) 
+    ).
+
+% ----- Three argument rules ---- %
+replace0([I,J,K], Input, _, Resp, R) :- 
+    nth0(I, Input, Atom0),
+    nth0(J, Input, Atom1),
+    nth0(K, Input, Atom2),
+    nth0(0, Resp, X),
+    (
+        X == flagSameFamily -> sameFamily(Atom0, Atom1, Atom2, R);
+        X == flagBelongFamily -> belongFamily(Atom0, Atom1, Atom2, R);
+        X == flagSameHouse -> sameHouse(Atom0, Atom1, Atom2, R);
+        X == flagBelongHouse -> belongHouse(Atom0, Atom1, Atom2, R);
+        X == flagHasTrait -> hasTrait(Atom0, Atom1, Atom2, R)
     ).
 
 
